@@ -30,9 +30,107 @@
     </swiper>
   </view>
   <!-- 热门 -->
-  <view class="remen">
+  <view class="hot">
     <image src="/images/home/remen.png"></image>
     <text>热门课程</text>
   </view> 
+  <view class="hotItemBox">
+    <view class="hotItem">
+      推荐
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+    <view class="hotItem">
+      语言培训
+    </view>
+  </view>
+  <!-- 课程列表 -->
+  <view class="courseList">
+    <view class="courseItem">
+      <view>
+        <image src="/images/home/shangjia.png"></image>
+      </view>
+      <view class="courseInfo">
+        <view>格林创意作文体验课</view>
+        <view>
+          <text>课程点击数 {{"356"}}</text>
+          <text>{{"3-15"}}岁</text>
+        </view>
+        <view>
+          <view>
+            <text>格伦教育(大望路店)</text>
+            <image src="/images/home/renzheng.png"></image>
+          </view>
+          <view>
+            <text>距离4.8公里</text>
+            <image src="/images/home/daohang.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="courseItem">
+      <view>
+        <image src="/images/home/shangjia.png"></image>
+      </view>
+      <view class="courseInfo">
+        <view>格林创意作文体验课</view>
+        <view>
+          <text>课程点击数 {{"356"}}</text>
+          <text>{{"3-15"}}岁</text>
+        </view>
+        <view>
+          <view>
+            <text>格伦教育(大望路店)</text>
+            <image src="/images/home/renzheng.png"></image>
+          </view>
+          <view>
+            <text>距离4.8公里</text>
+            <image src="/images/home/daohang.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="courseItem">
+      <view>
+        <image src="/images/home/shangjia.png"></image>
+      </view>
+      <view class="courseInfo">
+        <view>格林创意作文体验课</view>
+        <view>
+          <text>课程点击数 {{"356"}}</text>
+          <text>{{"3-15"}}岁</text>
+        </view>
+        <view>
+          <view>
+            <text>格伦教育(大望路店)</text>
+            <image src="/images/home/renzheng.png"></image>
+          </view>
+          <view>
+            <text>距离4.8公里</text>
+            <image src="/images/home/daohang.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
