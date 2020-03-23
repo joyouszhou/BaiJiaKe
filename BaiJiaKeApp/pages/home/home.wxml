@@ -1,0 +1,38 @@
+<!--pages/home/home.wxml-->
+<view class="body">
+  <!-- 搜索框 -->
+  <view class="search">
+    <image class="" src='/images/home/search.png' bindtap='query'></image>
+    <input type='text' placeholder='输入你想查询的课程/门店' confirm-type='search' 
+    value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
+  </view>
+  <!-- 分类导航 -->
+  <view class="navBox">
+    <view class="navItem" wx:for="{{navList}}" data-id="{{index}}" wx:if="{{item.show}}"
+    bindtap="getNavItem"> 
+      <image src='{{item.url}}'></image>
+      <text>{{item.name}}</text>
+    </view>
+    <view class="navItem" bindtap="changeNav">
+      <image src='/images/home/nav/shouqi.png'></image>
+      <text>{{isOpenNavText}}</text>
+    </view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="swiperBox">
+    <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
+      <swiper-item>
+        <image src='/images/home/swiper/baijiake.png'></image>
+      </swiper-item>
+      <swiper-item>
+        <image src='/images/home/swiper/baijiake.png'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 热门 -->
+  <view class="remen">
+    <image src="/images/home/remen.png"></image>
+    <text>热门课程</text>
+  </view> 
+</view>
+
