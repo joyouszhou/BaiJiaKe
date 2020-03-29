@@ -1,0 +1,82 @@
+<!--pages/courseDetails/courseDetails.wxml-->
+<view class="body">
+  <!-- 轮播图 -->
+  <view class="swiperBox">
+    <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
+      <swiper-item>
+        <image src='/images/home/swiper/baijiake.png'></image>
+      </swiper-item>
+      <swiper-item>
+        <image src='/images/home/swiper/baijiake.png'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 详情 -->
+  <view class="courseDetails">
+    <view class="title">阿蒂朵芭蕾外教大师课体验</view>
+    <view class="detailsInfo">
+      <view>
+        <text>课程年龄</text>
+        <text>3-18岁</text>
+      </view>
+      <view>
+        <text>课程年龄</text>
+        <text>3-18岁</text>
+      </view>
+      <view>
+        <text>营业时间</text>
+        <text>10:00-21:00</text>
+      </view>
+    </view>
+    <view class="detailsInfo">
+      <view class="detailsInfoItem">
+        <text>授课地点</text>
+        <text>北京市大兴区BDA国际·广场-E座</text>
+        <text class="right">></text>
+      </view>
+      <view class="detailsInfoItem">
+        <text>所属机构</text>
+        <text>阿蒂朵芭舞蹈工作室</text>
+        <image src="/images/home/renzheng.png"></image>
+        <text class="right">></text>
+      </view>
+    </view>
+  </view>
+  <view class="courseInfo">
+    <view class="infoTitle">课程信息</view>
+    <view></view>
+    <view class="infoTitle">体验有礼</view>
+    <view></view>
+  </view>
+  <view class="tips">
+    <image src="/images/courseDetails/tishi.png"></image>
+  </view>
+  <view class="courseInfo">
+    <view class="infoTitle">热门推荐</view>
+   
+  </view>
+  <view class="hotList">
+    <view>
+      <image src="/images/home/swiper/baijiake.png"></image>
+    <text>课程名称</text>
+    </view>
+    <view>
+      <image src="/images/home/swiper/baijiake.png"></image>
+      <text>课程名称</text>
+    </view>
+    <view>
+      <image src="/images/home/swiper/baijiake.png"></image>
+      <text>课程名称</text>
+    </view>
+  </view>
+  <view class="tabBar">
+    <view>
+      <image src="/images/courseDetails/yuyue.png"></image>
+      <text>收藏</text>
+    </view>
+    <view>
+      <image src="/images/courseDetails/yuyue.png"></image>
+      <text>立即预约</text>
+    </view>
+  </view>
+</view>

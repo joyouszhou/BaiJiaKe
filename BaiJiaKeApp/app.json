@@ -1,8 +1,10 @@
 {
   "pages": [
+    
     "pages/home/home",
     "pages/index/index",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/courseDetails/courseDetails"
   ],
   "window": {
     "backgroundTextStyle": "light",

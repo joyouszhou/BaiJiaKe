@@ -89,6 +89,15 @@ Page({
   getNavItem: function(e){  
     console.log(e.currentTarget.dataset.id);
   },
+  toCourseDetails: function(){
+    console.log("nihao!!!!!!!!!!")
+    wx.navigateTo({
+      url: '../courseDetails/courseDetails',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   //收起展开导航栏
   changeNav: function(){
     let arr = [];
