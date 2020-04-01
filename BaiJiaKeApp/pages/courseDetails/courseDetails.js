@@ -32,5 +32,12 @@ Page({
       }
     })
   },
-
+  toCourseDetails: function () {
+    wx.navigateTo({
+      url: '../courseDetails/courseDetails',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
 })

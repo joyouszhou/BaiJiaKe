@@ -56,15 +56,15 @@
    
   </view>
   <view class="hotList">
-    <view>
+    <view bindtap="toCourseDetails">
       <image src="/images/home/swiper/baijiake.png"></image>
     <text>课程名称</text>
     </view>
-    <view>
+    <view bindtap="toCourseDetails">
       <image src="/images/home/swiper/baijiake.png"></image>
       <text>课程名称</text>
     </view>
-    <view>
+    <view bindtap="toCourseDetails">
       <image src="/images/home/swiper/baijiake.png"></image>
       <text>课程名称</text>
     </view>
