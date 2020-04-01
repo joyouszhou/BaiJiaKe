@@ -89,8 +89,12 @@ Page({
   getNavItem: function(e){  
     console.log(e.currentTarget.dataset.id);
   },
+  toCourseClass: function(){
+    wx.navigateTo({
+      url: '../courseClass/courseClass',
+    })
+  },
   toCourseDetails: function(){
-    console.log("nihao!!!!!!!!!!")
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
       success: function(res) {},

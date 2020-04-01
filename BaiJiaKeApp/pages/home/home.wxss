@@ -84,6 +84,11 @@
   height: 18rpx;
   margin-right: 10rpx;
 }
+.hot text:nth-child(3){
+  position: relative;
+  left: 385rpx;
+  color: rgb(208,204,204)
+}
 .hotItemBox{
   width: 640rpx;
   display: flex;

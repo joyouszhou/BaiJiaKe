@@ -1,71 +1,38 @@
-<!--pages/home/home.wxml-->
+<!--pages/courseClass/courseClass.wxml-->
 <view class="body">
-  <!-- 搜索框 -->
-  <view class="search">
-    <image class="" src='/images/home/search.png' bindtap='query'></image>
-    <input type='text' placeholder='输入你想查询的课程/门店' confirm-type='search' 
-    value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
+  <view class="tabBar">
+    <view bindtap="cityChange">
+      全城
+      <image wx:if="{{isCityOpen}}" src="/images/courseClass/off.png"></image>
+      <image wx:else src="/images/courseClass/open.png"></image>
+    </view>
+    <view bindtap="classChange">
+      体能运动
+      <image wx:if="{{isClassOpen}}" src="/images/courseClass/off.png"></image>
+      <image wx:else src="/images/courseClass/open.png"></image>
+    </view>
+    <view bindtap="oldChange">
+      年龄
+      <image wx:if="{{isOldOpen}}" src="/images/courseClass/off.png"></image>
+      <image wx:else src="/images/courseClass/open.png"></image>
+    </view>
   </view>
-  <!-- 分类导航 -->
-  <view class="navBox">
-    <view class="navItem" wx:for="{{navList}}" wx:key="index" data-id="{{index}}" wx:if="{{item.show}}"
-    bindtap="getNavItem"> 
-      <image src='{{item.url}}'></image>
-      <text>{{item.name}}</text>
+  <view class="classList" style="{{isTab?'height:auto':'height:0'}}">
+    <view wx:if="{{tabName=='全城'}}"  class="classItem" wx:for="{{cityList}}" wx:key="index" data-id="{{index}}" 
+      bindtap="courseItemChange" style="{{item.isTab?'border: 2px solid rgb(109,161,247);color:rgb(109,161,247);background:rgb(242,246,254)':''}}">
+      {{item.name}}
     </view>
-    <view class="navItem" bindtap="changeNav">
-      <image src='/images/home/nav/shouqi.png'></image>
-      <text>{{isOpenNavText}}</text>
+    <view wx:if="{{tabName=='体能运动'}}"  class="classItem" wx:for="{{classList}}" wx:key="index" data-id="{{index}}" 
+      bindtap="courseItemChange" style="{{item.isTab?'border: 2px solid rgb(109,161,247);color:rgb(109,161,247);background:rgb(242,246,254)':''}}">
+      {{item.name}}
     </view>
-  </view>
-  <!-- 轮播图 -->
-  <view class="swiperBox">
-    <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
-      <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
-      </swiper-item>
-      <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
-      </swiper-item>
-    </swiper>
-  </view>
-  <!-- 热门 -->
-  <view class="hot">
-    <image src="/images/home/remen.png"></image>
-    <text>热门课程</text>
-    <text bindtap="toCourseClass">全部课程 ></text>
-  </view> 
-  <view class="hotItemBox">
-    <view class="hotItem">
-      推荐
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
+    <view wx:if="{{tabName=='年龄'}}"  class="classItem" wx:for="{{oldList}}" wx:key="index" data-id="{{index}}" 
+      bindtap="courseItemChange" style="{{item.isTab?'border: 2px solid rgb(109,161,247);color:rgb(109,161,247);background:rgb(242,246,254)':''}}"> 
+      {{item.name}}
     </view>
   </view>
   <!-- 课程列表 -->
-  <view class="courseList">
+  <view class="courseList" style="{{marginT}}">
     <view class="courseItem" bindtap="toCourseDetails">
       <view>
         <image src="/images/home/shangjia.png"></image>
@@ -134,4 +101,5 @@
     </view>
   </view>
 </view>
+
 

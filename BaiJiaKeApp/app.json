@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/index/index",
     "pages/mine/mine",
-    "pages/courseDetails/courseDetails"
+    "pages/courseDetails/courseDetails",
+    "pages/courseClass/courseClass"
   ],
   "window": {
     "backgroundTextStyle": "light",
