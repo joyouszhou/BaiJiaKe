@@ -5,11 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabList:[
-      { name: "全城", isTab: false },
-      { name: "体能运动", isTab: false },
-      { name: "年龄", isTab: false },
-    ],
+    cityName:"全城",
+    className: "体能运动",
+    oldName: "年龄",
     isTab: false,
     isCityOpen: false,
     isClassOpen: false,
@@ -71,9 +69,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
     wx.setNavigationBarTitle({
       title:"全部课程"
     });
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      if(data.courseName != ""){
+        that.setData({
+          className: data.courseName
+        })
+      }
+    })
   },
 
   cityChange: function () {
@@ -86,7 +93,7 @@ Page({
           isOldOpen: false,
           isTab: true,
           marginT: "margin-top: 380rpx",
-          tabName: "全城"
+          tabName: "全城",
         })
       }else{
         this.setData({
@@ -106,7 +113,7 @@ Page({
           isOldOpen: false,
           isTab: true,
           marginT: "margin-top: 560rpx",
-          tabName: "体能运动"
+          tabName: "体能运动",
         })
       } else {
         this.setData({
@@ -126,7 +133,7 @@ Page({
           isClassOpen: false,
           isTab: true,
           marginT: "margin-top: 290rpx",
-          tabName: "年龄"
+          tabName: "年龄",
         })
       } else {
         this.setData({
@@ -149,7 +156,8 @@ Page({
         if (id == i) {
           this.data.cityList[i].isTab = true;
           this.setData({
-            cityList: this.data.cityList
+            cityList: this.data.cityList,
+            cityName: e.currentTarget.dataset.name,
           })
         }
       }
@@ -163,7 +171,8 @@ Page({
         if (id == i) {
           this.data.classList[i].isTab = true;
           this.setData({
-            classList: this.data.classList
+            classList: this.data.classList,
+            className: e.currentTarget.dataset.name,
           })
         }
       }
@@ -177,7 +186,8 @@ Page({
         if (id == i) {
           this.data.oldList[i].isTab = true;
           this.setData({
-            oldList: this.data.oldList
+            oldList: this.data.oldList,
+            oldName: e.currentTarget.dataset.name,
           })
         }
       }

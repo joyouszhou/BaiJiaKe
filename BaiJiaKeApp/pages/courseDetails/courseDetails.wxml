@@ -29,7 +29,7 @@
       </view>
     </view>
     <view class="detailsInfo">
-      <view class="detailsInfoItem">
+      <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>北京市大兴区BDA国际·广场-E座</text>
         <text class="right">></text>

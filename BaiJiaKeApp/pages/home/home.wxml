@@ -8,7 +8,7 @@
   </view>
   <!-- 分类导航 -->
   <view class="navBox">
-    <view class="navItem" wx:for="{{navList}}" wx:key="index" data-id="{{index}}" wx:if="{{item.show}}"
+    <view class="navItem" wx:for="{{navList}}" wx:key="index" data-id="{{index}}" data-name="{{item.name}}" wx:if="{{item.show}}"
     bindtap="getNavItem"> 
       <image src='{{item.url}}'></image>
       <text>{{item.name}}</text>

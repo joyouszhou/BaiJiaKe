@@ -1,32 +1,32 @@
 <!--pages/courseClass/courseClass.wxml-->
 <view class="body">
   <view class="tabBar">
-    <view bindtap="cityChange">
-      全城
+    <view bindtap="cityChange" style="{{isCityOpen?'color:rgb(109,161,247)':''}}">
+      {{cityName}}
       <image wx:if="{{isCityOpen}}" src="/images/courseClass/off.png"></image>
       <image wx:else src="/images/courseClass/open.png"></image>
     </view>
-    <view bindtap="classChange">
-      体能运动
+    <view bindtap="classChange" style="{{isClassOpen?'color:rgb(109,161,247)':''}}" >
+      {{className}}
       <image wx:if="{{isClassOpen}}" src="/images/courseClass/off.png"></image>
       <image wx:else src="/images/courseClass/open.png"></image>
     </view>
-    <view bindtap="oldChange">
-      年龄
+    <view bindtap="oldChange" style="{{isOldOpen?'color:rgb(109,161,247)':''}}" >
+      {{oldName}}
       <image wx:if="{{isOldOpen}}" src="/images/courseClass/off.png"></image>
       <image wx:else src="/images/courseClass/open.png"></image>
     </view>
   </view>
   <view class="classList" style="{{isTab?'height:auto':'height:0'}}">
-    <view wx:if="{{tabName=='全城'}}"  class="classItem" wx:for="{{cityList}}" wx:key="index" data-id="{{index}}" 
+    <view wx:if="{{tabName=='全城'}}"  class="classItem" wx:for="{{cityList}}" wx:key="index" data-id="{{index}}" data-name="{{item.name}}" 
       bindtap="courseItemChange" style="{{item.isTab?'border: 2px solid rgb(109,161,247);color:rgb(109,161,247);background:rgb(242,246,254)':''}}">
       {{item.name}}
     </view>
-    <view wx:if="{{tabName=='体能运动'}}"  class="classItem" wx:for="{{classList}}" wx:key="index" data-id="{{index}}" 
+    <view wx:if="{{tabName=='体能运动'}}"  class="classItem" wx:for="{{classList}}" wx:key="index" data-id="{{index}}" data-name="{{item.name}}" 
       bindtap="courseItemChange" style="{{item.isTab?'border: 2px solid rgb(109,161,247);color:rgb(109,161,247);background:rgb(242,246,254)':''}}">
       {{item.name}}
     </view>
-    <view wx:if="{{tabName=='年龄'}}"  class="classItem" wx:for="{{oldList}}" wx:key="index" data-id="{{index}}" 
+    <view wx:if="{{tabName=='年龄'}}"  class="classItem" wx:for="{{oldList}}" wx:key="index" data-id="{{index}}" data-name="{{item.name}}" 
       bindtap="courseItemChange" style="{{item.isTab?'border: 2px solid rgb(109,161,247);color:rgb(109,161,247);background:rgb(242,246,254)':''}}"> 
       {{item.name}}
     </view>
