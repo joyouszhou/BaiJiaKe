@@ -35,7 +35,7 @@
     <text>热门课程</text>
     <text bindtap="toCourseClass">全部课程 ></text>
   </view> 
-  <view class="hotItemBox">
+  <!-- <view class="hotItemBox">
     <view class="hotItem">
       推荐
     </view>
@@ -63,7 +63,7 @@
     <view class="hotItem">
       语言培训
     </view>
-  </view>
+  </view> -->
   <!-- 课程列表 -->
   <view class="courseList">
     <view class="courseItem" bindtap="toCourseDetails">

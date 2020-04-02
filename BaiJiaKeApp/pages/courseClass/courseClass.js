@@ -6,7 +6,7 @@ Page({
    */
   data: {
     cityName:"全城",
-    className: "体能运动",
+    className: "全部课程",
     oldName: "年龄",
     isTab: false,
     isCityOpen: false,
@@ -76,8 +76,15 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
       if(data.courseName != ""){
+        that.data.classList[0].isTab = false;
+        for (let i = 0; i < that.data.classList.length;i++){
+          if (data.courseName == that.data.classList[i].name){
+            that.data.classList[i].isTab = true;
+          }
+        }
         that.setData({
-          className: data.courseName
+          className: data.courseName,
+          classList: that.data.classList
         })
       }
     })
