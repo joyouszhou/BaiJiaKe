@@ -1,0 +1,4 @@
+<!--pages/xieYi/xieYi.wxml-->
+<view class="body">
+  <image style="width:690rpx;height:850rpx;" src="/images/xieyi.png"></image>
+</view>

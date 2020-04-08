@@ -1,0 +1,4 @@
+<!--pages/gongZhongHao/gongZhongHao.wxml-->
+<view class="body">
+  <image style="width:500rpx;height:500rpx;"  src="/images/gongzhonghao.png"></image>
+</view>
