@@ -1,0 +1,58 @@
+/* pages/login/login.wxss */
+page{
+  background: #f0eff4;
+}
+
+.topImage {
+  width: 100%;
+  height: auto;
+}
+
+.input-top, .input-buttom {
+  font-size: 30rpx;
+  padding-left: 30rpx;
+  margin: 0rpx 20rpx;
+  background-color: white;
+  height: 70rpx;
+}
+
+.input-top {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1px;
+  margin-top: 20rpx;
+}
+
+#telphone, #captcha {
+  height: 70rpx;
+}
+
+.sendMsg {
+  line-height: 70rpx;
+  margin-right: 30rpx;
+  color: #f9b400;
+}
+
+.btn {
+  margin: 0rpx 20rpx;
+  background-color: #f9b400;
+  color: white;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  opacity:0.8
+}
+
+/* 下方协议开始 */
+.protocol{
+  text-align: center;
+}
+.protocol-left {
+  color: #333;
+  font-size: 25rpx;
+}
+
+.protocol-right {
+  font-size: 23rpx;
+  color: #f9b400;
+}

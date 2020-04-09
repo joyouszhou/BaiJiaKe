@@ -2,14 +2,14 @@
   "pages": [
     "pages/home/home",
     "pages/mine/mine",
-    
     "pages/index/index",
     "pages/courseDetails/courseDetails",
     "pages/courseClass/courseClass",
     "pages/guanYu/guanYu",
     "pages/gongZhongHao/gongZhongHao",
     "pages/keFu/keFu",
-    "pages/xieYi/xieYi"
+    "pages/xieYi/xieYi",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
