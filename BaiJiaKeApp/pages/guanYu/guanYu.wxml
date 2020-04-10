@@ -1,6 +1,6 @@
 <!--pages/guanYu/guanYu.wxml-->
 <view class="body">
-  <view wx:for="{{btnList}}" wx:key="{{index}}" data-id="{{index}}" bindtap="btnClick">
+  <view wx:for="{{btnList}}" wx:key="index" data-id="{{index}}" bindtap="btnClick">
     {{item}}
   </view>
 </view>

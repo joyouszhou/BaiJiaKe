@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/home/home",
     "pages/mine/mine",
     "pages/index/index",
@@ -8,8 +9,7 @@
     "pages/guanYu/guanYu",
     "pages/gongZhongHao/gongZhongHao",
     "pages/keFu/keFu",
-    "pages/xieYi/xieYi",
-    "pages/login/login"
+    "pages/xieYi/xieYi"
   ],
   "window": {
     "backgroundTextStyle": "light",

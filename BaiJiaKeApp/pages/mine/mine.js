@@ -35,7 +35,6 @@ Page({
     })
   },
   btnClick: function (e) {
-    console.log(e)
     let id = e.currentTarget.dataset.id
     if(id==0 || id==1 || id==2){
       wx.showModal({
