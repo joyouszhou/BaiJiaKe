@@ -37,21 +37,35 @@ Page({
   btnClick: function (e) {
     let id = e.currentTarget.dataset.id
     if(id==0 || id==1 || id==2){
-      wx.showModal({
-        // title: '提示',
-        confirmText: '登录',
-        content: '您未登录',
-        success(res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-            wx.navigateTo({
-              url: '../login/login',
+      wx.getStorage({
+        key: 'login',
+        success: function(res) {
+          console.log(res)
+          if(res.data){
+            wx.showToast({
+              title: '已登录',
             })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
+          }else{
+            wx.showModal({
+              // title: '提示',
+              confirmText: '登录',
+              content: '您未登录',
+              success(res) {
+                if (res.confirm) {
+                  console.log('用户点击确定')
+                  wx.navigateTo({
+                    url: '../login/login',
+                  })
+                } else if (res.cancel) {
+                  console.log('用户点击取消')
+                }
+              }
+            })
           }
-        }
+        },
       })
+      
+      
     }else{
       wx.navigateTo({
         url: '../guanYu/guanYu',

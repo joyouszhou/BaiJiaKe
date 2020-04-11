@@ -1,0 +1,26 @@
+<!--pages/register/register.wxml-->
+<!--pages/login/login.wxml-->
+<scroll-view>
+  <!-- <image src='/images/register.png' mode='widthFix' class="topImage"></image> -->
+    <view class="welcome">
+      欢迎加入
+    </view>
+    <view class='input-top'>
+      <input id="telphone"  maxlength='11' type="text" placeholder="请输入手机号"  bindinput="inputPhoneNum"/>
+      <text wx:if="{{!send}}" bindtap='sendMsg' class="sendMsg">获取验证码</text>
+      <text wx:if="{{send}}" class="sendMsg" bindtap="sendMsg">{{second+"s"}}</text>
+    </view>
+    <view class="input-buttom">
+      <input id="captcha"  type="number" maxlength="4" placeholder="请输入4位验证码" bindinput="inputCode"/>
+    </view>
+    <view class="input-buttom">
+      <input id="captcha"  type="number" maxlength="4" placeholder="请输入密码（6-12位数字或字母）" bindinput="inputCode"/>
+    </view>
+    <view class="input-buttom">
+      <input id="captcha"  type="number" maxlength="4" placeholder="确认密码（6-12位数字或字母）" bindinput="inputCode"/>
+    </view>
+    <view style="height:40rpx">
+    </view>
+    <button  class="btn" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" lang="zh_CN">注册</button>
+</scroll-view>
+

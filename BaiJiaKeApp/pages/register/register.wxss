@@ -1,3 +1,4 @@
+/* pages/register/register.wxss */
 /* pages/login/login.wxss */
 page{
   /* background: #f0eff4; */
@@ -63,16 +64,4 @@ page{
 .protocol-right {
   font-size: 23rpx;
   color: rgb(60,166,208);
-}
-
-.zhuce{
-  width: 680rpx;
-  margin: 0 auto;
-  margin-top: 20rpx;
-  margin-bottom: 100rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  color: rgb(60,166,208);
-  font-size: 20rpx;
 }

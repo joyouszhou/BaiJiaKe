@@ -1,4 +1,5 @@
 // pages/courseDetails/courseDetails.js
+const app = getApp();
 Page({
 
   /**
@@ -15,6 +16,18 @@ Page({
     wx.setNavigationBarTitle({
       title: "课程详情"
     });
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/shop',
+      data: {
+        limit: 10,
+        offset: 0,
+        beginTime: 'xxx',
+        endTime: 'xxx'
+      },
+      success: function (res) {
+        console.log(res)
+      }
+    })
   },
 
   openMap: function () {
