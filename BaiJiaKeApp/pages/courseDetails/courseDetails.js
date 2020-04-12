@@ -53,4 +53,12 @@ Page({
       complete: function (res) { },
     })
   },
+  toSchoolDetails: function () {
+    wx.navigateTo({
+      url: '../schoolDetails/schoolDetails',
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
 })

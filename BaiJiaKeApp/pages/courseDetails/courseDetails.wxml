@@ -34,7 +34,7 @@
         <text>北京市大兴区BDA国际·广场-E座</text>
         <text class="right">></text>
       </view>
-      <view class="detailsInfoItem">
+      <view class="detailsInfoItem" bindtap="toSchoolDetails">
         <text>所属机构</text>
         <text>阿蒂朵芭舞蹈工作室</text>
         <image src="/images/home/renzheng.png"></image>
