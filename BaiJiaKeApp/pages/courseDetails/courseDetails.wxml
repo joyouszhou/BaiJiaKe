@@ -71,7 +71,7 @@
   </view>
   <view class="tabBar">
     <view>
-      <image src="/images/courseDetails/yuyue.png"></image>
+      <image src="/images/courseDetails/shoucang.png"></image>
       <text>收藏</text>
     </view>
     <view>

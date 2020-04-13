@@ -1,1 +1,142 @@
 /* pages/schoolDetails/schoolDetails.wxss */
+.body{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.swiperBox{
+  width: 100vw;
+  height: 455rpx; 
+  margin-bottom: 50rpx;
+}
+.swiperBox swiper{
+  width: 100%;
+  height: 100%;
+}
+.swiperBox swiper swiper-item{
+  width: 100%;
+  height: 100%;
+}
+.swiperBox swiper swiper-item image{
+  width: 100%;
+  height: 100%;
+}
+
+.courseDetails{
+  width: 665rpx;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+  /* align-items: center; */
+}
+.title{
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 28rpx;
+  color: black;
+  font-weight: 700;
+  margin-bottom: 30rpx;
+}
+.title image{
+  width: 35rpx;
+  height: 35rpx;
+}
+.detailsInfo{
+  width: 100%;
+  height: 85rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: 4rpx solid rgb(226,226,226);
+  margin-bottom: 10rpx;
+}
+.detailsInfo view{
+  width: 50%;
+  height: 35rpx;
+  line-height: 35rpx;
+  font-size: 25rpx;
+}
+.detailsInfo view text:nth-child(1){
+  margin-right: 15rpx;
+  color: rgb(167,167,167);
+}
+.detailsInfo .detailsInfoItem{
+  width: 100%;
+}
+.detailsInfo .detailsInfoItem .right{
+  float: right;
+  color: rgb(115,115,115)
+}
+
+
+.courseInfo{
+  width: 665rpx;
+}
+.infoTitle{
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 28rpx;
+  color:rgb(215,129,74);
+  font-weight: 700;
+}
+.courseInfo view{
+  height: 30rpx;
+  line-height: 30rpx;
+}
+
+.hotList{
+  width: 620rpx;
+  margin-top:15rpx;
+  margin-bottom: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.hotList view{
+  width: 150rpx;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hotList view image{
+  width: 150rpx;
+  height: 115rpx;
+  margin-bottom: 10rpx;
+}
+.hotList view text{
+  font-size: 25rpx;
+  color: rgb(144,144,144);
+}
+.tabBar{
+  width: 100vw;
+  height: 12orpx;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: white;
+}
+.tabBar view{
+  width: 85rpx;
+  height: 70rpx;
+  margin: 25rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tabBar view image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: 10rpx;
+}
+.tabBar view text{
+  font-size: 20rpx;
+  color: rgb(176,176,176);
+}
