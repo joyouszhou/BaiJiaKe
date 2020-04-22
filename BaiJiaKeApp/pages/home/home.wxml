@@ -67,7 +67,7 @@
   <!-- 课程列表 -->
   <view class="courseList">
     <view class="courseItem"
-      wx:for="{{hotList}}" wx:key="index"  
+      wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
       <view>
         <image src="/images/home/shangjia.png"></image>

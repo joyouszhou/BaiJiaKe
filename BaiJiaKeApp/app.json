@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/courseDetails/courseDetails",
     "pages/schoolDetails/schoolDetails",
-    "pages/home/home",
+    
     "pages/login/login",
     "pages/register/register",
     "pages/index/index",

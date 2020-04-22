@@ -47,7 +47,6 @@ Page({
         endTime:'xxx'
       },
       success:function(res){
-        console.log(res)
         that.setData({
           hotList: res.data.data.course
         })
@@ -82,10 +81,19 @@ Page({
       url: '../courseClass/courseClass',
     })
   },
-  toCourseDetails: function(){
+  toCourseDetails: function(e){
+    console.log(e) 
+    let data = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
-      success: function(res) {},
+      events:{
+        acceptDataFromOpenedPage: function (data) {
+          console.log(data)
+        },
+      },
+      success: function(res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: data })
+      },
       fail: function(res) {},
       complete: function(res) {},
     })
