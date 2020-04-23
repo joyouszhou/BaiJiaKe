@@ -13,19 +13,19 @@
   </view>
   <!-- 详情 -->
   <view class="courseDetails">
-    <view class="title">阿蒂朵芭蕾外教大师课体验</view>
+    <view class="title">{{courseData.Name}}</view>
     <view class="detailsInfo">
       <view>
-        <text>课程年龄</text>
-        <text>3-18岁</text>
+        <text>授课教师</text>
+        <text>{{courseData.Teacher}}</text>
       </view>
       <view>
-        <text>课程年龄</text>
-        <text>3-18岁</text>
+        <text>适用年龄</text>
+        <text>{{courseData.Ages}}岁</text>
       </view>
       <view>
         <text>营业时间</text>
-        <text>10:00-21:00</text>
+        <text>{{}}</text>
       </view>
     </view>
     <view class="detailsInfo">

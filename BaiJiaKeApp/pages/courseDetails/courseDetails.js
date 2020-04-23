@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    data:{}
+    courseData:{}
   },
 
   /**
@@ -16,29 +16,34 @@ Page({
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      
+      // let info = JSON.parse(data.data.Ages) ;
+      // info = JSON.parse(data.data.ImageUrl);
       console.log(data)
       that.setData({
-        data:data
+        courseData:data.data
       })
     })
     wx.setNavigationBarTitle({
       title: "课程详情"
     });
     wx.request({
-      url: app.globalData.baseUrl + '/v1/shop',
-      data: {
-        limit: 10,
-        offset: 0,
-        beginTime: 'xxx',
-        endTime: 'xxx'
-      },
+      url: app.globalData.baseUrl + '/v1/shop/' + that.data.courseData.ShopID,
+      // data: {
+      //   // id:""
+      //   // limit: 10,
+      //   // offset: 0,
+      //   // beginTime: 'xxx',
+      //   // endTime: 'xxx'
+      // },
       success: function (res) {
-        console.log(res)
+        console.log(res.data)
       }
     })
   },
 
   openMap: function () {
+    let that = this;
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success(res) {
@@ -48,7 +53,7 @@ Page({
           latitude,
           longitude,
           scale: 18,
-          name:"阿蒂朵芭舞蹈工作室"
+          name:that.data.courseData.Name
         })
       }
     })
