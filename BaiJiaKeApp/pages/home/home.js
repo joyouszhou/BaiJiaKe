@@ -43,8 +43,8 @@ Page({
       data:{
         limit :10 ,
         offset:0,
-        beginTime:'xxx',
-        endTime:'xxx'
+        beginTime:'',
+        endTime:''
       },
       success:function(res){
         that.setData({
