@@ -44,6 +44,9 @@ Page({
     wx.setNavigationBarTitle({
       title: "课程详情"
     });
+    wx.showShareMenu({
+      withShareTicket: true
+    })
     wx.request({
       url: app.globalData.baseUrl + '/v1/shop/' + that.data.courseData.shopid,
       // data: {
@@ -77,6 +80,12 @@ Page({
      })
   },
 
+  fenXiang: function () {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
+
   openMap: function () {
     let that = this;
     wx.getLocation({
@@ -88,7 +97,7 @@ Page({
           latitude,
           longitude,
           scale: 18,
-          name:that.data.courseData.Name
+          name:that.data.courseData.name
         })
       }
     })

@@ -1,0 +1,31 @@
+<!--pages/shouCang/shouCang.wxml-->
+<view class="body">
+  <!-- 课程列表 -->
+  <view class="courseList">
+    <view class="courseItem"
+      wx:for="{{shouCangList}}" wx:key="index" data-item="{{item}}" 
+      bindtap="toCourseDetails">
+      <view>
+        <image src="/images/home/shangjia.png"></image>
+      </view>
+      <view class="courseInfo">
+        <view>{{item.name}}</view>
+        <view>
+          <text>课程点击数 {{"356"}}</text>
+          <text>{{item.ages[0]}}岁</text>
+        </view>
+        <view>
+          <view>
+            <text>{{item.teacher}}</text>
+            <image src="/images/home/renzheng.png"></image>
+          </view>
+          <view>
+            <text>距离{{item.weight}}公里</text>
+            <image src="/images/home/daohang.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>

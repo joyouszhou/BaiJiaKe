@@ -17,7 +17,10 @@
   <view class="swperNum">{{imgIndex}} / {{imgLength}}</view>
   <!-- 详情 -->
   <view class="courseDetails">
-    <view class="title">{{courseData.name}}</view>
+    <view class="title">
+      {{courseData.name}} 
+      <text bindtap="fenXiang">分享</text>
+    </view>
     <view class="detailsInfo">
       <view>
         <text>授课教师</text>
