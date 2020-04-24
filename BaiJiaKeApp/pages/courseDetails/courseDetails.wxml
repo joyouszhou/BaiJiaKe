@@ -2,7 +2,10 @@
 <view class="body">
   <!-- 轮播图 -->
   <view class="swiperBox">
-    <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
+    <swiper  indicator-active-color="white" display-multiple-items bindchange='imgChange'>
+      <!-- <swiper-item wx:for="{{imgUrl}}" wx:key="index">
+        <image src='{{item}}'></image>
+      </swiper-item> -->
       <swiper-item>
         <image src='/images/home/swiper/baijiake.png'></image>
       </swiper-item>
@@ -11,22 +14,28 @@
       </swiper-item>
     </swiper>
   </view>
+  <view class="swperNum">{{imgIndex}} / {{imgLength}}</view>
   <!-- 详情 -->
   <view class="courseDetails">
-    <view class="title">{{courseData.Name}}</view>
+    <view class="title">{{courseData.name}}</view>
     <view class="detailsInfo">
       <view>
         <text>授课教师</text>
-        <text>{{courseData.Teacher}}</text>
-      </view>
-      <view>
-        <text>适用年龄</text>
-        <text>{{courseData.Ages}}岁</text>
+        <text>{{courseData.teacher}}</text>
       </view>
       <view>
         <text>营业时间</text>
         <text>{{}}</text>
       </view>
+      <view>
+        <text>体验时长</text>
+        <text>{{courseData.experience}}</text>
+      </view>
+      <view>
+        <text>适用年龄</text>
+        <text>{{courseData.ages[0]}}岁</text>
+      </view>
+      
     </view>
     <view class="detailsInfo">
       <view class="detailsInfoItem" bindtap="openMap">
@@ -44,7 +53,7 @@
   </view>
   <view class="courseInfo">
     <view class="infoTitle">课程信息</view>
-    <view></view>
+    <view>{{courseData.describe}}</view>
     <view class="infoTitle">体验有礼</view>
     <view></view>
   </view>
@@ -70,8 +79,9 @@
     </view>
   </view>
   <view class="tabBar">
-    <view>
-      <image src="/images/courseDetails/shoucang.png"></image>
+    <view bindtap="shouCang">
+      <image wx:if="{{!isShouCang}}" src="/images/courseDetails/shoucang.png"></image>
+      <image wx:else src="/images/courseDetails/shoucang2.png"></image>
       <text>收藏</text>
     </view>
     <view>

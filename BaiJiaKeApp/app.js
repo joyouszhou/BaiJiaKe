@@ -46,6 +46,7 @@ App({
   globalData: {
     userInfo: null,
     // baseUrl:"https://goldlinks.net.cn",
-    baseUrl:"https://baijiake.net"
+    baseUrl:"https://baijiake.net",
+    shouCangList:[]
   }
 })

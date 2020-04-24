@@ -35,7 +35,16 @@ Page({
     })
   },
   btnClick: function (e) {
+    console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id
+    if(id == 1){
+      wx.navigateTo({
+        url: '../shouCang/shouCang',
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
     if(id==0 || id==1 || id==2){
       wx.getStorage({
         key: 'login',

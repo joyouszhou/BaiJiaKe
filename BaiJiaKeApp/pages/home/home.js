@@ -43,12 +43,18 @@ Page({
       data:{
         limit :10 ,
         offset:0,
-        beginTime:'',
-        endTime:''
+        // beginTime:'',
+        // endTime:''
       },
       success:function(res){
+        console.log(res.data.data.course)
         that.setData({
           hotList: res.data.data.course
+        })
+      },
+      fail:function(res){
+        wx.showToast({
+          title: res.msg,
         })
       }
     })
@@ -58,8 +64,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
 
   },
+
   getNavItem: function(e){  
     // console.log(e.currentTarget.dataset.name);
     wx.navigateTo({

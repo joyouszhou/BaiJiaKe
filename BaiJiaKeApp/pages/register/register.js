@@ -77,6 +77,11 @@ Page({
             })
           }
         },
+        // fail: function (res) {
+        //   wx.showToast({
+        //     title: res.msg,
+        //   })
+        // }
       })
     }
   },

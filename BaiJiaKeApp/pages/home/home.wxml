@@ -73,18 +73,18 @@
         <image src="/images/home/shangjia.png"></image>
       </view>
       <view class="courseInfo">
-        <view>{{item.Name}}</view>
+        <view>{{item.name}}</view>
         <view>
           <text>课程点击数 {{"356"}}</text>
-          <text>{{item.Ages}}岁</text>
+          <text>{{item.ages[0]}}岁</text>
         </view>
         <view>
           <view>
-            <text>{{item.Teacher}}</text>
+            <text>{{item.teacher}}</text>
             <image src="/images/home/renzheng.png"></image>
           </view>
           <view>
-            <text>距离{{item.Weight}}公里</text>
+            <text>距离{{item.weight}}公里</text>
             <image src="/images/home/daohang.png"></image>
           </view>
         </view>
