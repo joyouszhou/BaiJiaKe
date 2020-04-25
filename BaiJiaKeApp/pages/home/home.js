@@ -1,5 +1,7 @@
 // pages/home/home.js
 const app = getApp();
+// import { base64src } from '../../utils/base64src.js'
+import { base64src } from '../../utils/base64src.js'
 Page({
 
   /**
@@ -31,6 +33,7 @@ Page({
     isOpenNav: false,
     isOpenNavText: "展开",
     hotList:[],
+    coursetypeList:[]
   },
 
   /**
@@ -38,6 +41,35 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/coursetype',
+      success: function (res){
+        let data = res.data.data
+        // for(let i=0;i<data.length;i++){
+        //   data[i].Logo = data[i].Logo.slice(22)
+        //   // data[i].Logo = that.getimg(data[i].Logo)
+        // }
+        that.setData({
+          coursetypeList: data
+        },)
+        for (let i = 0; i < that.data.coursetypeList.length; i++) {
+          if(i<7){
+            that.data.coursetypeList[i].show = true
+          }else{
+            that.data.coursetypeList[i].show = false
+          }
+          base64src(that.data.coursetypeList[i].Logo, res => {
+            that.data.coursetypeList[i].Logo = res
+            // console.log(res) // 返回图片地址，直接赋值到image标签即可
+
+          });
+        }
+        that.setData({
+          coursetypeList: that.data.coursetypeList
+        })
+        app.globalData.courseTypeList = that.data.coursetypeList
+      }
+    })
     wx.request({
       url: app.globalData.baseUrl +'/v1/course',
       data:{
@@ -47,7 +79,6 @@ Page({
         // endTime:''
       },
       success:function(res){
-        console.log(res.data.data.course)
         that.setData({
           hotList: res.data.data.course
         })
@@ -73,15 +104,12 @@ Page({
   onReachBottom: function () {
 
   },
-
   getNavItem: function(e){  
-    // console.log(e.currentTarget.dataset.name);
     wx.navigateTo({
       url: '../courseClass/courseClass',
       events: {
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
         acceptDataFromOpenedPage: function (data) {
-          console.log(data)
         }
       },
       success: function (res) {
@@ -96,13 +124,11 @@ Page({
     })
   },
   toCourseDetails: function(e){
-    console.log(e) 
     let data = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
       events:{
         acceptDataFromOpenedPage: function (data) {
-          console.log(data)
         },
       },
       success: function(res) {
@@ -116,23 +142,23 @@ Page({
   changeNav: function(){
     let arr = [];
     if (this.data.isOpenNav){
-      for(let i=0; i<this.data.navList.length; i++){
+      for (let i = 0; i < this.data.coursetypeList.length; i++){
         if(i>8){
-          this.data.navList[i].show = false;
+          this.data.coursetypeList[i].show = false;
         }
       }
-      arr = this.data.navList
+      arr = this.data.coursetypeList
     }else{
-      for (let i = 0; i < this.data.navList.length; i++) {
+      for (let i = 0; i < this.data.coursetypeList.length; i++) {
         if (i > 8) {
-          this.data.navList[i].show = true;
+          this.data.coursetypeList[i].show = true;
         }
       }
-      arr = this.data.navList
+      arr = this.data.coursetypeList
     }
     this.setData({
       isOpenNav: !this.data.isOpenNav,
-      navList: arr ,
+      coursetypeList: arr ,
       isOpenNavText: this.data.isOpenNav?"展开":"收起"
     })
   },
@@ -157,7 +183,6 @@ Page({
       },
       method: 'GET',
       success: function (res) {
-        console.log(res.data)
         var searchData = res.data
         that.setData({
           searchData

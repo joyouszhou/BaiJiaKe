@@ -54,7 +54,7 @@
 }
 
 .courseList{
-  width: 640rpx;
+  width: 700rpx;
   display: flex;
   margin-top: 110rpx;
   flex-direction: column;

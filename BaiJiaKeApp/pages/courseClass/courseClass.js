@@ -1,4 +1,5 @@
 // pages/courseClass/courseClass.js
+const app = getApp();
 Page({
 
   /**
@@ -16,6 +17,7 @@ Page({
     cityIsShow:false,
     classIsShow:false,
     oldIsShow:false,
+    hotList:[],
     cityList: [
       { name: "全城", isTab: true },
       { name: "昌平区", isTab: false },
@@ -31,26 +33,26 @@ Page({
       { name: "房山区", isTab: false }
     ],
     classList:[
-      { name: "全部", isTab: true },
-      { name: "语言培训", isTab: false },
-      { name: "体能运动", isTab: false },
-      { name: "益智成长", isTab: false },
-      { name: "舞蹈形体", isTab: false },
-      { name: "乐器培训", isTab: false },
-      { name: "亲自早教", isTab: false },
-      { name: "美术培训", isTab: false },
-      { name: "棋类培训", isTab: false },
-      { name: "书法培训", isTab: false },
-      { name: "幼儿园/托班", isTab: false },
-      { name: "兴趣生活", isTab: false },
-      { name: "留学", isTab: false },
-      { name: "美容化妆", isTab: false },
-      { name: "学科教育", isTab: false },
-      { name: "声乐培训", isTab: false },
-      { name: "学历提升", isTab: false },
-      { name: "才艺", isTab: false },
-      { name: "职业技能", isTab: false },
-      { name: "升学辅导", isTab: false },
+      // { name: "全部", isTab: true },
+      // { name: "语言培训", isTab: false },
+      // { name: "体能运动", isTab: false },
+      // { name: "益智成长", isTab: false },
+      // { name: "舞蹈形体", isTab: false },
+      // { name: "乐器培训", isTab: false },
+      // { name: "亲自早教", isTab: false },
+      // { name: "美术培训", isTab: false },
+      // { name: "棋类培训", isTab: false },
+      // { name: "书法培训", isTab: false },
+      // { name: "幼儿园/托班", isTab: false },
+      // { name: "兴趣生活", isTab: false },
+      // { name: "留学", isTab: false },
+      // { name: "美容化妆", isTab: false },
+      // { name: "学科教育", isTab: false },
+      // { name: "声乐培训", isTab: false },
+      // { name: "学历提升", isTab: false },
+      // { name: "才艺", isTab: false },
+      // { name: "职业技能", isTab: false },
+      // { name: "升学辅导", isTab: false },
     ],
     oldList:[
       { name: "不限", isTab: true },
@@ -70,24 +72,59 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    let data = app.globalData.courseTypeList
+    console.log(data)
+    for(let i=0;i<data.length;i++){
+      data[i].isTab = false
+    }
+    that.data.classList = data;
+    
     wx.setNavigationBarTitle({
       title:"全部课程"
     });
+    let list = []
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/course',
+      success: function (res) {
+        list = res.data.data.course
+        that.setData({
+          hotList: list,
+          classList: that.data.classList,
+        })
+        // that.setData({
+        //   className: data.courseName,
+          
+        // })
+      }
+    })
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
       if(data.courseName != ""){
         that.data.classList[0].isTab = false;
         for (let i = 0; i < that.data.classList.length;i++){
-          if (data.courseName == that.data.classList[i].name){
+          if (data.courseName == that.data.classList[i].CourseType){
             that.data.classList[i].isTab = true;
           }
         }
+        
+        wx.request({
+          url: app.globalData.baseUrl +'/v1/course?course_type='+data.courseName,
+          success: function (res){
+            list = res.data.data.course
+            that.setData({
+              hotList: list
+            })
+          }
+        })
         that.setData({
           className: data.courseName,
-          classList: that.data.classList
+          classList: that.data.classList,
         })
       }
     })
+
+
+
   },
 
   cityChange: function () {
@@ -111,15 +148,33 @@ Page({
     })
   },
   classChange: function () {
+    let that = this;
     this.setData({
       isClassOpen: !this.data.isClassOpen
     }, function () {
       if (this.data.isClassOpen) {
+        let marginT = ""
+        console.log(that.data.classList)
+        if(that.data.classList.length<4){
+          marginT = "margin-top: 200rpx"
+        }
+        if (that.data.classList.length > 4) {
+          marginT = "margin-top: 400rpx"
+        }
+        if (that.data.classList.length >8) {
+          marginT = "margin-top: 600rpx"
+        }
+        if (that.data.classList.length > 12) {
+          marginT = "margin-top: 800rpx"
+        }
+        if (that.data.classList.length > 16) { 
+          marginT = "margin-top: 1000rpx"
+        }
         this.setData({
           isCityOpen: false,
           isOldOpen: false,
           isTab: true,
-          marginT: "margin-top: 560rpx",
+          marginT: marginT,
           tabName: "体能运动",
         })
       } else {
@@ -153,6 +208,7 @@ Page({
   
 
   courseItemChange: function (e) {
+    let that = this;
     let id = e.currentTarget.dataset.id;
     if(this.data.tabName=="全城"){
       for (let i = 0; i < this.data.cityList.length; i++) {
@@ -177,6 +233,14 @@ Page({
         })
         if (id == i) {
           this.data.classList[i].isTab = true;
+          wx.request({
+            url: app.globalData.baseUrl + '/v1/course?course_type=' + e.currentTarget.dataset.name,
+            success: function (res) {
+              that.setData({
+                hotList: res.data.data.course
+              })
+            }
+          })
           this.setData({
             classList: this.data.classList,
             className: e.currentTarget.dataset.name,
@@ -201,10 +265,17 @@ Page({
     }
   },
 
-  toCourseDetails: function () {
+  toCourseDetails: function (e) {
+    let data = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
-      success: function (res) { },
+      events: {
+        acceptDataFromOpenedPage: function (data) {
+        },
+      },
+      success: function (res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: data })
+      },
       fail: function (res) { },
       complete: function (res) { },
     })

@@ -1,0 +1,3 @@
+https://baijiake.net/v1/course?course_type=健身课
+
+http://127.0.0.1:8080/v1/shop?sortby={"weight": "desc"}  单一类型课程列表

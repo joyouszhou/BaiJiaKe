@@ -7,11 +7,12 @@ Page({
    */
   data: {
     courseData:{},
-    imgBaseUrl:"https://baijiake.net/v1/course/",
+    imgBaseUrl:"https://baijiake.net",
     imgUrl: [],
     imgIndex:'1',
     imgLength:'',
-    isShouCang:false
+    isShouCang:false,
+    hotList:[]
   },
 
   /**
@@ -21,6 +22,7 @@ Page({
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
+
       // let info = JSON.parse(data.data.Ages) ;
       // info = JSON.parse(data.data.ImageUrl);
       let arr =[]
@@ -34,7 +36,6 @@ Page({
           })
         }
       }
-      console.log(data.data)
       that.setData({
         courseData:data.data,
         imgUrl :arr,
@@ -48,27 +49,10 @@ Page({
       withShareTicket: true
     })
     wx.request({
-      url: app.globalData.baseUrl + '/v1/shop/' + that.data.courseData.shopid,
-      // data: {
-      //   id: that.data.courseData.shopid
-      //   // id:""
-      //   // limit: 10,
-      //   // offset: 0,
-      //   // beginTime: 'xxx',
-      //   // endTime: 'xxx'
-      // },
+      url: app.globalData.baseUrl + '/v1/course?sortby={"weight": "desc"}',
       success: function (res) {
-        console.log(res.data)
-        if (res.data.msg === 'Bad request!!') {
-          wx.showToast({
-            title: "商家信息请求失败！",
-            icon: 'none'
-          })
-        }
-      },
-      fail: function (res) {
-        wx.showToast({
-          title: res.msg,
+        that.setData({
+          hotList: res.data.data.course
         })
       }
     })
@@ -91,8 +75,8 @@ Page({
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success(res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
+        const latitude = that.data.courseData.shopinfo.latitude
+        const longitude = that.data.courseData.shopinfo.longitude
         wx.openLocation({
           latitude,
           longitude,
@@ -102,18 +86,33 @@ Page({
       }
     })
   },
-  toCourseDetails: function () {
+  toCourseDetails: function (e) {
+    let data = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
-      success: function (res) { },
+      events: {
+        acceptDataFromOpenedPage: function (data) {
+        },
+      },
+      success: function (res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: data })
+      },
       fail: function (res) { },
       complete: function (res) { },
     })
   },
   toSchoolDetails: function () {
+    let data = this.data.courseData.shopinfo
     wx.navigateTo({
       url: '../schoolDetails/schoolDetails',
-      success: function (res) { },
+      events: {
+        acceptDataFromOpenedPage: function (data) {
+          console.log(data)
+        },
+      },
+      success: function (res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: data })
+      },
       fail: function (res) { },
       complete: function (res) { },
     })

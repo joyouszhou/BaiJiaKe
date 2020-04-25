@@ -10,7 +10,7 @@
   flex-direction: row;
   justify-content:space-between;
   align-items: center;
-  width:640rpx;
+  width:700rpx;
   height:50rpx;
   margin-top: 35rpx;
   background-color: rgb(208,204,204);
@@ -28,7 +28,7 @@
   padding:0 20rpx;
 }
 .navBox{
-  width: 640rpx;
+  width: 700rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -52,7 +52,7 @@
   font-size: 18rpx;
 }
 .swiperBox{
-  width: 640rpx;
+  width: 700rpx;
   height: 240rpx; 
   margin-top: 30rpx;
   border-radius: 15rpx;
@@ -71,7 +71,7 @@
 }
 
 .hot{
-  width: 640rpx;
+  width: 700rpx;
   height: 24rpx;
   margin-top: 30rpx;
   display: flex;
@@ -90,7 +90,7 @@
   color: rgb(208,204,204)
 }
 .hotItemBox{
-  width: 640rpx;
+  width: 700rpx;
   display: flex;
   margin-top: 18rpx;
   flex-direction: row;
@@ -113,7 +113,7 @@
   border:1px solid rgb(225,195,195);
 }
 .courseList{
-  width: 640rpx;
+  width: 700rpx;
   margin-top: 18rpx;
   display: flex;
   flex-direction: column;

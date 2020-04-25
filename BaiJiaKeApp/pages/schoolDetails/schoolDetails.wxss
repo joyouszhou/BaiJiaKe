@@ -23,9 +23,15 @@
   width: 100%;
   height: 100%;
 }
-
+.swperNum{
+  width: 690rpx;
+  margin-top :-100rpx;
+  margin-bottom: 50rpx;
+  text-align: right;
+  z-index: 100
+}
 .courseDetails{
-  width: 665rpx;
+  width: 700rpx;
   display: flex;
   flex-direction: column;
   margin-bottom: 20rpx;
@@ -73,7 +79,7 @@
 
 
 .courseInfo{
-  width: 665rpx;
+  width: 700rpx;
 }
 .infoTitle{
   width: 100%;

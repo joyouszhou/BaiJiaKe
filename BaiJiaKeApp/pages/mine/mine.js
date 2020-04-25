@@ -25,14 +25,11 @@ Page({
     // wx.setNavigationBarColor({
     //   backgroundColor: '#6aabfd',
     // })
-    wx.getUserInfo({
-      success: res => {
-        app.globalData.userInfo = res.userInfo
-        this.setData({
-          userInfo: res.userInfo,
-        })
-      }
+    console.log(app.globalData.userInfo)
+    this.setData({
+      userInfo: app.globalData.userInfo,
     })
+    
   },
   btnClick: function (e) {
     console.log(e.currentTarget.dataset.id)

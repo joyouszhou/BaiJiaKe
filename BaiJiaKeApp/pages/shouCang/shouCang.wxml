@@ -6,7 +6,7 @@
       wx:for="{{shouCangList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
       <view>
-        <image src="/images/home/shangjia.png"></image>
+        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
         <view>{{item.name}}</view>

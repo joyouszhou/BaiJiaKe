@@ -2,19 +2,21 @@
 <view class="body">
   <!-- 轮播图 -->
   <view class="swiperBox">
-    <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
-      <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
-      </swiper-item>
-      <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
+  <swiper  indicator-active-color="white" display-multiple-items bindchange='imgChange'>
+      <swiper-item wx:for="{{shopData.imageurl}}" wx:key="index">
+        <image src='{{"https://baijiake.net"+item}}'></image>
       </swiper-item>
     </swiper>
+    <!-- <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
+      <swiper-item>
+        <image src='/images/home/swiper/baijiake.png'></image>
+      </swiper-item>
+    </swiper> -->
   </view>
-
+  <view class="swperNum">{{imgIndex}} / {{imgLength}}</view>
   <view class="courseDetails">
     <view class="title">
-      阿蒂朵芭蕾舞蹈工作室
+      {{shopData.name}}
       <image src="/images/home/renzheng.png"></image>
     </view>
     <view class="detailsInfo">
@@ -65,20 +67,13 @@
    
   </view>
   <view class="hotList">
-    <view bindtap="toSchoolDetails">
-      <image src="/images/home/swiper/baijiake.png"></image>
-    <text>校区名称</text>
-    </view>
-    <view bindtap="toSchoolDetails">
-      <image src="/images/home/swiper/baijiake.png"></image>
-      <text>校区名称</text>
-    </view>
-    <view bindtap="toSchoolDetails">
-      <image src="/images/home/swiper/baijiake.png"></image>
-      <text>校区名称</text>
+    <!-- hotList -->
+    <view bindtap="toSchoolDetails" wx:for="{{hotList}}" wx:key='index' data-item="{{item}}">
+      <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+      <text>{{item.name}}</text>
     </view>
   </view>
-  <view class="tabBar">
+  <!-- <view class="tabBar">
     <view>
       <image src="/images/courseDetails/yuyue.png"></image>
       <text>收藏</text>
@@ -87,5 +82,5 @@
       <image src="/images/courseDetails/yuyue.png"></image>
       <text>立即预约</text>
     </view>
-  </view>
+  </view> -->
 </view>

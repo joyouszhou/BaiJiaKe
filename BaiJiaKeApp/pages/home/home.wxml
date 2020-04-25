@@ -8,10 +8,10 @@
   </view>
   <!-- 分类导航 -->
   <view class="navBox">
-    <view class="navItem" wx:for="{{navList}}" wx:key="index" data-id="{{index}}" data-name="{{item.name}}" wx:if="{{item.show}}"
+    <view class="navItem" wx:for="{{coursetypeList}}" wx:key="index" data-id="{{index}}" data-name="{{item.CourseType}}" wx:if="{{item.show}}"
     bindtap="getNavItem"> 
-      <image src='{{item.url}}'></image>
-      <text>{{item.name}}</text>
+      <image src='{{item.Logo}}'></image>
+      <text>{{item.CourseType}}</text>
     </view>
     <view class="navItem" bindtap="changeNav">
       <image src='/images/home/nav/shouqi.png'></image>
@@ -70,7 +70,8 @@
       wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
       <view>
-        <image src="/images/home/shangjia.png"></image>
+        <!-- <image src="/images/home/shangjia.png"></image> -->
+        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
         <view>{{item.name}}</view>
