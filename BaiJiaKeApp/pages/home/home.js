@@ -10,25 +10,25 @@ Page({
   data: {
     inputValue: '', //搜索的内容
     navList: [
-      { name: "语言培训", url: "/images/home/nav/yuyan.png",show: true },
-      { name: "体能运动", url: "/images/home/nav/tineng.png", show: true },
-      { name: "益智成长", url: "/images/home/nav/yizhi.png", show: true },
-      { name: "舞蹈形体", url: "/images/home/nav/wudao.png", show: true },
-      { name: "乐器培训", url: "/images/home/nav/yueqi.png", show: true },
-      { name: "亲子早教", url: "/images/home/nav/xueqian.png", show: true },
-      { name: "美术培训", url: "/images/home/nav/meishu.png", show: true },
-      { name: "棋类培训", url: "/images/home/nav/qilei.png", show: true },
-      { name: "书法培训", url: "/images/home/nav/shufa.png", show: true },
-      { name: "幼儿园/托班", url: "/images/home/nav/youeryuan.png", show: false },
-      { name: "兴趣生活", url: "/images/home/nav/xingqu.png", show: false },
-      { name: "留学", url: "/images/home/nav/liuxue.png", show: false },
-      { name: "美容化妆", url: "/images/home/nav/meirong.png", show: false },
-      { name: "学科教育", url: "/images/home/nav/xueqian.png", show: false },
-      { name: "声乐培训", url: "/images/home/nav/shengyue.png", show: false },
-      { name: "学历提升", url: "/images/home/nav/xueli.png", show: false },
-      { name: "才艺", url: "/images/home/nav/caiyi.png", show: false },
-      { name: "职业技能", url: "/images/home/nav/zhiye.png", show: false },
-      { name: "升学指导", url: "/images/home/nav/shengxue.png", show: false },
+      // { name: "语言培训", url: "/images/home/nav/yuyan.png",show: true },
+      // { name: "体能运动", url: "/images/home/nav/tineng.png", show: true },
+      // { name: "益智成长", url: "/images/home/nav/yizhi.png", show: true },
+      // { name: "舞蹈形体", url: "/images/home/nav/wudao.png", show: true },
+      // { name: "乐器培训", url: "/images/home/nav/yueqi.png", show: true },
+      // { name: "亲子早教", url: "/images/home/nav/xueqian.png", show: true },
+      // { name: "美术培训", url: "/images/home/nav/meishu.png", show: true },
+      // { name: "棋类培训", url: "/images/home/nav/qilei.png", show: true },
+      // { name: "书法培训", url: "/images/home/nav/shufa.png", show: true },
+      // { name: "幼儿园/托班", url: "/images/home/nav/youeryuan.png", show: false },
+      // { name: "兴趣生活", url: "/images/home/nav/xingqu.png", show: false },
+      // { name: "留学", url: "/images/home/nav/liuxue.png", show: false },
+      // { name: "美容化妆", url: "/images/home/nav/meirong.png", show: false },
+      // { name: "学科教育", url: "/images/home/nav/xueqian.png", show: false },
+      // { name: "声乐培训", url: "/images/home/nav/shengyue.png", show: false },
+      // { name: "学历提升", url: "/images/home/nav/xueli.png", show: false },
+      // { name: "才艺", url: "/images/home/nav/caiyi.png", show: false },
+      // { name: "职业技能", url: "/images/home/nav/zhiye.png", show: false },
+      // { name: "升学指导", url: "/images/home/nav/shengxue.png", show: false },
     ],
     isOpenNav: false,
     isOpenNavText: "展开",
@@ -49,25 +49,22 @@ Page({
         //   data[i].Logo = data[i].Logo.slice(22)
         //   // data[i].Logo = that.getimg(data[i].Logo)
         // }
-        that.setData({
-          coursetypeList: data
-        },)
-        for (let i = 0; i < that.data.coursetypeList.length; i++) {
-          if(i<7){
-            that.data.coursetypeList[i].show = true
+        for (let i = 0; i < data.length; i++) {
+          if(i<8){
+            data[i].show = true
           }else{
-            that.data.coursetypeList[i].show = false
+             data[i].show = false
           }
-          base64src(that.data.coursetypeList[i].Logo, res => {
-            that.data.coursetypeList[i].Logo = res
-            // console.log(res) // 返回图片地址，直接赋值到image标签即可
+          base64src(data[i].Logo, res => {
+            data[i].Logo = res
+            console.log(res) // 返回图片地址，直接赋值到image标签即可
 
           });
         }
         that.setData({
-          coursetypeList: that.data.coursetypeList
+          coursetypeList: data
         })
-        app.globalData.courseTypeList = that.data.coursetypeList
+        app.globalData.courseTypeList = data
       }
     })
     wx.request({
@@ -140,27 +137,29 @@ Page({
   },
   //收起展开导航栏
   changeNav: function(){
-    let arr = [];
-    if (this.data.isOpenNav){
-      for (let i = 0; i < this.data.coursetypeList.length; i++){
-        if(i>8){
-          this.data.coursetypeList[i].show = false;
+    let arr = this.data.coursetypeList;
+    console.log(arr)
+    if (arr.length>9){
+      if (this.data.isOpenNav) {
+        for (let i = 0; i < arr.length; i++) {
+          if (i > 8) {
+            arr[i].show = false;
+          }
         }
+      } else {
+        for (let i = 0; i < arr.length; i++) {
+          if (i > 8) {
+            arr[i].show = true;
+          }
+        } 
       }
-      arr = this.data.coursetypeList
-    }else{
-      for (let i = 0; i < this.data.coursetypeList.length; i++) {
-        if (i > 8) {
-          this.data.coursetypeList[i].show = true;
-        }
-      }
-      arr = this.data.coursetypeList
+      this.setData({
+        isOpenNav: !this.data.isOpenNav,
+        coursetypeList: arr,
+        isOpenNavText: this.data.isOpenNav ? "展开" : "收起"
+      })
     }
-    this.setData({
-      isOpenNav: !this.data.isOpenNav,
-      coursetypeList: arr ,
-      isOpenNavText: this.data.isOpenNav?"展开":"收起"
-    })
+    
   },
   //搜索框文本内容显示
   inputBind: function (event) {

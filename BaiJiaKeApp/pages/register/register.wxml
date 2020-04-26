@@ -14,10 +14,10 @@
       <input id="captcha"  type="number" maxlength="4" placeholder="请输入4位验证码" bindinput="inputCode"/>
     </view>
     <view class="input-buttom">
-      <input id="captcha"  type="number" maxlength="4" placeholder="请输入密码（6-12位数字或字母）" bindinput="inputCode"/>
+      <input id="captcha"  type="number" maxlength="12" placeholder="请输入密码（6-12位数字或字母）" bindinput="inputPassword1"/>
     </view>
     <view class="input-buttom">
-      <input id="captcha"  type="number" maxlength="4" placeholder="确认密码（6-12位数字或字母）" bindinput="inputCode"/>
+      <input id="captcha"  type="number" maxlength="12" placeholder="确认密码（6-12位数字或字母）" bindinput="inputPassword2"/>
     </view>
     <view style="height:40rpx">
     </view>

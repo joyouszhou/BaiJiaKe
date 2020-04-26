@@ -62,7 +62,7 @@ Page({
     // TODO 对数据包进行签名校验
     //前台校验数据
     // if (this.data.phoneNum === '' || this.data.password === '') {
-    if (this.data.phoneNum === '') {
+    if (this.data.phoneNum === '' || this.data.password === '') {
       wx.showToast({
         title: "请填写手机号码和密码",
         image: '/images/warn.png',
@@ -107,12 +107,13 @@ Page({
             }
           })
         } else {
-          console.error("【用户登录失败】：" + res.data.resultMsg);
           wx.showToast({
-            title: res.data.resultMsg,
-            image: '/images/warn.png',
+            title: res.data.data,
           })
         }
+      },
+      fail : function(res){
+        console.log(res)
       }
     })
   },

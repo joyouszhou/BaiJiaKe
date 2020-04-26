@@ -8,15 +8,15 @@
   </view>
   <!-- 分类导航 -->
   <view class="navBox">
-    <view class="navItem" wx:for="{{coursetypeList}}" wx:key="index" data-id="{{index}}" data-name="{{item.CourseType}}" wx:if="{{item.show}}"
+    <view class="navItem" wx:for="{{coursetypeList}}" wx:key="index" data-id="{{index}}" data-name="{{item.CourseType}}" wx:show="{{item.show}}"
     bindtap="getNavItem"> 
       <image src='{{item.Logo}}'></image>
       <text>{{item.CourseType}}</text>
     </view>
-    <view class="navItem" bindtap="changeNav">
+    <!-- <view class="navItem" bindtap="changeNav">
       <image src='/images/home/nav/shouqi.png'></image>
       <text>{{isOpenNavText}}</text>
-    </view>
+    </view> -->
   </view>
   <!-- 轮播图 -->
   <view class="swiperBox">
@@ -76,8 +76,8 @@
       <view class="courseInfo">
         <view>{{item.name}}</view>
         <view>
-          <text>课程点击数 {{"356"}}</text>
-          <text>{{item.ages[0]}}岁</text>
+          <text>课程点击数 {{item.experience}}</text>
+          <text>{{item.ages}}岁</text>
         </view>
         <view>
           <view>

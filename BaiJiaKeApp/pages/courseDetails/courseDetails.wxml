@@ -23,34 +23,39 @@
     </view>
     <view class="detailsInfo">
       <view>
-        <text>授课教师</text>
-        <text>{{courseData.teacher}}</text>
-      </view>
-      <view>
-        <text>营业时间</text>
-        <text>{{}}</text>
+        <text>适用年龄</text>
+        <text>{{courseData.ages}}岁</text>
       </view>
       <view>
         <text>体验时长</text>
         <text>{{courseData.experience}}</text>
       </view>
       <view>
-        <text>适用年龄</text>
-        <text>{{courseData.ages[0]}}岁</text>
+        <text>营业时间</text>
+        <text>{{}}</text>
       </view>
+      <view>
+        <!-- <text>授课教师</text>
+        <text>{{courseData.teacher}}</text> -->
+      </view>
+      
+      
+      
       
     </view>
     <view class="detailsInfo">
       <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>{{courseData.shopinfo.addr}}</text>
-        <text class="right">></text>
+        <image class="right" src="/images/home/daohang.png"></image>
+        <!-- <text class="right">></text> -->
       </view>
       <view class="detailsInfoItem" bindtap="toSchoolDetails">
         <text>所属机构</text>
         <text>{{courseData.shopinfo.name}}</text>
         <image src="/images/home/renzheng.png"></image>
-        <text class="right">></text>
+        <image class="right" src="/images/courseDetails/yuyue.png"></image>
+        <!-- <text class="right">></text> -->
       </view>
     </view>
   </view>

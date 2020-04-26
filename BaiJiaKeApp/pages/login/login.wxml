@@ -10,7 +10,7 @@
       <!-- <text wx:if="{{send}}" class="sendMsg" bindtap="sendMsg">{{second+"s"}}</text> -->
     </view>
     <view class="input-buttom">
-      <input id="captcha"  type="number" maxlength="4" placeholder="请输入登录密码" bindinput="inputCode"/>
+      <input id="captcha"  type="number" maxlength="12" placeholder="请输入登录密码" bindinput="inputCode"/>
     </view>
     <view class="zhuce">
       <view bindtap="toRegister">立即注册</view>

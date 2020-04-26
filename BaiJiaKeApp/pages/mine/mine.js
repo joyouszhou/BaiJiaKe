@@ -42,7 +42,7 @@ Page({
         complete: function (res) { },
       })
     }
-    if(id==0 || id==1 || id==2){
+    if(id==0 || id==2){
       wx.getStorage({
         key: 'login',
         success: function(res) {
@@ -51,24 +51,25 @@ Page({
             wx.showToast({
               title: '已登录',
             })
-          }else{
-            wx.showModal({
-              // title: '提示',
-              confirmText: '登录',
-              content: '您未登录',
-              success(res) {
-                if (res.confirm) {
-                  console.log('用户点击确定')
-                  wx.navigateTo({
-                    url: '../login/login',
-                  })
-                } else if (res.cancel) {
-                  console.log('用户点击取消')
-                }
-              }
-            })
           }
         },
+        fail: function(){
+          wx.showModal({
+            // title: '提示',
+            confirmText: '登录',
+            content: '您未登录',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                wx.navigateTo({
+                  url: '../login/login',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
       })
       
       
