@@ -1,4 +1,4 @@
-<!--pages/shouCang/shouCang.wxml-->
+<!--pages/shiTing/shiTing.wxml-->
 <view class="body">
   <!-- 课程列表 -->
   <view class="courseList">
@@ -6,21 +6,21 @@
       wx:for="{{courseList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
       <view>
-        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image src="{{'https://baijiake.net'+item.Course.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
-        <view>{{item.name}}</view>
+        <view>{{item.Course.name}}</view>
         <view>
           <text>课程点击数 {{"356"}}</text>
-          <text>{{item.ages}}岁</text>
+          <text>{{item.Course.ages}}岁</text>
         </view>
         <view>
           <view>
-            <text>{{item.teacher}}</text>
+            <text>{{item.Course.teacher}}</text>
             <image src="/images/home/renzheng.png"></image>
           </view>
           <view>
-            <text>距离{{item.weight}}公里</text>
+            <text>距离{{item.Course.weight}}公里</text>
             <image src="/images/home/daohang.png"></image>
           </view>
         </view>

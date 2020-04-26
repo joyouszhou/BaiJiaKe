@@ -10,7 +10,7 @@ Page({
     btnList:[
       { name: '我的试听', url: '/images/mine/shiting.png' },
       { name: '我的收藏', url: '/images/mine/shoucang.png' },
-      { name: '我的评价', url: '/images/mine/shiting.png' },
+      // { name: '我的评价', url: '/images/mine/shiting.png' },
       { name: '关于我们', url: '/images/mine/guanyu.png' },
     ]
   },
@@ -32,26 +32,47 @@ Page({
     
   },
   btnClick: function (e) {
-    console.log(e.currentTarget.dataset.id)
     let id = e.currentTarget.dataset.id
     if(id == 1){
-      wx.navigateTo({
-        url: '../shouCang/shouCang',
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
+      wx.getStorage({
+        key: 'login',
+        success: function (res) {
+          wx.navigateTo({
+            url: '../shouCang/shouCang',
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+        },
+        fail: function () {
+          wx.showModal({
+            // title: '提示',
+            confirmText: '登录',
+            content: '您未登录',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                wx.navigateTo({
+                  url: '../login/login',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
       })
     }
-    if(id==0 || id==2){
+    if(id==0){
       wx.getStorage({
         key: 'login',
         success: function(res) {
-          console.log(res)
-          if(res.data){
-            wx.showToast({
-              title: '已登录',
-            })
-          }
+          wx.navigateTo({
+            url: '../shiTing/shiTing',
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
         },
         fail: function(){
           wx.showModal({
@@ -71,9 +92,9 @@ Page({
           })
         }
       })
-      
-      
-    }else{
+    }
+    
+    if(id==2){
       wx.navigateTo({
         url: '../guanYu/guanYu',
       })

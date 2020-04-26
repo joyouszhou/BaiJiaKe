@@ -64,8 +64,7 @@ Page({
     // if (this.data.phoneNum === '' || this.data.password === '') {
     if (this.data.phoneNum === '' || this.data.password === '') {
       wx.showToast({
-        title: "请填写手机号码和密码",
-        image: '/images/warn.png',
+        title: "手机号码和密码不能为空",
       })
     }
     //获取用户数据,(备注：我在用户一进入小程序就已经自动把openId获取到，然后放到缓存里)
@@ -91,10 +90,16 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: (res) => {
+        console.log(res)
         if (res.data.msg == "success!!") {
+
           wx.setStorage({
             key: "login",
             data: true
+          });
+          wx.setStorage({
+            key: "token",
+            data: res.data.data.token
           });
           wx.showToast({
             title: '登录成功',
@@ -106,9 +111,10 @@ Page({
               },600)
             }
           })
-        } else {
-          wx.showToast({
-            title: res.data.data,
+        } else if (res.data.data == "用户没有注册"){
+          wx.showModal({
+            title: '提示',
+            content: res.data.data,
           })
         }
       },

@@ -57,7 +57,7 @@ Page({
           }
           base64src(data[i].Logo, res => {
             data[i].Logo = res
-            console.log(res) // 返回图片地址，直接赋值到image标签即可
+            // console.log(res) // 返回图片地址，直接赋值到image标签即可
 
           });
         }
