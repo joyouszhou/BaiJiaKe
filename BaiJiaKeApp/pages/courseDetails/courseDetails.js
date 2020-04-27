@@ -22,9 +22,6 @@ Page({
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
-
-      // let info = JSON.parse(data.data.Ages) ;
-      // info = JSON.parse(data.data.ImageUrl);
       let arr =[]
       for (let i = 0; i < data.data.imageurl.length;i++){
         arr.push(that.data.imgBaseUrl + data.data.imageurl[i]) 
@@ -129,7 +126,48 @@ Page({
   shouCang: function(){
     let that = this;
     let data = this.data.courseData
-    app.globalData.shouCangList.push(data)
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        console.log(res)
+          wx.request({
+            method: 'post',
+            url: app.globalData.baseUrl + '/v1/sub',
+            header: {
+              'Authorization': 'bearer ' + res.data,
+            },
+            data: {
+              "courseID": data.id,
+            },
+            success: function (res) {
+              wx.showToast({
+                title: '收藏成功！',
+              })
+
+            },
+            fail: function (res) {
+              wx.showToast({
+                title: res.msg,
+              })
+            }
+          })
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: '您还未登录，是否跳转至登录',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../login/login',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          },
+        })
+      }
+    })
     wx.showToast({
       title: '收藏成功',
       success : function (){
@@ -137,6 +175,20 @@ Page({
           isShouCang:true
         })
       }
+    })
+  },
+  toShiTingFrom:function(){
+    let data = this.data.courseData.id
+    wx.navigateTo({
+      url: '../shiTingFrom/shiTingFrom',
+      events: {
+        acceptDataFromOpenedPage: function (data) {
+          console.log(data)
+        },
+      },
+      success: function (res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: data })
+      },
     })
   }
 })

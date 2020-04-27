@@ -9,7 +9,6 @@ App({
     wx.getUserInfo({
                 success: res => {
                   // 可以将 res 发送给后台解码出 unionId
-                  console.log(res)
                   let userInfo = res.userInfo
                   that.globalData.userInfo = res.userInfo
                   // 登录
@@ -160,6 +159,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    token:'',
     // baseUrl:"https://goldlinks.net.cn",
     baseUrl:"https://baijiake.net",
     shouCangList:[],

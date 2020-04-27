@@ -106,7 +106,7 @@
       <image wx:else src="/images/courseDetails/shoucang2.png"></image>
       <text>收藏</text>
     </view>
-    <view>
+    <view bindtap="toShiTingFrom">
       <image src="/images/courseDetails/yuyue.png"></image>
       <text>立即预约</text>
     </view>

@@ -1,20 +1,20 @@
 {
   "pages": [
-    
     "pages/home/home",
     "pages/index/index",
     "pages/courseDetails/courseDetails",
     "pages/schoolDetails/schoolDetails",
     "pages/login/login",
     "pages/register/register",
-   
     "pages/mine/mine",
     "pages/courseClass/courseClass",
     "pages/guanYu/guanYu",
     "pages/gongZhongHao/gongZhongHao",
     "pages/keFu/keFu",
     "pages/xieYi/xieYi",
-    "pages/shouCang/shouCang"
+    "pages/shouCang/shouCang",
+    "pages/shiTing/shiTing",
+    "pages/shiTingFrom/shiTingFrom"
   ],
   "permission": {
     "scope.userLocation": {

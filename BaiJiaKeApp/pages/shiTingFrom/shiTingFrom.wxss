@@ -1,0 +1,23 @@
+/* pages/shiTingFrom/shiTingFrom.wxss */
+.body{
+  width: 100vw;
+  height: 1000rpx;
+  padding-top: 300rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section{
+  width: 400rpx;
+  margin-bottom: 50rpx;
+}
+.btn {
+  width: 400rpx;
+  margin: 0rpx 20rpx;
+  background-color: rgb(60,166,208);
+  color: white;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  opacity:0.8;
+  border-radius: 40rpx;
+}

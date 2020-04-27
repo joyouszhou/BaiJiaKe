@@ -6,29 +6,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shouCangList:[]
+    courseList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this 
     wx.setNavigationBarTitle({
       title: '我的收藏'
     });
-    let data = app.globalData.shouCangList
-    if (data.length==0) {
-      console.log("????")
-      wx.showModal({
-        title: '提示',
-        content: '您未收藏任何课程'
-      })
-    }else{
-      console.log("????")
-      this.setData({
-        shouCangList: app.globalData.shouCangList
-      })
-    }
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        console.log(res)
+        wx.request({
+          url: app.globalData.baseUrl + '/v1/sub',
+          header: {
+            'Authorization': 'bearer ' + res.data,
+          },
+          success: function (res) {
+            console.log(res)
+            let data = res.data.data
+            if (data.length == 0) {
+              console.log("????")
+              wx.showModal({
+                title: '提示',
+                content: '您未收藏任何课程'
+              })
+            } else {
+              console.log("????")
+              that.setData({
+                courseList: data
+              })
+            }
+          },
+          fail: function (res) {
+            wx.showToast({
+              title: res.msg,
+            })
+          }
+        })
+      },
+      fail: function (res) {
+        
+      }
+    })
+    
   },
 
   toCourseDetails: function (e) {
