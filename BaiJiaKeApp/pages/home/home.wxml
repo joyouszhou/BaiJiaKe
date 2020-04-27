@@ -31,8 +31,10 @@
   </view>
   <!-- 热门 -->
   <view class="hot">
-    <image src="/images/home/remen.png"></image>
-    <text>热门课程</text>
+    <view>
+      <image src="/images/home/remen.png"></image>
+      <text>热门课程</text>
+    </view>
     <text bindtap="toCourseClass">全部课程 ></text>
   </view> 
   <view class="hotItemBox">
@@ -71,11 +73,13 @@
       bindtap="toCourseDetails">
       <view class="image">
         <!-- <image src="/images/home/shangjia.png"></image> -->
-        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image mode="aspectFill" src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
         <view class="title">
           {{item.name}}
+        </view>
+        <view>
           <image src="/images/home/renzheng.png"></image>
         </view>
         <view class="number">

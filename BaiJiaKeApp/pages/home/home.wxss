@@ -11,7 +11,7 @@
   justify-content:space-between;
   align-items: center;
   width:670rpx;
-  height:44rpx;
+  height: 60rpx;
   line-height: 44rpx;
   margin-top: 35rpx;
   background-color: rgba(208,204,204,0.3);
@@ -20,7 +20,7 @@
 }
 .search input{
   width: 600rpx;
-  font-size:20rpx;
+  font-size: 24rpx;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .search image{ 
@@ -38,7 +38,6 @@
 }
 .navItem{
   width: 98rpx;
-  height: 138rpx;
   margin: 0 20rpx;
   text-align: center;
   margin-bottom: 10rpx;
@@ -47,14 +46,15 @@
   align-items: center;
 }
 .navItem image{
-  width: 82rpx;
-  height: 82rpx;
-  margin-bottom: 18rpx;
+  width: 110rpx;
+  height: 110rpx;
 }
 .navItem text{
   font-family: 'microsoft yahei';
-  font-size: 18rpx;
+  font-size: 24rpx;
   color: rgb(61,61,61);
+  display: inline-block;
+  margin: 10rpx 0;
 }
 .swiperBox{
   width: 690rpx;
@@ -77,46 +77,40 @@
 
 .hot{
   width: 700rpx;
-  height: 24rpx;
   margin-top: 30rpx;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   font-size: 22rpx;
 }
 .hot image{
-  width: 46rpx;
-  height: 20rpx;
+  width: 66rpx;
+  height: 30rpx;
   margin-right: 10rpx;
 }
-.hot text:nth-child(2){
-  font-size: 20rpx;
+.hot view text{
+  font-size: 34rpx;
   color: rgb(61,61,61)
 }
-.hot text:nth-child(3){
-  position: relative;
-  left: 440rpx;
+.hot>text{
   color: rgb(208,204,204)
 }
 .hotItemBox{
   width: 700rpx;
   display: flex;
-  margin-top: 18rpx;
+  margin-top: 20rpx;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
 }
 .hotItem{
-  height: 28rpx;
-  width: 78rpx;
+  padding: 2rpx 10rpx;
   text-align: center;
-  line-height: 28rpx;
-  padding: 0 10rpx;
   margin-left: 18rpx;
   margin-bottom: 20rpx;
-  font-size: 16rpx;
+  font-size: 26rpx;
   border: 1px solid rgb(227,227,227);
-  border-radius: 12rpx; 
+  border-radius: 40rpx; 
 }
 .hotItem:nth-child(1){
   margin-left: 0rpx;
@@ -133,22 +127,21 @@
 }
 .courseItem{
   width: 100%;
+  margin-bottom: 20rpx;
 }
 .courseList .courseItem .image{
   width: 100%;
-  height: 158rpx;
+  height: 264rpx;
 }
 .courseList .courseItem .image image{
   width: 100%;
-  height: 158rpx;
+  height: 100%;
 }
 .courseInfo{
   width: 100%;
-  height: 170rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   padding: 20rpx;
   box-sizing: border-box;
   border:1px solid rgb(227,227,227);
@@ -156,42 +149,41 @@
 }
 .courseInfo .title{
   width: 100%;
-  height: 75rpx;
-  font-size: 20rpx;
+  font-size: 28rpx;
 }
-.courseInfo .title image{
-  height: 42rpx;
-  width: 42rpx;
+.courseInfo image{
+  height: 62rpx;
+  width: 62rpx;
   display: block;
   text-align: left;
   font-size: 20rpx;
-  margin-top: 5rpx;
-  margin-bottom: 5rpx;
+  margin: 10rpx 0;
 }
 .courseInfo .number{
   width: 640rpx;
-  height: 25rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
   display: flex;
   flex-direction: row;
-  font-size: 16rpx;
+  font-size: 24rpx;
   justify-content: space-between;
+  color: rbg(103, 103, 104);
   
 }
 .courseInfo .info{
   width: 640rpx;
-  height: 25rpx;display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* font-size: 16rpx; */
+  font-size: 24rpx;
+  color: rbg(103, 103, 104);
 }
 .courseInfo .info image{
   width: 28rpx;
   height: 24rpx;
+  margin-right: 10rpx;
 }
 .courseInfo .info view:nth-child(2){
   display: flex;
-  height: 25rpx;
   margin-left: 10rpx;
   flex-direction: row-reverse;
   justify-content: right;
