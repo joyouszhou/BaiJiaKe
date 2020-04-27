@@ -76,9 +76,20 @@ Page({
         // endTime:''
       },
       success:function(res){
-        that.setData({
-          hotList: res.data.data.course
+        let data = res.data.data.course
+        wx.getLocation({
+          success: function(res) {
+            console.log(res.latitude, res.longitude)
+            console.log(data)
+            for (let i = 0; i < data.length; i++) {
+              data[i].jvLi = that.distance(res.latitude, res.longitude, data[i].shopinfo.latitude, data[i].shopinfo.longitude)
+            }
+            that.setData({
+              hotList: data
+            })
+          },
         })
+        
       },
       fail:function(res){
         wx.showToast({
@@ -101,6 +112,20 @@ Page({
   onReachBottom: function () {
 
   },
+
+  //两点之间经纬度求距离方法
+  distance: function (la1, lo1, la2, lo2) {
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    s = s.toFixed(1);
+    return s;
+  },
+
   getNavItem: function(e){  
     wx.navigateTo({
       url: '../courseClass/courseClass',

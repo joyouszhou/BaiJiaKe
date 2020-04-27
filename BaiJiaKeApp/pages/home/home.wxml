@@ -87,7 +87,7 @@
             <text>{{item.shopinfo.name}}</text>
           </view>
           <view>
-            <text>距离{{item.weight}}公里</text>
+            <text>距离{{item.jvLi}}公里</text>
             <image src="/images/home/daohang.png"></image>
           </view>
         </view>
