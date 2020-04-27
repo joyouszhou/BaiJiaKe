@@ -35,7 +35,7 @@
     <text>热门课程</text>
     <text bindtap="toCourseClass">全部课程 ></text>
   </view> 
-  <!-- <view class="hotItemBox">
+  <view class="hotItemBox">
     <view class="hotItem">
       推荐
     </view>
@@ -63,26 +63,28 @@
     <view class="hotItem">
       语言培训
     </view>
-  </view> -->
+  </view>
   <!-- 课程列表 -->
   <view class="courseList">
     <view class="courseItem"
       wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
-      <view>
+      <view class="image">
         <!-- <image src="/images/home/shangjia.png"></image> -->
         <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
-        <view>{{item.name}}</view>
-        <view>
+        <view class="title">
+          {{item.name}}
+          <image src="/images/home/renzheng.png"></image>
+        </view>
+        <view class="number">
           <text>课程点击数 {{item.experience}}</text>
           <text>{{item.ages}}岁</text>
         </view>
-        <view>
+        <view class="info">
           <view>
-            <text>{{item.teacher}}</text>
-            <image src="/images/home/renzheng.png"></image>
+            <text>{{item.shopinfo.name}}</text>
           </view>
           <view>
             <text>距离{{item.weight}}公里</text>

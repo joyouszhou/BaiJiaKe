@@ -56,6 +56,15 @@ Page({
         })
       }
     })
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/audition/170948fb-d08c-40a2-b1cd-a23d570d3659',
+      method: 'put',
+      success: function (res) {
+        that.setData({
+          hotList: res.data.data.course
+        })
+      }
+    })
   },
 
   imgChange: function (e) {

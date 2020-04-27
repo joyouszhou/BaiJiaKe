@@ -19,7 +19,10 @@
   <view class="courseDetails">
     <view class="title">
       {{courseData.name}} 
-      <text bindtap="fenXiang">分享</text>
+      <view class="share" bindtap="fenXiang">
+        <image src="/images/courseDetails/share.png"></image>
+        <text>分享</text>
+      </view>
     </view>
     <view class="detailsInfo">
       <view>
@@ -28,7 +31,7 @@
       </view>
       <view>
         <text>体验时长</text>
-        <text>{{courseData.experience}}</text>
+        <text>{{courseData.experience}}分钟</text>
       </view>
       <view>
         <text>营业时间</text>
@@ -43,33 +46,44 @@
       
       
     </view>
-    <view class="detailsInfo">
+    <view class="detailsInfo detailsInfo1">
       <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>{{courseData.shopinfo.addr}}</text>
         <image class="right" src="/images/home/daohang.png"></image>
         <!-- <text class="right">></text> -->
       </view>
-      <view class="detailsInfoItem" bindtap="toSchoolDetails">
+      <view class="detailsInfoItem detailsInfoItem1" bindtap="toSchoolDetails">
         <text>所属机构</text>
         <text>{{courseData.shopinfo.name}}</text>
-        <image src="/images/home/renzheng.png"></image>
         <image class="right" src="/images/courseDetails/yuyue.png"></image>
+        <image src="/images/home/renzheng.png" class="bottom"></image>
         <!-- <text class="right">></text> -->
       </view>
     </view>
   </view>
   <view class="courseInfo">
-    <view class="infoTitle">课程信息</view>
+    <view class="courseTitle">课程信息</view>
     <view >{{courseData.describe}}</view>
-    <view class="infoTitle">体验有礼</view>
+    <view class="infoTitle">
+      体验有礼
+     <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
+    </view>
+   
     <view></view>
   </view>
   <view class="tips">
-    <image src="/images/courseDetails/tishi.png"></image>
+     <view class="infoTitle">温馨提示</view>
+     <view >{{courseData.describe}}</view>
+     <view class="infoTitle">免责声明</view>
+     <view >{{courseData.describe}}</view>
+    <!-- <image src="/images/courseDetails/tishi.png"></image> -->
   </view>
   <view class="courseInfo">
-    <view class="infoTitle">热门推荐</view>
+    <view class="infoTitle">
+      热门推荐
+      <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
+    </view>
    
   </view>
   <view class="hotList">
