@@ -20,23 +20,19 @@ Page({
     wx.getStorage({
       key: 'token',
       success: function (res) {
-        console.log(res)
         wx.request({
           url: app.globalData.baseUrl + '/v1/sub',
           header: {
             'Authorization': 'bearer ' + res.data,
           },
           success: function (res) {
-            console.log(res)
             let data = res.data.data
             if (data.length == 0) {
-              console.log("????")
               wx.showModal({
                 title: '提示',
                 content: '您未收藏任何课程'
               })
             } else {
-              console.log("????")
               that.setData({
                 courseList: data
               })
@@ -53,17 +49,14 @@ Page({
         
       }
     })
-    
   },
 
   toCourseDetails: function (e) {
-    console.log(e)
     let data = e.currentTarget.dataset.item
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
       events: {
         acceptDataFromOpenedPage: function (data) {
-          console.log(data)
         },
       },
       success: function (res) {
@@ -71,6 +64,82 @@ Page({
       },
       fail: function (res) { },
       complete: function (res) { },
+    })
+  },
+
+  shanChu: function (e) {
+    let that = this
+    let item = e.currentTarget.dataset.item
+    wx.showModal({
+      title: '提示',
+      content: '是否要删除此条收藏?',
+      success : function (res){
+        if (res.confirm) {
+          wx.getStorage({
+            key: 'token',
+            success: function (data) {
+              wx.request({
+                method: 'delete',
+                url: app.globalData.baseUrl + '/v1/sub/' + item.id,
+                header: {
+                  'Authorization': 'bearer ' + data.data,
+                },
+                success: function (res) {
+                  if (res.data.msg == 'success!!'){
+                    wx.showToast({
+                      title: '删除成功',
+                      success : function (){
+                        wx.getStorage({
+                          key: 'token',
+                          success: function (res) {
+                            wx.request({
+                              url: app.globalData.baseUrl + '/v1/sub',
+                              header: {
+                                'Authorization': 'bearer ' + res.data,
+                              },
+                              success: function (res) {
+                                let data = res.data.data
+                                if (data.length == 0) {
+                                  wx.showModal({
+                                    title: '提示',
+                                    content: '您未收藏任何课程'
+                                  })
+                                  that.setData({
+                                    courseList: data
+                                  })
+                                } else {
+                                  that.setData({
+                                    courseList: data
+                                  })
+                                }
+                              },
+                              fail: function (res) {
+                                wx.showToast({
+                                  title: res.msg,
+                                })
+                              }
+                            })
+                          },
+                          fail: function (res) {
+
+                          }
+                        })
+                      }
+                    })
+                  }else{
+                    wx.showToast({
+                      title: '删除失败',
+                    })
+                  }
+                },
+              })
+            },
+          })
+          
+        } else if (res.cancel) {
+          
+        }
+      }
     })
   },
 

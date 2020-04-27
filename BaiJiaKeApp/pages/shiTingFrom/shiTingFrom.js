@@ -75,12 +75,23 @@ Page({
             "orderTime": that.data.date + " " + that.data.time
           },
           success: function (res) {
-            wx.showToast({
-              title: '预约成功！',
-              success:function(){
-                wx.navigateBack()
-              }
-            })
+            console.log(res.data)
+            if (res.data.msg == "success!!"){
+              wx.showToast({
+                title: '预约成功！',
+                success: function () {
+                  setTimeout(() => {
+                    wx.navigateBack()
+                  }, 1500)
+                }
+              })
+            }else{
+              wx.showModal({
+                title: '提示',
+                content: res.data.msg,
+              })
+            }
+            
             
           },
           fail: function (res) {

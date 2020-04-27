@@ -4,11 +4,14 @@
   <view class="courseList">
     <view class="courseItem"
       wx:for="{{courseList}}" wx:key="index" data-item="{{item}}" 
-      bindtap="toCourseDetails">
+      
+      >
       <view>
-        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image src="{{'https://baijiake.net'+item.imageurl[0]}}" bindtap="toCourseDetails" data-item="{{item}}" ></image>
+        <text class="shanChu" bindtap='shanChu' data-item="{{item}}">删除</text>
+        <!-- <button ></button> -->
       </view>
-      <view class="courseInfo">
+      <view class="courseInfo" bindtap="toCourseDetails" data-item="{{item}}" >
         <view>{{item.name}}</view>
         <view>
           <text>课程点击数 {{"356"}}</text>
