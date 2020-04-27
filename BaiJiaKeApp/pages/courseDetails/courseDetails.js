@@ -12,7 +12,8 @@ Page({
     imgIndex:'1',
     imgLength:'',
     isShouCang:false,
-    hotList:[]
+    hotList:[],
+    shopData:''
   },
 
   /**
@@ -33,6 +34,14 @@ Page({
           })
         }
       }
+      wx.request({
+        url: app.globalData.baseUrl + '/v1/shop/'+data.data.shopinfo.id,
+        success: function (res) {
+          that.setData({
+            shopData: res.data.data
+          })
+        }
+      })
       that.setData({
         courseData:data.data,
         imgUrl :arr,
@@ -73,6 +82,13 @@ Page({
   fenXiang: function () {
     wx.showShareMenu({
       withShareTicket: true
+    })
+  },
+
+  phoneCall: function(){
+    let that = this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.shopData.phone //仅为示例，并非真实的电话号码
     })
   },
 

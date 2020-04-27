@@ -42,9 +42,6 @@
         <text>{{courseData.teacher}}</text> -->
       </view>
       
-      
-      
-      
     </view>
     <view class="detailsInfo detailsInfo1">
       <view class="detailsInfoItem" bindtap="openMap">
@@ -53,10 +50,10 @@
         <image class="right" src="/images/home/daohang.png"></image>
         <!-- <text class="right">></text> -->
       </view>
-      <view class="detailsInfoItem detailsInfoItem1" bindtap="toSchoolDetails">
+      <view class="detailsInfoItem detailsInfoItem1">
         <text>所属机构</text>
-        <text>{{courseData.shopinfo.name}}</text>
-        <image class="right" src="/images/courseDetails/yuyue.png"></image>
+        <text style="width: 490rpx;display: inline-block;" bindtap="toSchoolDetails">{{courseData.shopinfo.name}}</text>
+        <image class="right"  src="/images/courseDetails/yuyue.png" bindtap="phoneCall"></image>
         <image src="/images/home/renzheng.png" class="bottom"></image>
         <!-- <text class="right">></text> -->
       </view>
