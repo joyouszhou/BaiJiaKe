@@ -112,8 +112,7 @@
   border: 1px solid rgb(227,227,227);
   border-radius: 40rpx; 
 }
-.hotItem:nth-child(1){
-  margin-left: 0rpx;
+.hotItem.active{
   color: rgb(242,103,119);
   border:1px solid rgb(225,195,195);
 }

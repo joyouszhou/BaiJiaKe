@@ -61,13 +61,17 @@
   </view>
   <view class="courseInfo">
     <view class="courseTitle">课程信息</view>
-    <view >{{courseData.describe}}</view>
+    <view>{{courseData.describe}}</view>
     <view class="infoTitle">
       体验有礼
      <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
     </view>
-   
-    <view></view>
+    <rich-text nodes="{{}}"></rich-text>
+    <view class="infoTitle">
+      课程介绍
+     <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
+    </view>
+    <rich-text nodes="{{}}"></rich-text>
   </view>
   <view class="tips">
      <view class="infoTitle">温馨提示</view>
@@ -98,6 +102,10 @@
     </view> -->
   </view>
   <view class="tabBar">
+    <view bindtap="search">
+      <image src="/images/courseDetails/share.png"></image>
+      <text>分享</text>
+    </view>
     <view bindtap="shouCang">
       <image wx:if="{{!isShouCang}}" src="/images/courseDetails/shoucang.png"></image>
       <image wx:else src="/images/courseDetails/shoucang2.png"></image>

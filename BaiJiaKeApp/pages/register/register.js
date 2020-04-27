@@ -37,7 +37,7 @@ Page({
 
   //前台校验手机号
   checkPhoneNum: function (phoneNum) {
-    let str = /^(1[3|5|8]{1}\d{9})$/;
+    let str = /^(1[3|5|8|7]{1}\d{9})$/;
     if (str.test(phoneNum)) {
       return true;
     } else {

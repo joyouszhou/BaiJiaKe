@@ -36,6 +36,7 @@ Page({
     coursetypeList:[],
     limit: 10,
     offset: 0,
+    activeIndex: 0,
   },
 
   /**
@@ -66,17 +67,24 @@ Page({
         that.setData({
           coursetypeList: data
         })
+        that.getHotList(data[0].CourseType)
         app.globalData.courseTypeList = data
       }
     })
+   
+  },
+  getHotList: function (name){
+    let that = this;
+    let data = {
+      limit: that.data.limit ,
+      offset: that.data.offset
+    }
+    if(name) {
+      data.course_type = name
+    }
     wx.request({
       url: app.globalData.baseUrl +'/v1/course',
-      data:{
-        limit: that.data.limit ,
-        offset: that.data.offset,
-        // beginTime:'',
-        // endTime:''
-      },
+      data,
       success:function(res){
         let data = res.data.data.course
         wx.getLocation({
@@ -98,7 +106,6 @@ Page({
       }
     })
   },
-
   /**
    * 用户点击右上角分享
    */
@@ -125,7 +132,13 @@ Page({
     s = s.toFixed(1);
     return s;
   },
-
+  hotList: function(e) {
+    let index = e.currentTarget.dataset.index;
+    this.setData({
+      activeIndex: index
+    })
+    this.getHotList(e.currentTarget.dataset.name)
+  },
   getNavItem: function(e){  
     wx.navigateTo({
       url: '../courseClass/courseClass',

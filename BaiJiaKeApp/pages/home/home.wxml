@@ -38,32 +38,8 @@
     <text bindtap="toCourseClass">全部课程 ></text>
   </view> 
   <view class="hotItemBox">
-    <view class="hotItem">
-      推荐
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
-    </view>
-    <view class="hotItem">
-      语言培训
+    <view bindtap="hotList" wx:for="{{coursetypeList}}" wx:key="index" data-index="{{index}}" data-name="{{item.CourseType}}" class="hotItem {{activeIndex === index ? 'active':''}}">
+      {{item.CourseType}}
     </view>
   </view>
   <!-- 课程列表 -->

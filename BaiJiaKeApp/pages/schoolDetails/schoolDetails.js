@@ -18,6 +18,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
+    
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
       that.setData({
         shopData:data.data,
@@ -28,7 +29,7 @@ Page({
       url: app.globalData.baseUrl +'/v1/shop?sortby={"weight": "desc"}',
       success : function (res) {
         that.setData({
-          hotList: res.data.data.shops
+          hotList: [...res.data.data.shops,...res.data.data.shops, ...res.data.data.shops]
         })
         // console.log(res.data.data.shops)
       }

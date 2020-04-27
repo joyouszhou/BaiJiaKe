@@ -17,7 +17,6 @@
   <view class="courseDetails">
     <view class="title">
       {{shopData.name}}
-      <image src="/images/home/renzheng.png"></image>
     </view>
     <view class="detailsInfo">
       <view class="detailsInfoItem" bindtap="openMap">
