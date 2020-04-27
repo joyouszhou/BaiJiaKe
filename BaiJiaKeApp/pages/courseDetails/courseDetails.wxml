@@ -19,10 +19,10 @@
   <view class="courseDetails">
     <view class="title">
       {{courseData.name}} 
-      <view class="share" bindtap="fenXiang">
+      <button class="share" open-type="share">
         <image src="/images/courseDetails/share.png"></image>
         <text>分享</text>
-      </view>
+      </button>
     </view>
     <view class="detailsInfo">
       <view>
@@ -87,31 +87,27 @@
     </view>
    
   </view>
-  <view class="hotList">
-    <view bindtap="toCourseDetails" wx:for="{{hotList}}" wx:key="index" data-item="{{item}}">
-      <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
-      <text>{{item.name}}</text>
-    </view> 
-    <!-- <view bindtap="toCourseDetails">
-      <image src="/images/home/swiper/baijiake.png"></image>
-      <text>课程名称</text>
+  <scroll-view scroll-x class="scroll-view">
+    <view class="scroll-view-item" style="" wx:for="{{hotList}}" bindtap="toCourseDetails" data-item="{{item}}">
+      <view class="img-box">
+        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+      </view>
+      <view class="name">
+        {{item.name}}
+      </view>
     </view>
-    <view bindtap="toCourseDetails">
-      <image src="/images/home/swiper/baijiake.png"></image>
-      <text>课程名称</text>
-    </view> -->
-  </view>
+  </scroll-view>
   <view class="tabBar">
-    <view bindtap="search">
-      <image src="/images/courseDetails/share.png"></image>
+    <button class="share btn" open-type="share">
+      <image mode="aspectFit" src="/images/courseDetails/share.png"></image>
       <text>分享</text>
-    </view>
-    <view bindtap="shouCang">
+    </button>
+    <view bindtap="shouCang" class="btn">
       <image wx:if="{{!isShouCang}}" src="/images/courseDetails/shoucang.png"></image>
       <image wx:else src="/images/courseDetails/shoucang2.png"></image>
       <text>收藏</text>
     </view>
-    <view bindtap="toShiTingFrom">
+    <view bindtap="toShiTingFrom" class="btn">
       <image src="/images/courseDetails/yuyue.png"></image>
       <text>立即预约</text>
     </view>

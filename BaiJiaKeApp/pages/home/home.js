@@ -159,7 +159,15 @@ Page({
     })
   },
   toCourseDetails: function(e){
-    let data = e.currentTarget.dataset.item
+    let data = e.currentTarget.dataset.item;
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/audition/' + data.id,
+      method: 'put',
+      header: { 
+        'Authorization': 'bearer ' + wx.getStorageSync('token')
+      },
+      success: function (res) {}
+    })
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
       events:{

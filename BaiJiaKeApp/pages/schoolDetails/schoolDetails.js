@@ -29,7 +29,7 @@ Page({
       url: app.globalData.baseUrl +'/v1/shop?sortby={"weight": "desc"}',
       success : function (res) {
         that.setData({
-          hotList: [...res.data.data.shops,...res.data.data.shops, ...res.data.data.shops]
+          hotList: res.data.data.shops
         })
         // console.log(res.data.data.shops)
       }
