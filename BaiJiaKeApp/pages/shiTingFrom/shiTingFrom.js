@@ -7,7 +7,7 @@ Page({
    */
   data: {
     date: '2020-05-01',
-    time: '12:01',
+    time: '12:01:00',
     id:''
   },
 
@@ -18,11 +18,9 @@ Page({
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      
       wx.getStorage({
         key: 'token',
         success: function (res) {
-          console.log(res)
           wx.request({
             method: 'put',
             url: app.globalData.baseUrl + '/v1/audition',
@@ -54,7 +52,7 @@ Page({
   bindTimeChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      time: e.detail.value
+      time: e.detail.value +":00"
     })
   },
   yuYue: function (){

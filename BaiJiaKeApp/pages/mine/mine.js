@@ -22,10 +22,6 @@ Page({
     wx.setNavigationBarTitle({
       title:"我的"
     })
-    // wx.setNavigationBarColor({
-    //   backgroundColor: '#6aabfd',
-    // })
-    console.log(app.globalData.userInfo)
     this.setData({
       userInfo: app.globalData.userInfo,
     })

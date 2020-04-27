@@ -33,7 +33,9 @@ Page({
     isOpenNav: false,
     isOpenNavText: "展开",
     hotList:[],
-    coursetypeList:[]
+    coursetypeList:[],
+    limit: 10,
+    offset: 0,
   },
 
   /**
@@ -70,8 +72,8 @@ Page({
     wx.request({
       url: app.globalData.baseUrl +'/v1/course',
       data:{
-        limit :10 ,
-        offset:0,
+        limit: that.data.limit ,
+        offset: that.data.offset,
         // beginTime:'',
         // endTime:''
       },
@@ -79,8 +81,6 @@ Page({
         let data = res.data.data.course
         wx.getLocation({
           success: function(res) {
-            console.log(res.latitude, res.longitude)
-            console.log(data)
             for (let i = 0; i < data.length; i++) {
               data[i].jvLi = that.distance(res.latitude, res.longitude, data[i].shopinfo.latitude, data[i].shopinfo.longitude)
             }
