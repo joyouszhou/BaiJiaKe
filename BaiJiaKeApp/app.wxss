@@ -8,3 +8,13 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.f24{
+  font-size: 24rpx;
+}
+.f28{
+  font-size: 24rpx;
+}
+.f30{
+  font-size: 24rpx;
+}

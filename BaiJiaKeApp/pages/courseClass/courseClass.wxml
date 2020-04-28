@@ -36,24 +36,24 @@
     <view class="courseItem"
       wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
-      <view>
+      <view class="img-box">
         <!-- <image src="/images/home/shangjia.png"></image> -->
-        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image mode="aspectFill" src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
-        <view>{{item.name}}</view>
-        <view>
+        <view class="f28">{{item.name}}</view>
+        <view class="f24">
           <text>课程点击数 {{"356"}}</text>
           <text>{{item.ages[0]}}岁</text>
         </view>
-        <view>
-          <view>
+        <view class="juli">
+          <view  style="margin: 0">
             <text>{{item.teacher}}</text>
-            <image src="/images/home/renzheng.png"></image>
+            <image class="renzheng" src="/images/home/renzheng.png"></image>
           </view>
-          <view>
+          <view class="f24" style="margin: 0">
             <text>距离{{item.weight}}公里</text>
-            <image src="/images/home/daohang.png"></image>
+            <image class="location" src="/images/home/daohang.png"></image>
           </view>
         </view>
       </view>

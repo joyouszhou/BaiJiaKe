@@ -63,10 +63,12 @@
 }
 .courseItem{
   width: 100%;
+  margin-bottom: 20rpx;
+  border:1px solid rgb(227,227,227);
 }
-.courseList .courseItem view{
+.courseList .courseItem view.img-box{
   width: 100%;
-  height: 150rpx;
+  height: 264rpx;
 }
 .courseList .courseItem view image{
   width: 100%;
@@ -74,36 +76,26 @@
 }
 .courseInfo{
   width: 100%;
-  height: 150rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 20rpx;
   box-sizing: border-box;
-  border:1px solid rgb(227,227,227);
-  font-size: 16rpx;
+  font-size: 28rpx;
 }
 .courseInfo view:nth-child(1){
-  height: 45rpx;
-  font-size: 20rpx;
+  font-size: 24rpx;
   margin-bottom: 20rpx;
 }
 .courseInfo view:nth-child(2){
-  width: 560rpx;
-  height: 45rpx;
   margin-bottom: 20rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: rgba(0, 0, 0, .6);
   
 }
 .courseInfo view:nth-child(3){
-  width: 560rpx;
-  height: 45rpx;display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* font-size: 16rpx; */
 }
 .courseInfo view:nth-child(3) image{
   width: 22rpx;
@@ -113,4 +105,21 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: right;
+}
+.courseList .courseItem .courseInfo .renzheng{
+  height: 62rpx;
+  width: 62rpx;
+  display: block;
+  text-align: left;
+  font-size: 20rpx;
+  margin: 10rpx 0;
+}
+.courseList .courseItem .courseInfo .juli{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.courseList .courseItem .courseInfo .location{
+  margin-top: 6rpx;
+  margin-right: 10rpx;
 }
