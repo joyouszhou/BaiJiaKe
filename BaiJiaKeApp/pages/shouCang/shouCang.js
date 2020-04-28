@@ -53,6 +53,14 @@ Page({
 
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/audition/' + data.id,
+      method: 'put',
+      header: { 
+        'Authorization': 'bearer ' + wx.getStorageSync('token')
+      },
+      success: function (res) {}
+    })
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
       events: {
@@ -66,7 +74,18 @@ Page({
       complete: function (res) { },
     })
   },
-
+  onClose(event) {
+    const { position, instance } = event.detail;
+    switch (position) {
+      case 'left':
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        this.shanChu(event)
+        break;
+    }
+  },
   shanChu: function (e) {
     let that = this
     let item = e.currentTarget.dataset.item

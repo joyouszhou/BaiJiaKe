@@ -2,33 +2,35 @@
 <view class="body">
   <!-- 课程列表 -->
   <view class="courseList">
-    <view class="courseItem"
-      wx:for="{{courseList}}" wx:key="index" data-item="{{item}}" 
-      
-      >
-      <view>
-        <image src="{{'https://baijiake.net'+item.imageurl[0]}}" bindtap="toCourseDetails" data-item="{{item}}" ></image>
-        <text class="shanChu" bindtap='shanChu' data-item="{{item}}">删除</text>
-        <!-- <button ></button> -->
-      </view>
-      <view class="courseInfo" bindtap="toCourseDetails" data-item="{{item}}" >
-        <view>{{item.name}}</view>
-        <view>
-          <text>课程点击数 {{"356"}}</text>
-          <text>{{item.ages}}岁</text>
-        </view>
-        <view>
-          <view>
-            <text>{{item.teacher}}</text>
-            <image src="/images/home/renzheng.png"></image>
+    <van-swipe-cell class="courseItem" right-width="{{ 65 }}" async-close bind:close="onClose" wx:for="{{courseList}}" wx:key="index" data-item="{{item}}" >
+      <view slot="left"></view>
+      <van-cell-group class="content-box">
+        <view slot="-">
+          <view class="item-box">
+            <view class="image">
+              <image mode="aspectFill" src="{{'https://baijiake.net'+item.imageurl[0]}}" bindtap="toCourseDetails" data-item="{{item}}" ></image>
+            </view>
           </view>
-          <view>
-            <text>距离{{item.weight}}公里</text>
-            <image src="/images/home/daohang.png"></image>
+          <view class="courseInfo" bindtap="toCourseDetails" data-item="{{item}}" >
+            <view class="tit">{{item.name}}</view>
+            <view>
+              <text>课程点击数 {{"356"}}</text>
+              <text>{{item.ages}}岁</text>
+            </view>
+            <view class="juli">
+              <view>
+                <text>{{item.teacher}}</text>
+                <image class="renzheng" src="/images/home/renzheng.png"></image>
+              </view>
+              <view>
+                <text>距离{{item.weight}}公里</text>
+                <image class="location" src="/images/home/daohang.png"></image>
+              </view>
+            </view>
           </view>
         </view>
-      </view>
-    </view>
-    
+      </van-cell-group>
+      <view slot="right">删除</view>
+    </van-swipe-cell>
   </view>
 </view>

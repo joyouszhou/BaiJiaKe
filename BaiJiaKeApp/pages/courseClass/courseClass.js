@@ -190,7 +190,7 @@ Page({
       isOldOpen: !this.data.isOldOpen
     }, function () {
       if (this.data.isOldOpen) {
-        this.setData({
+        this.setData({ 
           isCityOpen: false,
           isClassOpen: false,
           isTab: true,
@@ -232,15 +232,7 @@ Page({
           classList: this.data.classList
         })
         if (id == i) {
-          this.data.classList[i].isTab = true;
-          wx.request({
-            url: app.globalData.baseUrl + '/v1/course?course_type=' + e.currentTarget.dataset.name,
-            success: function (res) {
-              that.setData({
-                hotList: res.data.data.course
-              })
-            }
-          })
+          this.data.classList[i].isTab = true; 
           this.setData({
             classList: this.data.classList,
             className: e.currentTarget.dataset.name,
@@ -263,8 +255,27 @@ Page({
         }
       }
     }
+    this.getDataList()
   },
-
+  getDataList: function(){
+    console.log(this.data.cityName, this.data.className, this.data.oldName)
+    let str = '', that = this;
+    if(this.data.cityName !== '全城'){
+      str = str + `city=${this.data.cityName}&`
+    }
+    if(this.data.oldName !== '不限' && this.data.oldName !== '年龄'){
+      str = str + `ages=${this.data.oldName}&`
+    }
+    str = str + `course_type=${this.data.className}`
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/course?' + str,
+      success: function (res) {
+        that.setData({
+          hotList: res.data.data.course
+        })
+      }
+    })
+  },
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item
     wx.navigateTo({

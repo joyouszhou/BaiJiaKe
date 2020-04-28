@@ -35,7 +35,7 @@
       </view>
       <view>
         <text>营业时间</text>
-        <text>{{courseData.opentime}}</text>
+        <text>{{courseData.shopinfo.open_time}}</text>
       </view>
       <view>
         <!-- <text>授课教师</text>
@@ -64,14 +64,13 @@
       课程介绍
      <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
     </view>
-    <rich-text nodes="{{courseData.describe}}"></rich-text>
     <view class="courseTitle">课程信息</view>
-    <view>{{courseData.describe}}</view>
+    <rich-text nodes="{{courseData.describe}}"></rich-text>
     <view class="infoTitle">
       体验有礼
      <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
     </view>
-    <rich-text nodes="{{courseData.describe}}"></rich-text>
+    <rich-text nodes="{{courseData.shopinfo.present}}"></rich-text>
   </view>
   <view class="tips">
      <view class="infoTitle">温馨提示</view>

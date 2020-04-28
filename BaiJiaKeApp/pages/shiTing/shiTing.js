@@ -41,7 +41,116 @@ Page({
     })
     
   },
+  onClose(event) {
+    const { position, instance } = event.detail;
+    switch (position) {
+      case 'left':
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        this.shanChu(event)
+        break;
+    }
+  },
+  shanChu: function (e) {
+    let that = this
+    let item = e.currentTarget.dataset.item
+    wx.showModal({
+      title: '提示',
+      content: '是否要删除此条试听课程?',
+      success : function (res){
+        if (res.confirm) {
+          wx.getStorage({
+            key: 'token',
+            success: function (data) {
+              wx.request({
+                method: 'delete',
+                url: app.globalData.baseUrl + '/v1/audition/' + item.Course.id,
+                header: {
+                  'Authorization': 'bearer ' + data.data,
+                },
+                success: function (res) {
+                  if (res.data.msg == 'success!!'){
+                    wx.showToast({
+                      title: '删除成功',
+                      success : function (){
+                        wx.getStorage({
+                          key: 'token',
+                          success: function (res) {
+                            wx.request({
+                              url: app.globalData.baseUrl + '/v1/audition',
+                              header: {
+                                'Authorization': 'bearer ' + res.data,
+                              },
+                              success: function (res) {
+                                let data = res.data.data
+                                if (data.length == 0) {
+                                  wx.showModal({
+                                    title: '提示',
+                                    content: '您没有可查看的试听课程'
+                                  })
+                                  that.setData({
+                                    courseList: data
+                                  })
+                                } else {
+                                  that.setData({
+                                    courseList: data
+                                  })
+                                }
+                              },
+                              fail: function (res) {
+                                wx.showToast({
+                                  title: res.msg,
+                                })
+                              }
+                            })
+                          },
+                          fail: function (res) {
 
+                          }
+                        })
+                      }
+                    })
+                  }else{
+                    wx.showToast({
+                      title: '删除失败',
+                    })
+                  }
+                },
+              })
+            },
+          })
+          
+        } else if (res.cancel) {
+          
+        }
+      }
+    })
+  },
+  toCourseDetails: function (e) {
+    let data = e.currentTarget.dataset.item
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/audition/' + data.Course.id,
+      method: 'put',
+      header: { 
+        'Authorization': 'bearer ' + wx.getStorageSync('token')
+      },
+      success: function (res) {}
+    })
+    wx.navigateTo({
+      url: '../courseDetails/courseDetails',
+      events: {
+        acceptDataFromOpenedPage: function (data) {
+        },
+      },
+      success: function (res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: data.Course })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
