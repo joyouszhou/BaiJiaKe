@@ -35,7 +35,7 @@
       </view>
       <view>
         <text>营业时间</text>
-        <text>{{}}</text>
+        <text>{{courseData.opentime}}</text>
       </view>
       <view>
         <!-- <text>授课教师</text>
@@ -60,24 +60,24 @@
     </view>
   </view>
   <view class="courseInfo">
+    <view class="infoTitle">
+      课程介绍
+     <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
+    </view>
+    <rich-text nodes="{{courseData.describe}}"></rich-text>
     <view class="courseTitle">课程信息</view>
     <view>{{courseData.describe}}</view>
     <view class="infoTitle">
       体验有礼
      <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
     </view>
-    <rich-text nodes="{{}}"></rich-text>
-    <view class="infoTitle">
-      课程介绍
-     <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
-    </view>
-    <rich-text nodes="{{}}"></rich-text>
+    <rich-text nodes="{{courseData.describe}}"></rich-text>
   </view>
   <view class="tips">
      <view class="infoTitle">温馨提示</view>
-     <view >{{courseData.describe}}</view>
+     <view >{{sys.declare || courseData.describe}}</view>
      <view class="infoTitle">免责声明</view>
-     <view >{{courseData.describe}}</view>
+     <view >{{sys.warmprompt || courseData.describe}}</view>
     <!-- <image src="/images/courseDetails/tishi.png"></image> -->
   </view>
   <view class="courseInfo">

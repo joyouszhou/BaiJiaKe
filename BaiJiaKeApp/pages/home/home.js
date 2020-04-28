@@ -43,6 +43,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+  },
+  onShow: function(){
     let that = this;
     wx.request({
       url: app.globalData.baseUrl + '/v1/coursetype',
@@ -71,7 +74,6 @@ Page({
         app.globalData.courseTypeList = data
       }
     })
-   
   },
   getHotList: function (name){
     let that = this;

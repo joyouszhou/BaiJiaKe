@@ -13,7 +13,8 @@ Page({
     imgLength:'',
     isShouCang:false,
     hotList:[],
-    shopData:''
+    shopData:'',
+    sys: {declare: '', warmprompt: ''},
   },
 
   /**
@@ -59,6 +60,17 @@ Page({
       success: function (res) {
         that.setData({
           hotList: res.data.data.course
+        })
+      }
+    })
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/sys',
+      header: { 
+        'Authorization': 'bearer ' + wx.getStorageSync('token')
+      },
+      success: function(res){
+        this.setData({
+          sys: res.data
         })
       }
     })
