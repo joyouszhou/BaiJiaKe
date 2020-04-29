@@ -14,7 +14,7 @@
           <view class="courseInfo" bindtap="toCourseDetails" data-item="{{item}}" >
             <view class="tit">{{item.Course.name}}</view>
             <view>
-              <text>课程点击数 {{"356"}}</text>
+              <text>课程点击数 {{item.Course.count}}</text>
               <text>{{item.Course.ages}}岁</text>
             </view>
             <view class="juli">

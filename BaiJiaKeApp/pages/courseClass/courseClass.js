@@ -71,6 +71,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    wx.setNavigationBarTitle({
+      title:"全部课程"
+    });
+    
+  },
+  onShow: function (){
     let that = this;
     let data = app.globalData.courseTypeList
     console.log(data)
@@ -79,9 +86,6 @@ Page({
     }
     that.data.classList = data;
     
-    wx.setNavigationBarTitle({
-      title:"全部课程"
-    });
     let list = []
     wx.request({
       url: app.globalData.baseUrl + '/v1/course',
@@ -122,11 +126,7 @@ Page({
         })
       }
     })
-
-
-
   },
-
   cityChange: function () {
     this.setData({
       isCityOpen: !this.data.isCityOpen
@@ -278,6 +278,14 @@ Page({
   },
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/course/' + data.id + '/count',
+      method: 'put',
+      header: { 
+        'Authorization': 'bearer ' + wx.getStorageSync('token')
+      },
+      success: function (res) {}
+    })
     wx.navigateTo({
       url: '../courseDetails/courseDetails',
       events: {

@@ -16,6 +16,12 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的试听',
     })
+    this.getList()
+  },
+  onShow: function (){
+    this.getList()
+  },
+  getList: function (){
     let that =this
     wx.getStorage({
       key: 'token',
@@ -39,7 +45,6 @@ Page({
         })
       },
     })
-    
   },
   onClose(event) {
     const { position, instance } = event.detail;
@@ -78,33 +83,7 @@ Page({
                         wx.getStorage({
                           key: 'token',
                           success: function (res) {
-                            wx.request({
-                              url: app.globalData.baseUrl + '/v1/audition',
-                              header: {
-                                'Authorization': 'bearer ' + res.data,
-                              },
-                              success: function (res) {
-                                let data = res.data.data
-                                if (data.length == 0) {
-                                  wx.showModal({
-                                    title: '提示',
-                                    content: '您没有可查看的试听课程'
-                                  })
-                                  that.setData({
-                                    courseList: data
-                                  })
-                                } else {
-                                  that.setData({
-                                    courseList: data
-                                  })
-                                }
-                              },
-                              fail: function (res) {
-                                wx.showToast({
-                                  title: res.msg,
-                                })
-                              }
-                            })
+                            that.getList()
                           },
                           fail: function (res) {
 
@@ -113,6 +92,7 @@ Page({
                       }
                     })
                   }else{
+                    that.getList()
                     wx.showToast({
                       title: '删除失败',
                     })
@@ -130,6 +110,14 @@ Page({
   },
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/course/' + data.Course.id + '/count',
+      method: 'put',
+      header: { 
+        'Authorization': 'bearer ' + wx.getStorageSync('token')
+      },
+      success: function (res) {}
+    })
     wx.request({
       url: app.globalData.baseUrl + '/v1/audition/' + data.Course.id,
       method: 'put',
@@ -158,12 +146,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

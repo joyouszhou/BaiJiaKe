@@ -143,7 +143,6 @@ Page({
     })
   },
   shouCang: function(){
-    console.log(111111)
     let that = this;
     let data = this.data.courseData
     wx.getStorage({

@@ -86,7 +86,7 @@ Page({
             }else{
               wx.showModal({
                 title: '提示',
-                content: res.data.msg,
+                content: res.data.data,
               })
             }
             

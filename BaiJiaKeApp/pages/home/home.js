@@ -163,7 +163,7 @@ Page({
   toCourseDetails: function(e){
     let data = e.currentTarget.dataset.item;
     wx.request({
-      url: app.globalData.baseUrl + '/v1/audition/' + data.id,
+      url: app.globalData.baseUrl + '/v1/course/' + data.id + '/count',
       method: 'put',
       header: { 
         'Authorization': 'bearer ' + wx.getStorageSync('token')

@@ -13,10 +13,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this 
     wx.setNavigationBarTitle({
       title: '我的收藏'
     });
+    this.getList()
+  },
+  onShow: function (){
+    this.getList()
+  },
+  getList: function (){
+    let that = this
     wx.getStorage({
       key: 'token',
       success: function (res) {
@@ -50,9 +56,16 @@ Page({
       }
     })
   },
-
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/course/' + data.id + '/count',
+      method: 'put',
+      header: { 
+        'Authorization': 'bearer ' + wx.getStorageSync('token')
+      },
+      success: function (res) {}
+    })
     wx.request({
       url: app.globalData.baseUrl + '/v1/audition/' + data.id,
       method: 'put',
@@ -166,13 +179,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
   },
 
