@@ -44,7 +44,7 @@
         <view class="f28">{{item.name}}</view>
         <view class="f24">
           <text>课程点击数 {{item.count}}</text>
-          <text>{{item.ages[0]}}岁</text>
+          <text>{{item.ages}}岁</text>
         </view>
         <view class="juli">
           <view  style="margin: 0">
@@ -52,7 +52,7 @@
             <image class="renzheng" src="/images/home/renzheng.png"></image>
           </view>
           <view class="f24" style="margin: 0">
-            <text>距离{{item.weight}}公里</text>
+            <text>距离{{item.jvLi}}公里</text>
             <image class="location" src="/images/home/daohang.png"></image>
           </view>
         </view>

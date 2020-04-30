@@ -1,0 +1,150 @@
+/* pages/courseClass/courseClass.wxss */
+.body{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+  width:670rpx;
+  height: 60rpx;
+  line-height: 44rpx;
+  margin-top: 35rpx;
+  background-color: rgba(208,204,204,0.3);
+  border:1rpx solid rgb(208,204,204);
+  border-radius: 15rpx;
+}
+.search input{
+  width: 600rpx;
+  font-size: 24rpx;
+  padding: 20rpx 0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.search image{ 
+  width:24rpx;
+  display: block;
+  height:24rpx;
+  padding:0 20rpx;
+}
+.tabBar{
+  width: 100vw;
+  height: 90rpx;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  font-size: 26rpx;
+  color: rgb(34,34,34);
+}
+.tabBar view{
+  height: 28rpx;
+}
+.tabBar view image{
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.classList{
+  width: 100vw;
+  height: 0;
+  position: fixed;
+  top: 90rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  overflow: hidden;
+  background: white;
+  border-bottom: 1rpx solid rgb(213,213,213);
+  box-shadow:0rpx 20rpx 70rpx -50rpx;
+}
+.classItem{
+  width: 160rpx;
+  height: 60rpx;
+  margin-bottom: 20rpx;
+  border: 2px solid rgb(213,213,213);
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.courseList{
+  width: 700rpx;
+  display: flex;
+  margin-top: 20rpx;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15rpx;
+}
+.courseItem{
+  width: 100%;
+  margin-bottom: 20rpx;
+  border:1px solid rgb(227,227,227);
+}
+.courseList .courseItem view.img-box{
+  width: 100%;
+  height: 264rpx;
+}
+.courseList .courseItem view image{
+  width: 100%;
+  height: 100%;
+}
+.courseInfo{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.courseInfo view:nth-child(1){
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+}
+.courseInfo view:nth-child(2){
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgba(0, 0, 0, .6);
+  
+}
+.courseInfo view:nth-child(3){
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.courseInfo view:nth-child(3) image{
+  width: 22rpx;
+  height: 22rpx;
+}
+.courseInfo view:nth-child(3) view:nth-child(2){
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: right;
+}
+.courseList .courseItem .courseInfo .renzheng{
+  height: 62rpx;
+  width: 62rpx;
+  display: block;
+  text-align: left;
+  font-size: 20rpx;
+  margin: 10rpx 0;
+}
+.courseList .courseItem .courseInfo .juli{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.courseList .courseItem .courseInfo .location{
+  margin-top: 6rpx;
+  margin-right: 10rpx;
+}

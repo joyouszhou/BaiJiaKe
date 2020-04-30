@@ -154,6 +154,7 @@
 }
 .tips{
   margin-bottom: 50rpx;
+  padding: 0 20rpx;
 }
 .tips .infoTitle {
   font-size: 24rpx;

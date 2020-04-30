@@ -23,7 +23,7 @@
                 <image class="renzheng" src="/images/home/renzheng.png"></image>
               </view>
               <view>
-                <text>距离{{item.weight}}公里</text>
+                <text>距离{{item.jvLi}}公里</text>
                 <image class="location" src="/images/home/daohang.png"></image>
               </view>
             </view>

@@ -18,9 +18,18 @@ Page({
     })
     this.getList()
   },
-  onShow: function (){
-    this.getList()
-  },
+    //两点之间经纬度求距离方法
+    distance: function (la1, lo1, la2, lo2) {
+      var La1 = la1 * Math.PI / 180.0;
+      var La2 = la2 * Math.PI / 180.0;
+      var La3 = La1 - La2;
+      var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+      var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+      s = s * 6378.137;
+      s = Math.round(s * 10000) / 10000;
+      s = s.toFixed(1);
+      return s;
+    },
   getList: function (){
     let that =this
     wx.getStorage({
@@ -32,9 +41,21 @@ Page({
             'Authorization': 'bearer ' + res.data,
           },
           success: function (res) {
-            console.log(res)
+            let data = res.data.data
+            wx.getLocation({
+              success: function(res) {
+                for (let i = 0; i < data.length; i++) {
+                  data[i].Course.jvLi = that.distance(res.latitude, res.longitude, data[i].Course.shopinfo.latitude, data[i].Course.shopinfo.longitude)
+                }
+                console.log(data)
+                that.setData({
+                  courseList: data,
+                  classList: that.data.classList,
+                })
+              },
+            })
             that.setData({
-              courseList:res.data.data
+              courseList: data
             })
           },
           fail: function () {

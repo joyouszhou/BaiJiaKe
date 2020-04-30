@@ -77,6 +77,19 @@ Page({
     });
     
   },
+  
+  //两点之间经纬度求距离方法
+  distance: function (la1, lo1, la2, lo2) {
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    s = s.toFixed(1);
+    return s;
+  },
   onShow: function (){
     let that = this;
     let data = app.globalData.courseTypeList
@@ -85,22 +98,6 @@ Page({
       data[i].isTab = false
     }
     that.data.classList = data;
-    
-    let list = []
-    wx.request({
-      url: app.globalData.baseUrl + '/v1/course',
-      success: function (res) {
-        list = res.data.data.course
-        that.setData({
-          hotList: list,
-          classList: that.data.classList,
-        })
-        // that.setData({
-        //   className: data.courseName,
-          
-        // })
-      }
-    })
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
       if(data.courseName != ""){
@@ -112,11 +109,19 @@ Page({
         }
         
         wx.request({
-          url: app.globalData.baseUrl +'/v1/course?course_type='+data.courseName,
+          url: app.globalData.baseUrl +'/v1/course/search?course_type='+data.courseName,
           success: function (res){
-            list = res.data.data.course
-            that.setData({
-              hotList: list
+            let hotList = res.data.data.course
+            wx.getLocation({
+              success: function(res) {
+                for (let i = 0; i < hotList.length; i++) {
+                  console.log(hotList[i])
+                  hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
+                }
+                that.setData({
+                  hotList
+                })
+              },
             })
           }
         })
@@ -268,11 +273,25 @@ Page({
     }
     str = str + `course_type=${this.data.className}`
     wx.request({
-      url: app.globalData.baseUrl + '/v1/course?' + str,
+      url: app.globalData.baseUrl + '/v1/course/search?' + str,
       success: function (res) {
-        that.setData({
-          hotList: res.data.data.course
+        let hotList = res.data.data.course
+        wx.getLocation({
+          success: function(res) {
+            for (let i = 0; i < hotList.length; i++) {
+              hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
+            }
+            that.setData({
+              hotList,
+              marginT: "",
+              isCityOpen: false,
+              isClassOpen: false,
+              isOldOpen: false,
+              isTab: false
+            })
+          },
         })
+        
       }
     })
   },

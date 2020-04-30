@@ -1,0 +1,38 @@
+<!--pages/courseClass/courseClass.wxml-->
+<view class="body">
+  <view class="search">
+    <image class="" src='/images/home/search.png' bindtap='query'></image>
+    <input type='text' placeholder='输入你想查询的课程/门店' confirm-type='getList' 
+    value="{{inputValue}}" bindinput='inputBind' bindconfirm='getList'></input>
+  </view>
+  <!-- 课程列表 -->
+  <view class="courseList" style="{{marginT}}">
+    <view class="courseItem"
+      wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
+      bindtap="toCourseDetails">
+      <view class="img-box">
+        <!-- <image src="/images/home/shangjia.png"></image> -->
+        <image mode="aspectFill" src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+      </view>
+      <view class="courseInfo">
+        <view class="f28">{{item.name}}</view>
+        <view class="f24">
+          <text>课程点击数 {{item.count}}</text>
+          <text>{{item.ages}}岁</text>
+        </view>
+        <view class="juli">
+          <view  style="margin: 0">
+            <text>{{item.teacher}}</text>
+            <image class="renzheng" src="/images/home/renzheng.png"></image>
+          </view>
+          <view class="f24" style="margin: 0">
+            <text>距离{{item.jvLi}}公里</text>
+            <image class="location" src="/images/home/daohang.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+

@@ -98,6 +98,13 @@ Page({
             data: true
           });
           wx.setStorage({
+            key: "loginData",
+            data: {
+              "phone": userInfo.phoneNum,
+              "password": that.data.password
+            }
+          });
+          wx.setStorage({
             key: "token",
             data: res.data.data.token
           });
