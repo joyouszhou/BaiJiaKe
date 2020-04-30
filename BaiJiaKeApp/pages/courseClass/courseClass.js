@@ -115,7 +115,6 @@ Page({
             wx.getLocation({
               success: function(res) {
                 for (let i = 0; i < hotList.length; i++) {
-                  console.log(hotList[i])
                   hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
                 }
                 that.setData({
@@ -269,7 +268,7 @@ Page({
       str = str + `city=${this.data.cityName}&`
     }
     if(this.data.oldName !== '不限' && this.data.oldName !== '年龄'){
-      str = str + `ages=${this.data.oldName}&`
+      str = str + (this.data.oldName == '20以上' ? `ages=20-999&` : `ages=${this.data.oldName}&`)
     }
     str = str + `course_type=${this.data.className}`
     wx.request({
