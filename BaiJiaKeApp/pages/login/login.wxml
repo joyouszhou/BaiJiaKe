@@ -14,7 +14,7 @@
     </view>
     <view class="zhuce">
       <view bindtap="toRegister">立即注册</view>
-      <view>忘记密码</view>
+      <view bindtap="rpwd">忘记密码</view>
     </view>
     <button  class="btn" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" lang="zh_CN">登录</button>
   <view class='protocol'>

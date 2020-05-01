@@ -15,7 +15,8 @@
     "pages/shouCang/shouCang",
     "pages/shiTing/shiTing",
     "pages/shiTingFrom/shiTingFrom",
-    "pages/serachList/serachList"
+    "pages/serachList/serachList",
+    "pages/rpwd/rpwd"
   ],
   "permission": {
     "scope.userLocation": {

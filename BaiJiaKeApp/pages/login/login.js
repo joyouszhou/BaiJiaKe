@@ -9,7 +9,11 @@ Page({
     phoneNum: '', //用户输入的电话号码
     password: '', //用户输入的验证码
   },
-
+  rpwd: function (){
+    wx.navigateTo({
+      url: '../rpwd/rpwd'
+    })
+  },
   onLoad: function () {
     console.log(app.globalData)
     // wx.request({
