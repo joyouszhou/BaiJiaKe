@@ -6,12 +6,6 @@
       <swiper-item wx:for="{{imgUrl}}" wx:key="index">
         <image src='{{item}}'></image>
       </swiper-item>
-      <!-- <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
-      </swiper-item>
-      <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
-      </swiper-item> -->
     </swiper>
   </view>
   <view class="swperNum">{{imgIndex}} / {{imgLength}}</view>
@@ -43,20 +37,45 @@
       </view>
       
     </view>
-    <view class="detailsInfo detailsInfo1">
-      <view class="detailsInfoItem" bindtap="openMap">
+    <view class="didian-jigou">
+      <view class="didian" bindtap="openMap">
+          <image mode="aspectFit" src="/images/home/daohang.png"></image>
+          <view class="info">
+            <text>授课地点</text>
+            <text>{{shopData.addr}}</text>
+          </view>
+          <view class="jiant">
+            <text>></text>  
+          </view>
+      </view>
+      <view class="shop-info" bindtap="toSchoolDetails">
+        <image mode="aspectFill" src="{{'https://baijiake.net' + shopData.logo}}"></image>
+        <view class="shop-info-info">
+          <view>
+            <view>{{shopData.name}}</view>
+            <view class="tag-box" wx:if="{{shopData.tagList}}">
+              <text wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
+            </view>
+          </view>
+          <view class="jvli">
+            <text>{{shopData.jvLi}}km</text>
+          </view>
+        </view>
+        <view class="phone">
+          <image class="right"  src="/images/courseDetails/yuyue.png" catchtap="phoneCall"></image>
+        </view>
+      </view>
+      <!-- <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>{{courseData.shopinfo.addr}}</text>
         <image class="right" src="/images/home/daohang.png"></image>
-        <!-- <text class="right">></text> -->
       </view>
       <view class="detailsInfoItem detailsInfoItem1">
         <text>所属机构</text>
         <text style="width: 490rpx;display: inline-block;" bindtap="toSchoolDetails">{{courseData.shopinfo.name}}</text>
         <image class="right"  src="/images/courseDetails/yuyue.png" bindtap="phoneCall"></image>
         <image src="/images/home/renzheng.png" class="bottom"></image>
-        <!-- <text class="right">></text> -->
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="courseInfo">

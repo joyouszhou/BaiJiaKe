@@ -188,3 +188,10 @@
   flex-direction: row-reverse;
   justify-content: right;
 }
+.tag-list{
+  display: flex;
+  align-items: center;
+}
+.tag-list image{
+  margin-right: 20rpx;
+}

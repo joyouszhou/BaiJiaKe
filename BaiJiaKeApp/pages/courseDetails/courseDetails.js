@@ -38,8 +38,16 @@ Page({
       wx.request({
         url: app.globalData.baseUrl + '/v1/shop/'+data.data.shopinfo.id,
         success: function (res) {
-          that.setData({
-            shopData: res.data.data
+          let data = res.data.data
+          data.tagList = data.tags !== '' ? data.tags.split(',') : null
+          wx.getLocation({
+            success: function(res) {
+              data.jvLi = that.distance(res.latitude, res.longitude, data.latitude, data.longitude)
+              console.log(data)
+              that.setData({
+                shopData: data
+              })
+            },
           })
         }
       })
@@ -75,7 +83,18 @@ Page({
       }
     })
   },
-
+  //两点之间经纬度求距离方法
+  distance: function (la1, lo1, la2, lo2) {
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+    s = s * 6378.137;
+    s = Math.round(s * 10000) / 10000;
+    s = s.toFixed(1);
+    return s;
+  },
   imgChange: function (e) {
     this.setData({
       imgIndex: e.detail.current + 1

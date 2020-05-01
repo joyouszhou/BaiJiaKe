@@ -23,7 +23,12 @@
         <view class="juli">
           <view  style="margin: 0">
             <text>{{item.teacher}}</text>
-            <image class="renzheng" src="/images/home/renzheng.png"></image>
+            <view style="display: flex;align-items: center;margin-bottom: 0">
+              <view class="tag-box" wx:if="{{item.tagList}}" >
+                <text style="position: relative; top: 15rpx" wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
+              </view>
+              <image class="renzheng" src="/images/home/renzheng.png"></image>
+            </view>
           </view>
           <view class="f24" style="margin: 0">
             <text>距离{{item.jvLi}}公里</text>

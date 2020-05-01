@@ -248,3 +248,55 @@
   text-overflow: ellipsis;
   padding-top: 10rpx;
 }
+.didian-jigou{
+  width: 100%;
+  border-bottom: 4rpx solid rgb(226,226,226);
+  font-size: 28rpx;
+}
+.didian-jigou .didian,.shop-info{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1px solid rgb(226,226,226);
+}
+.didian-jigou .didian image{
+  flex: 1;
+  width: 32rpx;
+  height: 32rpx;
+}
+.didian-jigou .didian .info{
+  flex: 10;
+}
+.didian-jigou .didian .jiant{
+  flex: 1;
+  text-align: center;
+  color: #999999;
+}
+.shop-info image{
+  flex: 4;
+  width: 100rpx;
+  height: 140rpx;
+}
+.shop-info .shop-info-info{
+  flex: 10;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-right: 2px solid rgb(226,226,226);
+}
+.jvli{
+  font-size: 24rpx;
+  color: rgb(173,173,173);
+}
+.shop-info .phone {
+  flex: 2;
+  text-align: center;
+}
+.shop-info .phone image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.tag-box{
+  margin-top: 10rpx;
+}

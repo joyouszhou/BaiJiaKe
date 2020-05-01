@@ -18,3 +18,19 @@
 .f30{
   font-size: 24rpx;
 }
+.tag-item{
+  display: inline-block;
+  margin-right: 10rpx;
+  padding: 5rpx 10rpx;
+  font-size: 24rpx;
+  color: white;
+}
+.green{
+  background-color: rgb(107,246,122);
+}
+.yello{
+  background-color: rgb(229, 191, 140);
+}
+.red{
+  background-color: rgb(250, 100, 114);
+}

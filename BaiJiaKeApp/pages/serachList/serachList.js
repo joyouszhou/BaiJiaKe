@@ -49,6 +49,7 @@ Page({
           success: function(res) {
             for (let i = 0; i < hotList.length; i++) {
               hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
+              hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
             }
             that.setData({
               hotList

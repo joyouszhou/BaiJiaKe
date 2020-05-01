@@ -55,6 +55,7 @@ Page({
                 success: function(res) {
                   for (let i = 0; i < data.length; i++) {
                     data[i].jvLi = that.distance(res.latitude, res.longitude, data[i].shopinfo.latitude, data[i].shopinfo.longitude)
+                    data[i].tagList = data[i].shopinfo.tags !== '' ? data[i].shopinfo.tags.split(',') : null
                   }
                   that.setData({
                     courseList: data,

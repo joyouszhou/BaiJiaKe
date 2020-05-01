@@ -114,9 +114,6 @@ Page({
       limit: that.data.limit ,
       offset: that.data.offset
     }
-    if(name) {
-      data.course_type = name
-    }
     wx.request({
       url: app.globalData.baseUrl +'/v1/course',
       data,
@@ -126,6 +123,8 @@ Page({
           success: function(res) {
             for (let i = 0; i < data.length; i++) {
               data[i].jvLi = that.distance(res.latitude, res.longitude, data[i].shopinfo.latitude, data[i].shopinfo.longitude)
+              data[i].tagList = data[i].shopinfo.tags !== '' ? data[i].shopinfo.tags.split(',') : null
+              console.log(data[i].tagList)
             }
             that.setData({
               hotList: data

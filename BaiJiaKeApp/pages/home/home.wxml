@@ -30,7 +30,7 @@
     </swiper>
   </view>
   <!-- 热门 -->
-  <view class="hot">
+  <!-- <view class="hot">
     <view>
       <image src="/images/home/remen.png"></image>
       <text>热门课程</text>
@@ -41,7 +41,7 @@
     <view bindtap="hotList" wx:for="{{coursetypeList}}" wx:key="index" data-index="{{index}}" data-name="{{item.CourseType}}" class="hotItem {{activeIndex === index ? 'active':''}}">
       {{item.CourseType}}
     </view>
-  </view>
+  </view> -->
   <!-- 课程列表 -->
   <view class="courseList">
     <view class="courseItem"
@@ -55,8 +55,11 @@
         <view class="title">
           {{item.name}}
         </view>
-        <view>
+        <view class="tag-list">
           <image src="/images/home/renzheng.png"></image>
+          <view class="tag-box" wx:if="{{item.tagList}}">
+            <text wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
+          </view>
         </view>
         <view class="number">
           <text>课程点击数 {{item.count}}</text>
