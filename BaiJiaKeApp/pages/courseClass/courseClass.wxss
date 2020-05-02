@@ -83,6 +83,7 @@
 .courseInfo view:nth-child(1){
   font-size: 24rpx;
   margin-bottom: 20rpx;
+  z-index: -1;
 }
 .courseInfo view:nth-child(2){
   margin-bottom: 20rpx;

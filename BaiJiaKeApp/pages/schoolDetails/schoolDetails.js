@@ -24,6 +24,7 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      data.data.tagList = data.data.shopinfo.tags !== '' ? data.data.shopinfo.tags.split(',') : null
       that.setData({
         shopData:data.data,
         imgLength: data.data.imageurl.length
