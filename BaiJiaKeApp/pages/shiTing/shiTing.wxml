@@ -24,7 +24,7 @@
                   <view class="tag-box" wx:if="{{item.Course.tagList}}" >
                     <text style="position: relative; top: 5rpx" wx:for="{{item.Course.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
                   </view>
-                  <image class="renzheng" src="/images/home/renzheng.png"></image>
+                  <!-- <image class="renzheng" src="/images/home/renzheng.png"></image> -->
                 </view>
               </view>
               <view>

@@ -21,27 +21,25 @@
   <!-- 轮播图 -->
   <view class="swiperBox">
     <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
-      <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
-      </swiper-item>
-      <swiper-item>
-        <image src='/images/home/swiper/baijiake.png'></image>
+      <swiper-item wx:for="{{hotcourseList}}" wx:key="index" data-item="{{item}}" 
+      bindtap="toCourseDetails">
+        <image src="{{'https://baijiake.net'+item.coverurl}}"></image>
       </swiper-item>
     </swiper>
   </view>
   <!-- 热门 -->
-  <!-- <view class="hot">
+  <view class="hot">
     <view>
       <image src="/images/home/remen.png"></image>
       <text>热门课程</text>
     </view>
     <text bindtap="toCourseClass">全部课程 ></text>
   </view> 
-  <view class="hotItemBox">
+  <!-- <view class="hotItemBox">
     <view bindtap="hotList" wx:for="{{coursetypeList}}" wx:key="index" data-index="{{index}}" data-name="{{item.CourseType}}" class="hotItem {{activeIndex === index ? 'active':''}}">
       {{item.CourseType}}
-    </view>
-  </view> -->
+    </view> -->
+  <!-- </view> -->
   <!-- 课程列表 -->
   <view class="courseList">
     <view class="courseItem"
@@ -49,14 +47,14 @@
       bindtap="toCourseDetails">
       <view class="image">
         <!-- <image src="/images/home/shangjia.png"></image> -->
-        <image mode="aspectFill" src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image mode="aspectFill" src="{{'https://baijiake.net'+item.coverurl}}"></image>
       </view>
       <view class="courseInfo">
         <view class="title">
           {{item.name}}
         </view>
         <view class="tag-list">
-          <image src="/images/home/renzheng.png"></image>
+          <!-- <image src="/images/home/renzheng.png"></image> -->
           <view class="tag-box" wx:if="{{item.tagList}}">
             <text wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
           </view>

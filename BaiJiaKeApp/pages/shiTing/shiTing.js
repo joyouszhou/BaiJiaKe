@@ -45,8 +45,10 @@ Page({
             wx.getLocation({
               success: function(res) {
                 for (let i = 0; i < data.length; i++) {
-                  data[i].Course.jvLi = that.distance(res.latitude, res.longitude, data[i].Course.shopinfo.latitude, data[i].Course.shopinfo.longitude)
+                  if(data[i].Course) {
+                    data[i].Course.jvLi = that.distance(res.latitude, res.longitude, data[i].Course.shopinfo.latitude, data[i].Course.shopinfo.longitude)
                   data[i].Course.tagList = data[i].Course.shopinfo.tags !== '' ? data[i].Course.shopinfo.tags.split(',') : null
+                  }
                 }
                 that.setData({
                   courseList: data,

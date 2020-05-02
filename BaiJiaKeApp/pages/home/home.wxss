@@ -192,6 +192,9 @@
   display: flex;
   align-items: center;
 }
+.tag-list .tag-box {
+  padding: 20rpx 0rpx;
+}
 .tag-list image{
   margin-right: 20rpx;
 }

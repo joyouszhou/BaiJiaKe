@@ -37,6 +37,7 @@ Page({
     limit: 10,
     offset: 0,
     activeIndex: 0,
+    hotcourseList: []
   },
 
   /**
@@ -105,6 +106,21 @@ Page({
         })
         that.getHotList(data[0].CourseType)
         app.globalData.courseTypeList = data
+      }
+    })
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/hotcourse',
+      header: {
+        'Authorization': 'bearer  ' + wx.getStorageSync('token')
+      },
+      success: function (res){
+        that.setData({
+          hotcourseList: res.data.data.courses
+        })
+        console.log(res.data.data.courses)
+      },
+      fail: function(res) {
+        console.log(res)
       }
     })
   },
