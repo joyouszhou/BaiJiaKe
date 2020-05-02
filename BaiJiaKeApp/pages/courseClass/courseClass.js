@@ -100,6 +100,7 @@ Page({
     that.data.classList = data;
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      console.log(data)
       if(data.courseName != ""){
         that.data.classList[0].isTab = false;
         for (let i = 0; i < that.data.classList.length;i++){
@@ -128,6 +129,31 @@ Page({
         that.setData({
           className: data.courseName,
           classList: that.data.classList,
+        })
+      }else {
+        let list = []
+        wx.request({
+          url: app.globalData.baseUrl + '/v1/course',
+          success: function (res) {
+            let hotList = res.data.data.course
+            wx.getLocation({
+              success: function(res) {
+                for (let i = 0; i < hotList.length; i++) {
+                  hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
+                  hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
+                }
+                that.setData({
+                  hotList,
+                  classList: that.data.classList,
+                })
+                // that.setData({
+            //   className: data.courseName,
+
+            // })
+              },
+            })
+            
+          }
         })
       }
     })

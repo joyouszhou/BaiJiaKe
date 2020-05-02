@@ -74,11 +74,11 @@ Page({
     wx.request({
       url: app.globalData.baseUrl + '/v1/sys',
       header: { 
-        'Authorization': 'bearer ' + wx.getStorageSync('token')
+        'Authorization': ' bearer' +' ' + wx.getStorageSync('token')
       },
       success: function(res){
-        this.setData({
-          sys: res.data
+        that.setData({
+          sys: res.data.data
         })
       }
     })

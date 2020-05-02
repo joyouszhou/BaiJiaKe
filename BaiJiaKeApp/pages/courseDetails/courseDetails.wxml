@@ -93,9 +93,9 @@
   </view>
   <view class="tips">
      <view class="infoTitle">温馨提示</view>
-     <rich-text nodes="{{sys.declare || courseData.describe}}"></rich-text>
+     <rich-text nodes="{{sys.declare}}"></rich-text>
      <view class="infoTitle">免责声明</view>
-     <rich-text nodes="{{sys.warmprompt || courseData.describe}}"></rich-text>
+     <rich-text nodes="{{sys.warmprompt}}"></rich-text>
     <!-- <image src="/images/courseDetails/tishi.png"></image> -->
   </view>
   <view class="courseInfo">
