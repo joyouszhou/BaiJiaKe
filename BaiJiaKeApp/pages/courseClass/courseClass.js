@@ -64,7 +64,8 @@ Page({
       { name: "19-22", isTab: false },
       { name: "20以上", isTab: false }
     ],
-    marginT:""
+    marginT:"",
+    baseUrl: app.globalData.baseUrl
   },
 
   /**

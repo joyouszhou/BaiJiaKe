@@ -4,7 +4,7 @@
   <view class="swiperBox">
   <swiper  indicator-active-color="white" display-multiple-items bindchange='imgChange'>
       <swiper-item wx:for="{{shopData.imageurl}}" wx:key="index">
-        <image src='{{"https://baijiake.net"+item}}'></image>
+        <image src='{{baseUrl+item}}'></image>
       </swiper-item>
     </swiper>
     <!-- <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
@@ -52,7 +52,7 @@
         <swiper current="{{currentTab}}" duration="1000"  class="swiperList">
           <swiper-item catchtouchmove='catchTouchMove'>
             <view wx:for="{{courseList}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
-              <image src="{{'https://baijiake.net'+item.coverurl}}"></image>
+              <image src="{{baseUrl+item.coverurl}}"></image>
               <view class="text">
                 <view class="top"><text class="title">{{item.name}}</text></view>
                 <view><text class="number">体验时长：{{item.experience}}分钟</text></view>
@@ -62,7 +62,7 @@
           </swiper-item>
           <swiper-item catchtouchmove='catchTouchMove'>
             <view wx:for="{{courseList1}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
-              <image src="{{'https://baijiake.net'+item.coverurl}}"></image>
+              <image src="{{baseUrl+item.coverurl}}"></image>
               <view class="text">
                 <view class="top"><text class="title">{{item.name}}</text></view>
                 <view><text class="number price">￥{{item.price}}</text></view>
@@ -104,7 +104,7 @@
   <scroll-view scroll-x class="scroll-view">
     <view class="scroll-view-item" style="" wx:for="{{hotList}}" bindtap="toSchoolDetails" data-item="{{item}}">
       <view class="img-box">
-        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image src="{{baseUrl+item.imageurl[0]}}"></image>
       </view>
       <view class="name">
         {{item.name}}

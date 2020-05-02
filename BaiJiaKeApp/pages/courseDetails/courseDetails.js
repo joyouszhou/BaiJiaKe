@@ -7,7 +7,8 @@ Page({
    */
   data: {
     courseData:{},
-    imgBaseUrl:"https://baijiake.net",
+    imgBaseUrl:app.globalData.baseUrl,
+    baseUrl: app.globalData.baseUrl,
     imgUrl: [],
     imgIndex:'1',
     imgLength:'',
@@ -73,9 +74,6 @@ Page({
     })
     wx.request({
       url: app.globalData.baseUrl + '/v1/sys',
-      header: { 
-        'Authorization': ' bearer' +' ' + wx.getStorageSync('token')
-      },
       success: function(res){
         that.setData({
           sys: res.data.data

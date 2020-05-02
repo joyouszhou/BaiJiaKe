@@ -23,7 +23,7 @@
     <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">
       <swiper-item wx:for="{{hotcourseList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
-        <image mode="aspectFill" src="{{'https://baijiake.net'+item.coverurl}}"></image>
+        <image mode="aspectFill" src="{{baseUrl+item.coverurl}}"></image>
       </swiper-item>
     </swiper>
   </view>
@@ -47,7 +47,7 @@
       bindtap="toCourseDetails">
       <view class="image">
         <!-- <image src="/images/home/shangjia.png"></image> -->
-        <image mode="aspectFill" src="{{'https://baijiake.net'+item.coverurl}}"></image>
+        <image mode="aspectFill" src="{{baseUrl+item.coverurl}}"></image>
       </view>
       <view class="courseInfo">
         <view class="title">

@@ -49,7 +49,7 @@
           </view>
       </view>
       <view class="shop-info" bindtap="toSchoolDetails">
-        <image mode="aspectFill" src="{{'https://baijiake.net' + shopData.logo}}"></image>
+        <image mode="aspectFill" src="{{baseUrl + shopData.logo}}"></image>
         <view class="shop-info-info">
           <view>
             <view>{{shopData.name}}</view>
@@ -108,7 +108,7 @@
   <scroll-view scroll-x class="scroll-view">
     <view class="scroll-view-item" style="" wx:for="{{hotList}}" bindtap="toCourseDetails" data-item="{{item}}">
       <view class="img-box">
-        <image src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image src="{{baseUrl+item.imageurl[0]}}"></image>
       </view>
       <view class="name">
         {{item.name}}

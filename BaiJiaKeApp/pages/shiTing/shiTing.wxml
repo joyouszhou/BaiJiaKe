@@ -8,7 +8,7 @@
         <view slot="-">
           <view class="item-box">
             <view class="image">
-              <image mode="aspectFill" src="{{'https://baijiake.net'+item.Course.imageurl[0]}}" bindtap="toCourseDetails" data-item="{{item}}" ></image>
+              <image mode="aspectFill" src="{{baseUrl+item.Course.imageurl[0]}}" bindtap="toCourseDetails" data-item="{{item}}" ></image>
             </view>
           </view>
           <view class="courseInfo" bindtap="toCourseDetails" data-item="{{item}}" >

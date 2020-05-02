@@ -7,6 +7,7 @@ Page({
    */
   data: {
     courseList:[],
+    baseUrl: app.globalData.baseUrl
   },
 
   /**

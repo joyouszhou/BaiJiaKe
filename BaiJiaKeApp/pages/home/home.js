@@ -37,7 +37,8 @@ Page({
     limit: 10,
     offset: 0,
     activeIndex: 0,
-    hotcourseList: []
+    hotcourseList: [],
+    baseUrl: app.globalData.baseUrl
   },
 
   /**
@@ -45,7 +46,6 @@ Page({
    */
   onLoad: function (options) {
     let loginData = wx.getStorageSync('loginData')
-    console.log(loginData)
     if(loginData){
       wx.request({
         url: app.globalData.baseUrl+'/v1/auth/login',

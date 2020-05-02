@@ -18,7 +18,8 @@ Page({
     classIsShow:false,
     oldIsShow:false,
     hotList:[],
-    inputValue: ''
+    inputValue: '',
+    baseUrl: app.globalData.baseUrl
   },
 
   /**

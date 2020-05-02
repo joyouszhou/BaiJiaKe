@@ -13,7 +13,8 @@ Page({
     currentTab: 0,
     isShow: true,
     courseList:[],
-    courseList1: []
+    courseList1: [],
+    baseUrl: app.globalData.baseUrl
   },
 
   /**

@@ -38,7 +38,7 @@
       bindtap="toCourseDetails">
       <view class="img-box">
         <!-- <image src="/images/home/shangjia.png"></image> -->
-        <image mode="aspectFill" src="{{'https://baijiake.net'+item.imageurl[0]}}"></image>
+        <image mode="aspectFill" src="{{baseUrl+item.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
         <view class="f28">{{item.name}}</view>
