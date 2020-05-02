@@ -146,7 +146,7 @@ Page({
     })
   },
   toSchoolDetails: function () {
-    let data = this.data.courseData.shopinfo
+    let data = this.data.courseData
     wx.navigateTo({
       url: '../schoolDetails/schoolDetails',
       events: {

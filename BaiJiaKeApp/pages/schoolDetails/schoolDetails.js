@@ -9,7 +9,11 @@ Page({
     shopData:{},
     imgIndex: '1',
     imgLength: '',
-    hotList:[]
+    hotList:[],
+    currentTab: 0,
+    isShow: true,
+    courseList:[],
+    courseList1: []
   },
 
   /**
@@ -24,6 +28,7 @@ Page({
         shopData:data.data,
         imgLength: data.data.imageurl.length
       })
+      console.log(data.data)
     })
     wx.request({
       url: app.globalData.baseUrl +'/v1/shop?sortby={"weight": "desc"}',
@@ -32,6 +37,14 @@ Page({
           hotList: res.data.data.shops
         })
         // console.log(res.data.data.shops)
+      }
+    })
+    wx.request({
+      url: app.globalData.baseUrl +'/v1/course?limit=3&offset=0&sortby={"created_at": "desc"}&course_status=1',
+      success : function (res) {
+        that.setData({
+          courseList: res.data.data.course
+        })
       }
     })
   },
@@ -85,5 +98,55 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  tabNav: function (e) {
+    let that = this
+    console.log(e.target.dataset.current, 111, this.data.currentTab)
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      let showMode = e.target.dataset.current == 0;
+      this.setData({
+        currentTab: e.target.dataset.current,
+        isShow: showMode
+      })
+      if(showMode) {
+        wx.request({
+          url: app.globalData.baseUrl +'/v1/course?limit=3&offset=0&sortby={"created_at": "desc"}&course_status=1',
+          success : function (res) {
+            that.setData({
+              courseList: res.data.data.course
+            })
+          }
+        })
+      }else {
+        wx.request({
+          url: app.globalData.baseUrl +'/v1/course?limit=3&offset=0&sortby={"created_at": "desc"}&course_status=2',
+          success : function (res) {
+            that.setData({
+              courseList1: res.data.data.course
+            })
+          }
+        })
+      }
+    }
+  },
+  catchTouchMove() {
+    return false
+  },
+  toCourseDetails: function (e) {
+    let data = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: '../courseDetails/courseDetails',
+      events: {
+        acceptDataFromOpenedPage: function (data) {
+        },
+      },
+      success: function (res) {
+        res.eventChannel.emit('acceptDataFromOpenerPage', { data: data })
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
 })

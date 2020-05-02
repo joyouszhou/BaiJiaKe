@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: column;
 }
-.title{
+.courseDetails .title{
   width: 100%;
   font-size: 28rpx;
   color: black;
@@ -48,7 +48,7 @@
 }
 .detailsInfo{
   width: 100%;
-  height: 85rpx;
+  min-height: 85rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -180,4 +180,87 @@
 }
 .share::after{
   border: none;
+}
+.detailsInfo .swiper-tab {
+  width: 90% ;
+  text-align: center;
+  background-color:white;
+  margin: 0 auto;
+}
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 45%;
+  color: #777;
+  border-bottom: 0rpx;
+}
+.on {
+  color: #da7c0c;
+  border-bottom: 2rpx solid #da7c0c;
+}
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.swiper-box view {
+  text-align: center;
+}
+.swiperList {
+  width: 90%;
+  min-height: 50rpx;
+  margin: 25rpx auto 0;
+}
+.swiperList  swiper-item {
+  overflow-y: auto;
+}
+.detailsInfo .swiper_item {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15rpx;
+  overflow: hidden;
+}
+.detailsInfo .swiper_item image {
+  width: 100rpx;
+  height: 100rpx;
+  float: left;
+}
+.detailsInfo .swiper_item .text {
+  display:  inline-block;
+  float: left;
+  width: calc(100% - 120rpx);
+  margin-left: 20rpx;
+  position: relative;
+}
+.detailsInfo .swiper_item .text .right {
+  position: absolute;
+  top: 26rpx;
+  right: 20rpx;
+}
+.detailsInfo .swiper_item .text .top{
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.detailsInfo .swiper_item .text view .title {
+  width: 100%;
+  color: black;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+}
+.detailsInfo .swiper_item .text view .number {
+  width: 100%;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+}
+.detailsInfo .swiper_item .text view .price {
+  color: red;
 }

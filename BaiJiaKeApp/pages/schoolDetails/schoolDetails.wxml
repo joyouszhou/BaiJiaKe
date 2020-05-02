@@ -21,7 +21,7 @@
     <view class="detailsInfo">
       <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
-        <text>{{shopData.addr}}</text>
+        <text>{{shopData.shopinfo.addr}}</text>
         <text class="right">></text>
       </view>
     </view>
@@ -30,6 +30,7 @@
   <view class="courseInfo">
     <view class="infoTitle">机构介绍</view>
     <view class="detailsInfo">
+    <rich-text nodes="{{shopData.describe}}"></rich-text>
       <!-- <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>北京市大兴区BDA国际·广场-E座</text>
@@ -38,6 +39,32 @@
     </view>
     <view class="infoTitle">选课中心</view>
     <view class="detailsInfo">
+      <view class="swiper-tab">
+        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">体验课</view>
+        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">正课</view>
+      </view>
+      <swiper current="{{currentTab}}" duration="1000"  class="swiperList">
+        <swiper-item catchtouchmove='catchTouchMove'>
+          <view wx:for="{{courseList}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
+            <image src="{{'https://baijiake.net'+item.coverurl}}"></image>
+            <view class="text">
+              <view class="top"><text class="title">{{item.name}}</text></view>
+              <view><text class="number">体验时长：{{item.experience}}分钟</text></view>
+              <text class="right">></text>
+            </view>
+          </view>
+        </swiper-item>
+        <swiper-item catchtouchmove='catchTouchMove'>
+          <view wx:for="{{courseList1}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
+            <image src="{{'https://baijiake.net'+item.coverurl}}"></image>
+            <view class="text">
+              <view class="top"><text class="title">{{item.name}}</text></view>
+              <view><text class="number price">￥{{item.price}}</text></view>
+              <text class="right">></text>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
       <!-- <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>北京市大兴区BDA国际·广场-E座</text>
@@ -46,6 +73,7 @@
     </view>
     <view class="infoTitle">特色服务</view>
     <view class="detailsInfo">
+    <rich-text nodes="{{shopData.shopinfo.institution}}"></rich-text>
       <!-- <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>北京市大兴区BDA国际·广场-E座</text>
