@@ -30,10 +30,13 @@
   <!-- 热门 -->
   <view class="hot">
     <view>
-      <image src="/images/home/remen.png"></image>
+      <!-- <image src="/images/home/remen.png"></image> -->
       <text>热门课程</text>
     </view>
-    <text bindtap="toCourseClass">全部课程 ></text>
+    <view>
+      <text bindtap="toCourseClass" class='lookAll'>查看全部 </text>
+      <image src="/images/home/skip.png"></image>
+    </view>
   </view> 
   <!-- <view class="hotItemBox">
     <view bindtap="hotList" wx:for="{{coursetypeList}}" wx:key="index" data-index="{{index}}" data-name="{{item.CourseType}}" class="hotItem {{activeIndex === index ? 'active':''}}">
@@ -54,13 +57,18 @@
           {{item.name}}
         </view>
         <view class="tag-list">
-          <!-- <image src="/images/home/renzheng.png"></image> -->
-          <view class="tag-box" wx:if="{{item.tagList}}">
-            <text wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
+          <view wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" >
+            <image wx:if="{{tagItem == '保障'}}"  src="../../images/home/guarantee.png"></image>
+            <image wx:if="{{tagItem == '连锁'}}"  src="../../images/home/chain.png"></image>
+            <image wx:if="{{tagItem == '认证'}}" src="../../images/home/approve.png"></image>
           </view>
+          <!-- <image src="/images/home/renzheng.png"></image> -->
+          <!-- <view class="tag-box" wx:if="{{item.tagList}}">
+            <text wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
+          </view> -->
         </view>
         <view class="number">
-          <text>课程点击数 {{item.count}}</text>
+          <text>课程热度 {{item.count}} | 试听8</text>
           <text>{{item.ages}}岁</text>
         </view>
         <view class="info">
@@ -68,8 +76,8 @@
             <text>{{item.shopinfo.name}}</text>
           </view>
           <view>
-            <text>距离{{item.jvLi}}公里</text>
-            <image src="/images/home/daohang.png"></image>
+            <text>距离{{item.jvLi}}KM</text>
+            <!-- <image src="/images/home/daohang.png"></image> -->
           </view>
         </view>
       </view>

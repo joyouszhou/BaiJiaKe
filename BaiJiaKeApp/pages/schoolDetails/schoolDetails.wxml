@@ -18,17 +18,29 @@
     <view class="title">
       {{shopData.name}}
     </view>
+    <view class="tag-list">
+      <view wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" >
+        <image wx:if="{{tagItem == '保障'}}"  src="../../images/home/guarantee.png"></image>
+        <image wx:if="{{tagItem == '连锁'}}"  src="../../images/home/chain.png"></image>
+        <image wx:if="{{tagItem == '认证'}}" src="../../images/home/approve.png"></image>
+      </view>
+    </view>
     <view class="detailsInfo">
+      <view class="detailsInfoItem" bindtap="openMap">
+        <text>营业时间：</text>
+        <text>{{shopData.shopinfo.addr}}</text>
+        <text class="right">></text>
+      </view>
       <view class="detailsInfoItem" bindtap="openMap">
         <text>授课地点</text>
         <text>{{shopData.shopinfo.addr}}</text>
         <text class="right">></text>
       </view>
-      <view class="tag-list">
+      <!-- <view class="tag-list">
         <view class="tag-box" wx:if="{{shopData.tagList}}" >
           <text wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
 

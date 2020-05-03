@@ -40,7 +40,7 @@
   font-size: 28rpx;
   color: black;
   font-weight: 700;
-  margin-bottom: 30rpx;
+  margin-bottom: 10rpx;
 }
 .title image{
   width: 35rpx;
@@ -277,4 +277,17 @@
 }
 .detailsInfo .tag-list .tag-box .tag-item {
   color: #fff;
+}
+.tag-list{
+  display: flex;
+  align-items: center;
+  margin-bottom: 5rpx;
+}
+.tag-list .tag-box {
+  padding: 20rpx 0rpx;
+}
+.tag-list image{
+  margin-right: 10rpx;
+  width: 68rpx;
+  height: 34rpx;
 }
