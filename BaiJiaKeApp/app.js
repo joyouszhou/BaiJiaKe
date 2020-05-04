@@ -44,21 +44,21 @@ App({
                   })
                 },
                 fail: res => {
-                  wx.showModal({
-                    // title: '提示',
-                    confirmText: '登录',
-                    content: '您未登录',
-                    success(res) {
-                      if (res.confirm) {
-                        console.log('用户点击确定')
-                        wx.navigateTo({
-                          url: '/pages/login/login',
-                        })
-                      } else if (res.cancel) {
-                        console.log('用户点击取消')
-                      }
-                    }
-                  })
+                  // wx.showModal({
+                  //   // title: '提示',
+                  //   confirmText: '登录',
+                  //   content: '您未登录',
+                  //   success(res) {
+                  //     if (res.confirm) {
+                  //       console.log('用户点击确定')
+                  //       wx.navigateTo({
+                  //         url: '/pages/login/login',
+                  //       })
+                  //     } else if (res.cancel) {
+                  //       console.log('用户点击取消')
+                  //     }
+                  //   }
+                  // })
                 }
               })
     // 获取用户信息
