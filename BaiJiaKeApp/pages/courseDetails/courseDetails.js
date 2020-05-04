@@ -61,6 +61,9 @@ Page({
           })
         }
       })
+      console.log(data)
+      data.data.shopinfo.present = that.contentFo(data.data.shopinfo.present)
+      data.data.describe = that.contentFo(data.data.describe)
       that.setData({
         courseData:data.data,
         imgUrl :arr,
@@ -84,11 +87,17 @@ Page({
     wx.request({
       url: app.globalData.baseUrl + '/v1/sys',
       success: function(res){
+        let data = res.data.data
+        data.declare = that.contentFo(data.declare)
+        data.warmprompt = that.contentFo(data.warmprompt)
         that.setData({
-          sys: res.data.data
+          sys: data
         })
       }
     })
+  },
+  contentFo: function (con){
+    return con.replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
   },
   //两点之间经纬度求距离方法
   distance: function (la1, lo1, la2, lo2) {

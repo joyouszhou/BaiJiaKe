@@ -38,9 +38,20 @@ Page({
     offset: 0,
     activeIndex: 0,
     hotcourseList: [],
-    baseUrl: app.globalData.baseUrl
+    baseUrl: app.globalData.baseUrl,
+    current: 0,
+    current2: 0
   },
-
+  swiperChange: function (e){
+    this.setData({
+      current: e.detail.current
+    })
+  },
+  swiperChange2: function (e){
+    this.setData({
+      current2: e.detail.current
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
