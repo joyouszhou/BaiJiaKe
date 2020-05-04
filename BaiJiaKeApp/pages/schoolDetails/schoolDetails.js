@@ -43,8 +43,6 @@ Page({
       var temp = [];
       while (temp = re.exec(str)) {
         array.push(temp[0].substring(1,temp[0].length - 1))
-        array.push(temp[0].substring(1,temp[0].length - 1))
-        array.push(temp[0].substring(1,temp[0].length - 1))
       }
       data.data.institutionList = array
       that.setData({

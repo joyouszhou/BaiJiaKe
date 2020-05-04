@@ -1,19 +1,29 @@
 // pages/xieYi/xieYi.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    sys: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
     wx.setNavigationBarTitle({
       title: "用户协议"
+    })
+    wx.request({
+      url: app.globalData.baseUrl + '/v1/sys',
+      success: function(res){
+        that.setData({
+          sys: res.data.data
+        })
+      }
     })
   },
 

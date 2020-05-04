@@ -6,7 +6,7 @@
   align-items: center;
 }
 .courseList{
-  width: 684rpx;
+  width: 702rpx;
   margin-top: 18rpx;
   display: flex;
   flex-direction: column;
@@ -15,95 +15,107 @@
 }
 .courseItem{
   width: 100%;
-  margin-bottom: 20rpx;
+  margin-bottom: 40rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 17rpx 0 rgba(14,32,92,0.15);
+  border-radius: 12rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
 }
 .courseList .courseItem .image{
   width: 100%;
-  height: 264rpx;
+  height: 207rpx;
 }
 .courseList .courseItem .image image{
   width: 100%;
   height: 100%;
 }
-.shanChu {
-  display: inline-block;
-  width: 100rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 25rpx;
-  color: #f90;
-  text-align: center;
-  background: null;
-}
 .courseInfo{
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 20rpx;
   box-sizing: border-box;
-  font-size: 28rpx;
-  border: 1px solid rgb(227,227,227);
-}
-.courseInfo view:nth-child(1){
-  font-size: 28rpx;
-}
-.courseInfo view:nth-child(2){
-  margin: 20rpx 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  
-}
-.courseInfo view:nth-child(3){
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.courseInfo view:nth-child(3) image{
-  width: 28rpx;
-  height: 24rpx;
-}
-.courseInfo view:nth-child(3) view:nth-child(2){
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: right;
-}
-.item-box{
+  font-size: 16rpx;
   position: relative;
 }
-.tit{
-  font-size: 28rpx;
+.courseInfo .title{
+  width: 430rpx;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
 }
-
-.van-swipe-cell__left,
-.van-swipe-cell__right {
-  display: flex;
-  width: 65px;
-  height: 44px;
-  font-size: 15px;
-  line-height: 44px;
-  color: #fff;
-  text-align: center;
-  background-color: #f44;
-  align-items: center;
-  justify-content: center;
-}
-.courseList .courseItem .courseInfo .renzheng{
+.courseInfo image{
   height: 62rpx;
   width: 62rpx;
   display: block;
   text-align: left;
   font-size: 20rpx;
   margin: 10rpx 0;
-  margin-right: 10rpx;
 }
-.courseList .courseItem .courseInfo .juli{
+.courseInfo .number{
+  width: 662rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  flex-direction: row;
+  font-size: 26rpx;
+  justify-content: space-between;
+  color: rgba(34,34,34,0.65);
+}
+.courseInfo .number text{
+  width: 100%;
+  text-align: right;
+}
+.courseInfo .info{
+  width: 662rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: rgba(34,34,34,0.65);
+}
+.courseInfo .info .film {
+  width: 280rpx;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+}
+.courseInfo .info .time {
+  font-size: 24rpx;
+}
+.courseInfo .info image{
+  width: 28rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+  margin-top: 5rpx;
+}
+.courseInfo .info view:nth-child(2){
+  display: flex;
+  margin-left: 10rpx;
+  flex-direction: row-reverse;
+  justify-content: right;
+}
+.tag-list{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  position: absolute;
+  top: 12rpx;
+  right: 20rpx;
 }
-.courseList .courseItem .courseInfo .location{
-  margin-top: 6rpx;
-  margin-right: 10rpx;
+.tag-list .tag-box {
+  padding: 20rpx 0rpx;
+}
+.tag-list image{
+  margin-left: 10rpx;
+  width: 68rpx;
+  height: 34rpx;
 }

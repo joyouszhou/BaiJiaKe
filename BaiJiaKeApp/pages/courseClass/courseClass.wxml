@@ -32,12 +32,11 @@
     </view>
   </view>
   <!-- 课程列表 -->
-  <view class="courseList" style="{{marginT}}">
+  <!-- <view class="courseList" style="{{marginT}}">
     <view class="courseItem"
       wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
       bindtap="toCourseDetails">
       <view class="img-box">
-        <!-- <image src="/images/home/shangjia.png"></image> -->
         <image mode="aspectFill" src="{{baseUrl+item.imageurl[0]}}"></image>
       </view>
       <view class="courseInfo">
@@ -55,7 +54,6 @@
               <view class="tag-box" wx:if="{{item.tagList}}" >
                 <text style="position: relative; top: 15rpx" wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
               </view>
-              <!-- <image class="renzheng" src="/images/home/renzheng.png"></image> -->
             </view>
           </view>
           <view class="f24" style="margin: 0">
@@ -65,28 +63,40 @@
         </view>
       </view>
     </view>
-    <!-- <view class="courseItem" bindtap="toCourseDetails">
-      <view>
-        <image src="/images/home/shangjia.png"></image>
+  </view> -->
+  <view class="courseList" style="{{marginT}}">
+    <view class="courseItem"
+      wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
+      bindtap="toCourseDetails">
+      <view class="image">
+        <image mode="aspectFill" src="{{baseUrl+item.coverurl}}"></image>
       </view>
       <view class="courseInfo">
-        <view>格林创意作文体验课</view>
-        <view>
-          <text>课程点击数 {{"356"}}</text>
-          <text>{{"3-15"}}岁</text>
+        <view class="title">
+          {{item.name}}
         </view>
-        <view>
+        <view class="tag-list">
+          <view wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" >
+            <image wx:if="{{tagItem == '保障'}}"  src="../../images/home/guarantee.png"></image>
+            <image wx:if="{{tagItem == '连锁'}}"  src="../../images/home/chain.png"></image>
+            <image wx:if="{{tagItem == '认证'}}" src="../../images/home/approve.png"></image>
+          </view>
+        </view>
+        <view class="number">
+          <text>课程热度 {{item.count}}</text>
+          <text>{{item.ages}}岁 {{item.course_status == 1?"体验课":'正式课'}}</text>
+        </view>
+        <view class="info">
           <view>
-            <text>格伦教育(大望路店)</text>
-            <image src="/images/home/renzheng.png"></image>
+            <text class="film">{{item.shopinfo.name}}</text>
           </view>
           <view>
-            <text>距离4.8公里</text>
-            <image src="/images/home/daohang.png"></image>
+            <text class="time">距离{{item.jvLi}}KM</text>
+            <!-- <image src="/images/home/daohang.png"></image> -->
           </view>
         </view>
       </view>
-    </view> -->
+    </view>
   </view>
 </view>
 
