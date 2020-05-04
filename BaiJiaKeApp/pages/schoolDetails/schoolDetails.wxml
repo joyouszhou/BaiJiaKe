@@ -38,7 +38,7 @@
       </view>
       <view class="detailsInfoItems" bindtap="openMap">
         <image src="../../images/home/daohang.png" class="daohang"></image>
-        <text>授课地点{{shopData.shopinfo.addr}}</text>
+        <text>授课地点：{{shopData.shopinfo.addr}}</text>
         <image src="../../images/home/skip.png" class="skip"></image>
       </view>
       <!-- <view class="tag-list">
