@@ -21,11 +21,12 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title:"我的"
-    })
+    })    
+  },
+  onShow: function (){
     this.setData({
       userInfo: app.globalData.userInfo,
     })
-    
   },
   btnClick: function (e) {
     let id = e.currentTarget.dataset.id
