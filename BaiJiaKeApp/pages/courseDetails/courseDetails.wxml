@@ -1,7 +1,10 @@
 <!--pages/courseDetails/courseDetails.wxml-->
 <view class="body">
+  <view class="return" bindtap="houtui" style="margin-top:{{statusBarHeight}}px;">
+    <image src="/images/home/bak.png"></image>
+  </view>
   <!-- 轮播图 -->
-  <view class="swiperBox">
+  <view class="swiperBox"> 
     <swiper  indicator-active-color="white" display-multiple-items bindchange='imgChange'>
       <swiper-item wx:for="{{imgUrl}}" wx:key="index">
         <image src='{{item}}'></image>
@@ -14,21 +17,21 @@
     <view class="title">
       {{courseData.name}} 
       <button class="share" open-type="share">
-        <image src="/images/courseDetails/share.png"></image>
-        <text>分享</text>
+        <image src="/images/courseDetails/share_on.png"></image>
+        <!-- <text>分享</text> -->
       </button>
     </view>
     <view class="detailsInfo">
       <view>
-        <text>适用年龄</text>
+        <text>适用年龄：</text>
         <text>{{courseData.ages}}岁</text>
       </view>
       <view>
-        <text>体验时长</text>
+        <text>体验时长：</text>
         <text>{{courseData.experience}}分钟</text>
       </view>
       <view>
-        <text>营业时间</text>
+        <text>营业时间：</text>
         <text>{{courseData.shopinfo.open_time}}</text>
       </view>
       <view>
@@ -38,23 +41,23 @@
       
     </view>
     <view class="didian-jigou">
-      <view class="didian" bindtap="openMap">
-          <image mode="aspectFit" src="/images/home/daohang.png"></image>
-          <view class="info">
-            <text>授课地点</text>
-            <text>{{shopData.addr}}</text>
-          </view>
-          <view class="jiant">
-            <text>></text>  
-          </view>
+      <view class="detailsInfoItems" bindtap="openMap">
+        <image src="../../images/home/daohang.png" class="daohang"></image>
+        <text>授课地点{{shopData.shopinfo.addr}}</text>
+        <image src="../../images/home/skip.png" class="skip"></image>
       </view>
       <view class="shop-info" bindtap="toSchoolDetails">
-        <image mode="aspectFill" src="{{baseUrl + shopData.logo}}"></image>
+        <image class="shop-info-img" mode="aspectFill" src="{{baseUrl + shopData.logo}}"></image>
         <view class="shop-info-info">
           <view>
             <view>{{shopData.name}}</view>
-            <view class="tag-box" wx:if="{{shopData.tagList}}">
-              <text wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
+            <view class="tag-box tag-list" wx:if="{{shopData.tagList}}">
+              <!-- <text wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text> -->
+              <view wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" >
+                <image wx:if="{{tagItem == '保障'}}"  src="../../images/home/guarantee.png"></image>
+                <image wx:if="{{tagItem == '连锁'}}"  src="../../images/home/chain.png"></image>
+                <image wx:if="{{tagItem == '认证'}}" src="../../images/home/approve.png"></image>
+              </view>
             </view>
           </view>
           <view class="jvli">
@@ -62,50 +65,46 @@
           </view>
         </view>
         <view class="phone">
-          <image class="right"  src="/images/courseDetails/yuyue.png" catchtap="phoneCall"></image>
+          <image class="right"  src="/images/courseDetails/phone2.png" catchtap="phoneCall"></image>
         </view>
       </view>
-      <!-- <view class="detailsInfoItem" bindtap="openMap">
-        <text>授课地点</text>
-        <text>{{courseData.shopinfo.addr}}</text>
-        <image class="right" src="/images/home/daohang.png"></image>
-      </view>
-      <view class="detailsInfoItem detailsInfoItem1">
-        <text>所属机构</text>
-        <text style="width: 490rpx;display: inline-block;" bindtap="toSchoolDetails">{{courseData.shopinfo.name}}</text>
-        <image class="right"  src="/images/courseDetails/yuyue.png" bindtap="phoneCall"></image>
-        <image src="/images/home/renzheng.png" class="bottom"></image>
-      </view> -->
     </view>
   </view>
-  <view class="courseInfo">
-    <view class="infoTitle">
-      课程介绍
-     <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
+  <view class="cutOffRule"></view>
+  <view class="courseDetails">
+    <view class="infoTitle">体验有礼</view>
+    <view class="detailsInfo">
+      <rich-text nodes="{{courseData.shopinfo.present}}"></rich-text>
     </view>
-    <view class="courseTitle">课程信息</view>
-    <rich-text nodes="{{courseData.describe}}"></rich-text>
-    <view class="infoTitle">
-      体验有礼
-     <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
+  </view>
+  <view class="cutOffRule"></view>
+  <view class="courseDetails">
+    <view class="infoTitle">课程介绍</view>
+    <view class="detailsInfo">
+      <rich-text nodes="{{courseData.describe}}"></rich-text>
     </view>
-    <rich-text nodes="{{courseData.shopinfo.present}}"></rich-text>
   </view>
-  <view class="tips">
-     <view class="infoTitle">温馨提示</view>
-     <rich-text nodes="{{sys.declare}}"></rich-text>
-     <view class="infoTitle">免责声明</view>
-     <rich-text nodes="{{sys.warmprompt}}"></rich-text>
-    <!-- <image src="/images/courseDetails/tishi.png"></image> -->
+  <view class="cutOffRule"></view>
+  <view class="courseDetails">
+    <view class="infoTitle">温馨提示</view>
+    <view class="detailsInfo">
+      <rich-text nodes="{{sys.declare}}"></rich-text>
+    </view>
   </view>
-  <view class="courseInfo">
+  <view class="cutOffRule"></view>
+  <view class="courseDetails" style="margin-bottom: 120rpx;">
+    <view class="infoTitle">免责声明</view>
+    <view class="detailsInfo">
+      <rich-text nodes="{{sys.warmprompt}}"></rich-text>
+    </view>
+  </view>
+  <view class="courseInfo" wx:if="{{false}}">
     <view class="infoTitle">
       热门推荐
       <image src="/images/courseDetails/cutOffRule3.png" class="rule"></image>
     </view>
-   
   </view>
-  <scroll-view scroll-x class="scroll-view">
+  <scroll-view scroll-x class="scroll-view" wx:if="{{false}}">
     <view class="scroll-view-item" style="" wx:for="{{hotList}}" bindtap="toCourseDetails" data-item="{{item}}">
       <view class="img-box">
         <image src="{{baseUrl+item.imageurl[0]}}"></image>
@@ -125,8 +124,8 @@
       <image wx:else src="/images/courseDetails/shoucang2.png"></image>
       <text>收藏</text>
     </view>
-    <view bindtap="toShiTingFrom" class="btn">
-      <image src="/images/courseDetails/yuyue.png"></image>
+    <view bindtap="toShiTingFrom" class="btn yuyue">
+      <image src="/images/courseDetails/phone.png"></image>
       <text>立即预约</text>
     </view>
   </view>

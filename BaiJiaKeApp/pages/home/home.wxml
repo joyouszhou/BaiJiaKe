@@ -62,10 +62,6 @@
             <image wx:if="{{tagItem == '连锁'}}"  src="../../images/home/chain.png"></image>
             <image wx:if="{{tagItem == '认证'}}" src="../../images/home/approve.png"></image>
           </view>
-          <!-- <image src="/images/home/renzheng.png"></image> -->
-          <!-- <view class="tag-box" wx:if="{{item.tagList}}">
-            <text wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
-          </view> -->
         </view>
         <view class="number">
           <text>课程热度 {{item.count}} | 试听8</text>

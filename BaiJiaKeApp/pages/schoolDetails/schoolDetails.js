@@ -17,13 +17,21 @@ Page({
     isShouCang: false,
     offset: 0,
     offset1: 0,
-    baseUrl: app.globalData.baseUrl
+    baseUrl: app.globalData.baseUrl,
+    statusBarHeight: 0
   },
-
+  houtui(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      statusBarHeight: wx.getSystemInfoSync().statusBarHeight
+    })
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
     

@@ -1,5 +1,8 @@
 <!--pages/schoolDetails/schoolDetails.wxml-->
 <view class="body">
+  <view class="return" bindtap="houtui" style="margin-top:{{statusBarHeight}}px;">
+    <image src="/images/home/bak.png"></image>
+  </view>
   <!-- 轮播图 -->
   <view class="swiperBox">
   <swiper  indicator-active-color="white" display-multiple-items bindchange='imgChange'>

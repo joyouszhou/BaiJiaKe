@@ -1,6 +1,14 @@
 //app.js
 App({
   onLaunch: function () {
+    wx.getSystemInfo({
+      success: function(res) {
+        var name = 'iPhone X'
+        if(res.model.indexOf(name) > -1){
+          that.globalData.isIpx = true
+        }
+      }
+    })
     // 展示本地存储能力
     let that = this;
     var logs = wx.getStorageSync('logs') || []
@@ -163,6 +171,7 @@ App({
     // baseUrl:"https://goldlinks.net.cn",
     baseUrl:"https://baijiake.net",
     shouCangList:[],
-    courseTypeList:[]
+    courseTypeList:[],
+    isIpx: false
   }
 })

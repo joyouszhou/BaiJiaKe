@@ -34,3 +34,19 @@
 .red{
   background-color: rgb(250, 100, 114);
 }
+.return{
+  position: fixed;
+  left: 10px;
+  z-index: 2;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.return image{
+  width: 40rpx;
+  height: 42rpx;
+}

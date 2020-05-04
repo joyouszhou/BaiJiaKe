@@ -37,7 +37,37 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 20rpx;
-  /* align-items: center; */
+}
+.infoTitle{
+  width: 100%;
+  line-height: 28rpx;
+  font-size: 28rpx;
+  color:rgb(36,123,160);
+  font-weight: 700;
+  padding: 20rpx 0;
+}
+.detailsInfo{
+  width: 100%;
+  min-height: 85rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* border-bottom: 4rpx solid rgb(226,226,226); */
+  font-size: 26rpx;
+  color: rgba(34,34,34,0.65);
+}
+.courseDetails .title{
+  width: 600rpx;
+  font-size: 28rpx;
+  color: black;
+  font-weight: 700;
+  margin-bottom: 15rpx;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
 }
 .title{
   width: 100%;
@@ -65,20 +95,12 @@
 }
 .title .share image{
   width: 40rpx;
-  height: 10rpx;
+  height: 40rpx;
   display: block;
   margin-left: 10rpx;
   margin-bottom: 10rpx;
 }
-.detailsInfo{
-  width: 100%;
-  height: 85rpx;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border-bottom: 4rpx solid rgb(226,226,226);
-  margin-bottom: 10rpx;
-}
+
 .detailsInfo1 {
   height: auto;
   padding-bottom: 10rpx;
@@ -129,14 +151,6 @@
   font-size: 24rpx;
   text-align: center;
   color:rgb(60,60,60);
-}
-.infoTitle{
-  width: 100%;
-  height: 30rpx;
-  line-height: 30rpx;
-  font-size: 24rpx;
-  color:rgb(215,129,74);
-  font-weight: 700;
 }
 .courseInfo view{
   height: auto;
@@ -197,34 +211,7 @@
   font-size: 24rpx;
   color: rgb(138,138,138);
 }
-.tabBar{
-  width: 100vw;
-  height: 120rpx;
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  background: white;
-}
-.tabBar .btn{
-  width:130rpx;
-  height: 70rpx;
-  margin: 25rpx 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.tabBar image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-bottom: 10rpx;
-}
-.tabBar text{
-  font-size: 24rpx;
-  color: rgb(176,176,176);
-}
+
 .scroll-view{
   display: flex;
   white-space: nowrap;
@@ -250,14 +237,12 @@
 }
 .didian-jigou{
   width: 100%;
-  border-bottom: 4rpx solid rgb(226,226,226);
   font-size: 28rpx;
 }
 .didian-jigou .didian,.shop-info{
   display: flex;
   align-items: center;
   padding: 20rpx 0;
-  border-bottom: 1px solid rgb(226,226,226);
 }
 .didian-jigou .didian image{
   flex: 1;
@@ -266,22 +251,25 @@
 }
 .didian-jigou .didian .info{
   flex: 10;
+  color: rgba(34,34,34,0.65);
+  font-size: 26rpx;
+  line-height: 39rpx;
+
 }
 .didian-jigou .didian .jiant{
   flex: 1;
   text-align: center;
   color: #999999;
 }
-.shop-info image{
-  flex: 4;
-  width: 100rpx;
-  height: 140rpx;
+.shop-info image.shop-info-img{
+  flex: 2;
+  width: 96rpx;
+  height: 96rpx;
 }
 .shop-info .shop-info-info{
   flex: 10;
   padding: 0 20rpx;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   border-right: 2px solid rgb(226,226,226);
 }
@@ -294,9 +282,106 @@
   text-align: center;
 }
 .shop-info .phone image{
-  width: 32rpx;
-  height: 32rpx;
+  width: 45rpx;
+  height: 45rpx;
 }
 .tag-box{
   margin-top: 10rpx;
+}
+.tabBar{
+  width: 100vw;
+  height: 106rpx;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #E4EAF1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: white;
+}
+.tabBar .btn{
+  width:130rpx;
+  height: 70rpx;
+  margin: 25rpx 0;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.tabBar  .yuyue{
+  background: #F25F5C; 
+  border-radius: 12rpx;
+  border-radius: 12rpx;
+  width: 276rpx;
+  height: 72rpx;
+  font-size: 28rpx;
+}
+.tabBar .yuyue text {
+  color: #fff;
+  font-size: 28rpx;
+}
+.tabBar .yuyue image {
+  margin-left: 40rpx;
+}
+.tabBar image{
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  padding: 15rpx 10rpx;
+}
+.tabBar text{
+  float: left;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #222222;
+  letter-spacing: 0;
+  line-height:70rpx;
+}
+.tag-list{
+  display: flex;
+  align-items: center;
+  margin-bottom: 5rpx;
+}
+.tag-list .tag-box {
+  padding: 20rpx 0rpx;
+}
+.tag-list image{
+  margin-right: 10rpx;
+  width: 68rpx;
+  height: 34rpx;
+}
+.cutOffRule {
+  height: 10rpx;
+  width: 100%;
+  opacity: 0.65;
+  background: #E4EAF1;
+}
+.detailsInfoItems {
+  width: 100%;
+  height: 38px;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgb(226,226,226);
+  border-top: 1px solid rgb(226,226,226);
+}
+.detailsInfoItems .daohang {
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 20rpx;
+  float: left;
+  padding-top: 9rpx;
+}
+.detailsInfoItems text {
+  width: 575rpx;
+  float: left;
+  font-size: 26rpx;
+  color: rgba(34,34,34,0.65);
+  letter-spacing: 0;
+  line-height: 39rpx;
+}
+.detailsInfoItems .skip {
+  width: 22.6rpx;
+  height: 22.6rpx;
+  float: right;
+  padding-top: 8rpx;
 }

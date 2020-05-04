@@ -194,7 +194,7 @@
   overflow: hidden;
 }
 .tabBar  .yuyue{
-  background: #F25F5C;
+  background: #F25F5C; 
   border-radius: 12rpx;
   border-radius: 12rpx;
   width: 276rpx;
