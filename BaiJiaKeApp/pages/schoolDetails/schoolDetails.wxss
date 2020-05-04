@@ -52,7 +52,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border-bottom: 4rpx solid rgb(226,226,226);
+  /* border-bottom: 4rpx solid rgb(226,226,226); */
   margin-bottom: 10rpx;
 }
 .detailsInfo view{
@@ -72,18 +72,49 @@
   float: right;
   color: rgb(115,115,115)
 }
-
-
+.detailsInfo .detailsInfoItems {
+  width: 100%;
+  height: auto;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+}
+.detailsInfo .detailsInfoItems .daohang {
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 20rpx;
+  float: left;
+  padding-top: 9rpx;
+}
+.detailsInfo .detailsInfoItems text {
+  width: 575rpx;
+  float: left;
+  font-size: 26rpx;
+  color: rgba(34,34,34,0.65);
+  letter-spacing: 0;
+  line-height: 39rpx;
+}
+.detailsInfo .detailsInfoItems .skip {
+  width: 22.6rpx;
+  height: 22.6rpx;
+  float: right;
+  padding-top: 8rpx;
+}
+.cutOffRule {
+  height: 10rpx;
+  width: 100%;
+  opacity: 0.65;
+  background: #E4EAF1;
+}
 .courseInfo{
   width: 700rpx;
 }
 .infoTitle{
   width: 100%;
-  height: 30rpx;
-  line-height: 30rpx;
-  font-size: 24rpx;
-  color:rgb(215,129,74);
+  line-height: 28rpx;
+  font-size: 28rpx;
+  color:rgb(36,123,160);
   font-weight: 700;
+  padding: 20rpx 0;
 }
 
 

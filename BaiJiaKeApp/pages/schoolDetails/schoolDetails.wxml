@@ -28,13 +28,12 @@
     <view class="detailsInfo">
       <view class="detailsInfoItem" bindtap="openMap">
         <text>营业时间：</text>
-        <text>{{shopData.shopinfo.addr}}</text>
-        <text class="right">></text>
+        <text>{{shopData.shopinfo.open_time}}</text>
       </view>
-      <view class="detailsInfoItem" bindtap="openMap">
-        <text>授课地点</text>
-        <text>{{shopData.shopinfo.addr}}</text>
-        <text class="right">></text>
+      <view class="detailsInfoItems" bindtap="openMap">
+        <image src="../../images/home/daohang.png" class="daohang"></image>
+        <text>授课地点{{shopData.shopinfo.addr}}</text>
+        <image src="../../images/home/skip.png" class="skip"></image>
       </view>
       <!-- <view class="tag-list">
         <view class="tag-box" wx:if="{{shopData.tagList}}" >
@@ -43,7 +42,7 @@
       </view> -->
     </view>
   </view>
-
+ <view class="cutOffRule"></view>
   <view class="courseInfo">
     <view class="infoTitle">机构介绍</view>
     <view class="detailsInfo">
@@ -109,11 +108,10 @@
       </view>
     </view> -->
   </view>
-  <view class="courseInfo">
+  <!-- <view class="courseInfo">
     <view class="infoTitle">热门推荐</view>
-   
-  </view>
-  <scroll-view scroll-x class="scroll-view">
+  </view> -->
+  <!-- <scroll-view scroll-x class="scroll-view">
     <view class="scroll-view-item" style="" wx:for="{{hotList}}" bindtap="toSchoolDetails" data-item="{{item}}">
       <view class="img-box">
         <image src="{{baseUrl+item.imageurl[0]}}"></image>
@@ -122,7 +120,7 @@
         {{item.name}}
       </view>
     </view>
-  </scroll-view>
+  </scroll-view> -->
   <view class="tabBar">
     <button class="share btn" open-type="share">
       <image mode="aspectFit" src="/images/courseDetails/share.png"></image>
