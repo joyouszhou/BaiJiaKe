@@ -7,17 +7,40 @@
     value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
   </view>
   <!-- 分类导航 -->
-  <view class="navBox">
+   <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{false}}" style="height: 380rpx;width: 702rpx;">
+    <swiper-item>
+      <view class="navBox">
+        <view class="navItem" wx:for="{{coursetypeList}}" wx:key="index" wx:if="{{index < 10}}" data-id="{{index}}" data-name="{{item.CourseType}}" bindtap="getNavItem"> 
+          <image src='{{item.Logo}}'></image>
+          <text>{{item.CourseType}}</text>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="navBox">
+        <view class="navItem" wx:for="{{coursetypeList}}" wx:key="index" wx:if="{{index > 9 && index < 20}}" data-id="{{index}}" data-name="{{item.CourseType}}" bindtap="getNavItem"> 
+          <image src='{{item.Logo}}'></image>
+          <text>{{item.CourseType}}</text>
+        </view>
+      </view>
+    </swiper-item>
+    <!-- <swiper-item>
+      <view class="navBox">
+        <view class="navItem" wx:for="{{coursetypeList}}" wx:key="index" wx:if="{{index > 19 && index < 30}}" data-id="{{index}}" data-name="{{item.CourseType}}" bindtap="getNavItem"> 
+          <image src='{{item.Logo}}'></image>
+          <text>{{item.CourseType}}</text>
+        </view>
+      </view>
+    </swiper-item> -->
+  </swiper>
+  <!-- <view class="navBox">
     <view class="navItem" wx:for="{{coursetypeList}}" wx:key="index" data-id="{{index}}" data-name="{{item.CourseType}}" wx:show="{{item.show}}"
     bindtap="getNavItem"> 
       <image src='{{item.Logo}}'></image>
       <text>{{item.CourseType}}</text>
     </view>
-    <!-- <view class="navItem" bindtap="changeNav">
-      <image src='/images/home/nav/shouqi.png'></image>
-      <text>{{isOpenNavText}}</text>
-    </view> -->
-  </view>
+  </view> -->
   <!-- 轮播图 -->
   <view class="swiperBox">
     <swiper indicator-dots="true" autoplay="true" indicator-active-color="white">

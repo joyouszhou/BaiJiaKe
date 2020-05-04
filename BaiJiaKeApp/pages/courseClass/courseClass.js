@@ -188,20 +188,24 @@ Page({
         let marginT = ""
         console.log(that.data.classList)
         if(that.data.classList.length<4){
-          marginT = "margin-top: 200rpx"
+          marginT = `margin-top: ${88 * 1 + 120}rpx`
         }
         if (that.data.classList.length > 4) {
-          marginT = "margin-top: 400rpx"
+          marginT = `margin-top: ${88 * 2 + 120}rpx`
         }
         if (that.data.classList.length >8) {
-          marginT = "margin-top: 600rpx"
+          marginT = `margin-top: ${88 * 3 + 120}rpx`
         }
         if (that.data.classList.length > 12) {
-          marginT = "margin-top: 800rpx"
+          marginT = `margin-top: ${88 * 4 + 120}rpx`
         }
         if (that.data.classList.length > 16) { 
-          marginT = "margin-top: 1000rpx"
+          marginT = `margin-top: ${88 * 5 + 120}rpx`
         }
+        if (that.data.classList.length > 20) { 
+          marginT = `margin-top: ${88 * 6 + 120}rpx`
+        }
+        console.log(marginT)
         this.setData({
           isCityOpen: false,
           isOldOpen: false,
