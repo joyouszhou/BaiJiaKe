@@ -57,9 +57,9 @@ Page({
                 })
               },
             })
-            that.setData({
-              courseList: data
-            })
+            // that.setData({
+            //   courseList: data
+            // })
           },
           fail: function () {
             wx.showToast({

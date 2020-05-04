@@ -1,41 +1,39 @@
 <!--pages/shouCang/shouCang.wxml-->
 <view class="body">
   <!-- 课程列表 -->
+  
   <view class="courseList">
-    <van-swipe-cell class="courseItem" right-width="{{ 65 }}" async-close bind:close="onClose" wx:for="{{courseList}}" wx:key="index" data-item="{{item}}" >
-      <view slot="left"></view>
-      <van-cell-group class="content-box">
-        <view slot="-">
-          <view class="item-box">
-            <view class="image">
-              <image mode="aspectFill" src="{{baseUrl+item.Course.imageurl[0]}}" bindtap="toCourseDetails" data-item="{{item}}" ></image>
-            </view>
-          </view>
-          <view class="courseInfo" bindtap="toCourseDetails" data-item="{{item}}" >
-            <view class="tit">{{item.Course.name}}</view>
-            <view>
-              <text>课程点击数 {{item.Course.count}}</text>
-              <text>{{item.Course.ages}}岁</text>
-            </view>
-            <view class="juli">
-              <view>
-                <text>{{item.Course.teacher}}</text>
-                <view style="display: flex;align-items: center;margin-bottom: 0">
-                  <view class="tag-box" wx:if="{{item.Course.tagList}}" >
-                    <text style="position: relative; top: 5rpx" wx:for="{{item.Course.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
-                  </view>
-                  <!-- <image class="renzheng" src="/images/home/renzheng.png"></image> -->
-                </view>
-              </view>
-              <view>
-                <text>距离{{item.Course.jvLi}}公里</text>
-                <image class="location" src="/images/home/daohang.png"></image>
-              </view>
-            </view>
+    <view class="courseItem"
+      wx:for="{{courseList}}" wx:key="index" data-item="{{item}}" 
+      bindtap="toCourseDetails">
+      <view class="image">
+        <image mode="aspectFill" src="{{baseUrl+item.Course.coverurl}}"></image>
+      </view>
+      <view class="courseInfo">
+        <view class="title">
+          {{item.Course.name}}
+        </view>
+        <view class="tag-list">
+          <view wx:for="{{item.Course.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" >
+            <image wx:if="{{tagItem == '保障'}}"  src="../../images/home/guarantee.png"></image>
+            <image wx:if="{{tagItem == '连锁'}}"  src="../../images/home/chain.png"></image>
+            <image wx:if="{{tagItem == '认证'}}" src="../../images/home/approve.png"></image>
           </view>
         </view>
-      </van-cell-group>
-      <view slot="right">删除</view>
-    </van-swipe-cell>
+        <view class="number">
+          <text>{{item.Course.ages}}岁 {{item.Course.course_status == 1?"体验课":'正式课'}}</text>
+        </view>
+        <view class="info">
+          <view>
+            <text class="film">{{item.Course.shopinfo.name}}</text>
+          </view>
+          <view>
+            <text class="time">预约时间：{{item.OrderTime}}</text>
+            <!-- <image src="/images/home/daohang.png"></image> -->
+          </view>
+        </view>
+      </view>
+    </view>
+    
   </view>
 </view>

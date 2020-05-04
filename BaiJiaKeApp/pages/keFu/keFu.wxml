@@ -1,4 +1,7 @@
 <!--pages/keFu/keFu.wxml-->
 <view class="body">
-  <image style="width:600rpx;height:500rpx;" src="/images/kefu.png"></image>
+  <view class="contet">
+    <rich-text nodes="{{sys.phone}}" ></rich-text>
+  </view>
+  <!-- <image style="width:600rpx;height:500rpx;" src="/images/kefu.png"></image> -->
 </view>

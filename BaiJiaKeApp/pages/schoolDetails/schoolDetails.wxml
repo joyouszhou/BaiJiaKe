@@ -89,7 +89,7 @@
   <view class="cutOffRule"></view>
   <view class="courseDetails margin_bottom">
     <view class="infoTitle">正式课程</view>
-    <view class="detailsInfo">
+    <view class="detailsInfo" wx:if="{{courseList1.length >0}}" >
       <view class="swiperText">
         <view wx:for="{{courseList1}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
           <image src="{{baseUrl+item.coverurl}}"></image>
@@ -101,8 +101,11 @@
         </view>
       </view>
     </view>
-    <view class="more">
+    <view class="more" wx:if="{{courseList1.length >0}}">
       <text bindtap="moreOfficial">更多正式课</text>
+    </view>
+    <view class="more" wx:if="{{courseList1.length == 0}}">
+      <text>暂无数据</text>
     </view>
   </view>
   <!-- <view class="courseInfo">
@@ -130,7 +133,7 @@
     </view>
     <view bindtap="toShiTingFrom" class="btn yuyue">
       <image src="/images/courseDetails/phone.png"></image>
-      <text>立即预约</text>
+      <text>拨打电话</text>
     </view>
   </view>
 </view>
