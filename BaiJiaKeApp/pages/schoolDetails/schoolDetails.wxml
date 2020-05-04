@@ -73,7 +73,7 @@
   <view class="cutOffRule"></view>
   <view class="courseDetails">
     <view class="infoTitle">体验课程</view>
-    <view class="detailsInfo">
+    <view class="detailsInfo" wx:if="{{courseList.length >0}}">
       <view class="swiperText">
         <view wx:for="{{courseList}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
           <image src="{{baseUrl+item.coverurl}}"></image>
@@ -85,8 +85,11 @@
         </view>
       </view>
     </view>
-    <view class="more">
+    <view class="more" wx:if="{{courseList.length >0}}">
       <text  bindtap="moreExperience">更多体验课</text>
+    </view>
+    <view class="more" wx:if="{{courseList.length == 0}}">
+      <text>暂无数据</text>
     </view>
   </view>
   <view class="cutOffRule"></view>
