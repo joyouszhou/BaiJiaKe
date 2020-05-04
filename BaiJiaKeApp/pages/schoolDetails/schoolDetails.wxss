@@ -268,9 +268,9 @@
   margin: 0 auto;
 }
 .detailsInfo .content {
-  width: 135rpx;
+  width: 170rpx;
   margin-bottom: 12rpx;
-  margin-right: 55rpx;
+  margin-right: 5rpx;
 }
 .detailsInfo .content:nth-child(3n+4) {
   margin-right: 0rpx;
