@@ -34,13 +34,41 @@
   width: 700rpx;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .courseDetails .title{
-  width: 100%;
+  width: 600rpx;
   font-size: 28rpx;
   color: black;
   font-weight: 700;
-  margin-bottom: 10rpx;
+  margin-bottom: 15rpx;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+}
+.courseDetails .more {
+  text-align: center;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+  color: rgba(34,34,34,0.35);
+  letter-spacing: 0;
+}
+.margin_bottom {
+  margin-bottom: 109rpx;
+}
+.courseDetails .share_on {
+  position: absolute;
+  top: 0;
+  right: 0rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+.courseDetails .share_on image {
+  height: 40rpx;
+  width: 40rpx;
 }
 .title image{
   width: 35rpx;
@@ -147,9 +175,10 @@
 }
 .tabBar{
   width: 100vw;
-  height: 120rpx;
+  height: 106rpx;
   position: fixed;
   bottom: 0;
+  border-top: 1px solid #E4EAF1;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -160,18 +189,38 @@
   width:130rpx;
   height: 70rpx;
   margin: 25rpx 0;
-  display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+}
+.tabBar  .yuyue{
+  background: #F25F5C;
+  border-radius: 12rpx;
+  border-radius: 12rpx;
+  width: 276rpx;
+  height: 72rpx;
+  font-size: 28rpx;
+}
+.tabBar .yuyue text {
+  color: #fff;
+  font-size: 28rpx;
+}
+.tabBar .yuyue image {
+  margin-left: 40rpx;
 }
 .tabBar image{
   width: 40rpx;
   height: 40rpx;
-  margin-bottom: 10rpx;
+  float: left;
+  padding: 15rpx 10rpx;
 }
 .tabBar text{
-  font-size: 20rpx;
-  color: rgb(176,176,176);
+  float: left;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #222222;
+  letter-spacing: 0;
+  line-height:70rpx;
 }
 .scroll-view{
   margin-top: 20rpx;
@@ -218,6 +267,22 @@
   background-color:white;
   margin: 0 auto;
 }
+.detailsInfo .content {
+  width: 135rpx;
+  margin-bottom: 12rpx;
+  margin-right: 55rpx;
+}
+.detailsInfo .content:nth-child(3n+4) {
+  margin-right: 0rpx;
+}
+.detailsInfo .content image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 5rpx;
+}
+.detailsInfo .content text {
+  font-size: 26rpx;
+}
 .swiper-tab-list {
   font-size: 30rpx;
   display: inline-block;
@@ -239,8 +304,8 @@
   text-align: center;
 }
 .detailsInfo .swiperText {
-  width: 90%;
-  margin: 25rpx auto 0;
+  width: 100%;
+  margin: 0 auto ;
   height: auto;
 }
 .swiperList {
@@ -252,19 +317,19 @@
 }
 .detailsInfo .swiper_item {
   width: 100%;
-  height: auto;
+  height: 140rpx;
   margin-bottom: 15rpx;
   overflow: hidden;
 }
 .detailsInfo .swiper_item image {
-  width: 100rpx;
-  height: 100rpx;
+  width: 140rpx;
+  height: 140rpx;
   float: left;
 }
 .detailsInfo .swiper_item .text {
   display:  inline-block;
   float: left;
-  width: calc(100% - 120rpx);
+  width: calc(100% - 160rpx);
   margin-left: 20rpx;
   position: relative;
 }
@@ -275,11 +340,15 @@
 }
 .detailsInfo .swiper_item .text .top{
   width: 100%;
-  margin-bottom: 20rpx;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  margin-bottom: 15rpx;
 }
 .detailsInfo .swiper_item .text view .title {
   width: 100%;
-  color: black;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #323334;
   display:-webkit-box;
   -webkit-line-clamp:1;
   overflow:hidden;
@@ -290,6 +359,11 @@
 .detailsInfo .swiper_item .text view .number {
   width: 100%;
   display:-webkit-box;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  color: rgba(34,34,34,0.65);
+  letter-spacing: 0;
+  line-height: 28rpx;
   -webkit-line-clamp:1;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -298,6 +372,12 @@
 }
 .detailsInfo .swiper_item .text view .price {
   color: red;
+  font-size: 28rpx;
+  letter-spacing: 0;
+  line-height: 28rpx;
+}
+.detailsInfo .swiper_item .text .texts {
+  margin-bottom: 15rpx;
 }
 .detailsInfo .tag-list {
   height: auto;
