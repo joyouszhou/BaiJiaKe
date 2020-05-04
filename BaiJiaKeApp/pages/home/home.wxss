@@ -61,6 +61,7 @@
   height: 192rpx; 
   margin-top: 30rpx;
   border-radius: 15rpx;
+  overflow: hidden;
 }
 .swiperBox swiper{
   width: 100%;
