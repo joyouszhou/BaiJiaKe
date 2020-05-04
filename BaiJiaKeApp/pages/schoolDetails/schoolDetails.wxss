@@ -107,8 +107,8 @@
   margin-bottom: 10rpx;
 }
 .detailsInfo .detailsInfoItems .daohang {
-  width: 25rpx;
-  height: 25rpx;
+  width: 20rpx;
+  height: 25.6rpx;
   margin-right: 20rpx;
   float: left;
   padding-top: 9rpx;
