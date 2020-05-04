@@ -1,6 +1,20 @@
 <!--pages/login/login.wxml-->
 <scroll-view>
+<!--index.wxml-->
+  <view class="container" wx:if="{{!hasUserInfo}}">
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称并授权 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+    <view class="usermotto">
+      <text class="user-motto">{{motto}}</text>
+    </view>
+  </view>
   <!-- <image src='/images/register.png' mode='widthFix' class="topImage"></image> -->
+  <view wx:else>
     <view class="welcome">
       欢迎回来
     </view>
@@ -10,7 +24,7 @@
       <!-- <text wx:if="{{send}}" class="sendMsg" bindtap="sendMsg">{{second+"s"}}</text> -->
     </view>
     <view class="input-buttom">
-      <input id="captcha"  type="number" maxlength="12" placeholder="请输入登录密码" bindinput="inputCode"/>
+      <input id="captcha"  type="password" maxlength="12" placeholder="请输入登录密码" bindinput="inputCode"/>
     </view>
     <view class="zhuce">
       <view bindtap="toRegister">立即注册</view>
@@ -20,5 +34,6 @@
   <view class='protocol'>
     <text class="protocol-left">注册登录高迪领克小程序即代表您已阅读并接受</text>
     <text class="protocol-right" bindtap="toXieYi">《用户注册协议》</text>
+  </view>
   </view>
 </scroll-view>

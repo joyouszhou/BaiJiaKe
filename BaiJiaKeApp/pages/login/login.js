@@ -8,6 +8,10 @@ Page({
     second: 120, //验证码有效时间
     phoneNum: '', //用户输入的电话号码
     password: '', //用户输入的验证码
+    motto: '',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   rpwd: function (){
     wx.navigateTo({
@@ -15,19 +19,50 @@ Page({
     })
   },
   onLoad: function () {
-    console.log(app.globalData)
-    // wx.request({
-    //   url: app.globalData.baseUrl + '/v1/user',
-    //   method: 'POST',
-    //   data: {
-    //     "name": "chenguang",
-    //     "phone": "19920195554",
-    //     "wxuid": "12345566"
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //   }
-    // })
+    console.log(app.globalData.userInfo)
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+      // wx.switchTab({
+      //   url: '../home/home',
+      // })
+    } else if (this.data.canIUse){
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+      // wx.switchTab({
+      //   url: '../home/home',
+      // })
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+      // wx.switchTab({
+      //   url: '../home/home',
+      // })
+    }
+  },
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
   },
   //当输入手机号码后，把数据存到data中
   inputPhoneNum: function (e) {

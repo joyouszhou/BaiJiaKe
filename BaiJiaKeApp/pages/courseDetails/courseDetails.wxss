@@ -49,9 +49,6 @@
 .detailsInfo{
   width: 100%;
   min-height: 85rpx;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   /* border-bottom: 4rpx solid rgb(226,226,226); */
   font-size: 26rpx;
   color: rgba(34,34,34,0.65);
@@ -358,11 +355,11 @@
 }
 .detailsInfoItems {
   width: 100%;
-  height: 38px;
   padding: 20rpx 0;
   box-sizing: border-box;
   border-bottom: 1px solid rgb(226,226,226);
   border-top: 1px solid rgb(226,226,226);
+  display: flex;
 }
 .detailsInfoItems .daohang {
   width: 25rpx;
@@ -378,6 +375,7 @@
   color: rgba(34,34,34,0.65);
   letter-spacing: 0;
   line-height: 39rpx;
+  flex: 6;
 }
 .detailsInfoItems .skip {
   width: 22.6rpx;

@@ -28,6 +28,53 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  phoneCall: function(){
+    
+    let that = this;
+    if(!wx.getStorageSync('token')) {
+      wx.showModal({
+        // title: '提示',
+        confirmText: '登录',
+        content: '您未登录',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+      return
+    }
+    wx.makePhoneCall({
+      phoneNumber: that.data.shopData.phone,
+      success: function(res){
+        console.log(res)
+        wx.request({
+          method: 'post',
+          header: {
+            'Authorization': 'bearer ' + wx.getStorageSync('token'),
+          },
+          url: app.globalData.baseUrl + '/v1/phone',
+          data: {
+            "shopname": that.data.shopData.shopinfo.name,
+          },
+          success: function (res) {
+            
+          },
+          fail: function (res) {
+            
+          }
+        })
+      },
+      fail: function(err) {
+        console.log(err)
+      }
+    })
+  },
   onLoad: function (options) {
     this.setData({
       statusBarHeight: wx.getSystemInfoSync().statusBarHeight

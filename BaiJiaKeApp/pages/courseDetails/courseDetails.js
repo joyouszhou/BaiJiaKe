@@ -116,8 +116,45 @@ Page({
 
   phoneCall: function(){
     let that = this;
+    if(!wx.getStorageSync('token')) {
+      wx.showModal({
+        // title: '提示',
+        confirmText: '登录',
+        content: '您未登录',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+      return
+    }
     wx.makePhoneCall({
-      phoneNumber: that.data.shopData.phone //仅为示例，并非真实的电话号码
+      phoneNumber: that.data.shopData.phone,
+      success: function(res){
+        console.log(res)
+        wx.request({
+          method: 'post',
+          header: {
+            'Authorization': 'bearer ' + wx.getStorageSync('token'),
+          },
+          url: app.globalData.baseUrl + '/v1/phone',
+          data: {
+            "shopname": that.data.shopData.name,
+          },
+          success: function (res) {
+            
+          },
+          fail: function (res) {
+            
+          }
+        })
+      }
     })
   },
 
@@ -154,6 +191,7 @@ Page({
   },
   toSchoolDetails: function () {
     let data = this.data.courseData
+    data.phone = this.data.shopData.phone
     wx.navigateTo({
       url: '../schoolDetails/schoolDetails',
       events: {
@@ -179,7 +217,7 @@ Page({
             method: 'post',
             url: app.globalData.baseUrl + '/v1/sub',
             header: {
-              'Authorization': 'bearer ' + res.data,
+              'Authorization': 'bearer ' + res.data
             },
             data: {
               "courseID": data.id,
@@ -188,7 +226,9 @@ Page({
               wx.showToast({
                 title: '收藏成功！',
               })
-
+              that.setData({
+                isShouCang:true
+              })
             },
             fail: function (res) {
               wx.showToast({
@@ -213,14 +253,14 @@ Page({
         })
       }
     })
-    wx.showToast({
-      title: '收藏成功',
-      success : function (){
-        that.setData({
-          isShouCang:true
-        })
-      }
-    })
+    // wx.showToast({
+    //   title: '收藏成功',
+    //   success : function (){
+    //     that.setData({
+    //       isShouCang:true
+    //     })
+    //   }
+    // })
   },
   toShiTingFrom:function(){
     let data = this.data.courseData.id

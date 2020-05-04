@@ -44,8 +44,20 @@ App({
                   })
                 },
                 fail: res => {
-                  wx.navigateTo({
-                    url: '../index/index',
+                  wx.showModal({
+                    // title: '提示',
+                    confirmText: '登录',
+                    content: '您未登录',
+                    success(res) {
+                      if (res.confirm) {
+                        console.log('用户点击确定')
+                        wx.navigateTo({
+                          url: '/pages/login/login',
+                        })
+                      } else if (res.cancel) {
+                        console.log('用户点击取消')
+                      }
+                    }
                   })
                 }
               })

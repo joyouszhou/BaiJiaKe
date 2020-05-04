@@ -134,7 +134,7 @@
       <image wx:else src="/images/courseDetails/shoucang2.png"></image>
       <text>收藏</text>
     </view>
-    <view bindtap="toShiTingFrom" class="btn yuyue">
+    <view bindtap="phoneCall" class="btn yuyue">
       <image src="/images/courseDetails/phone.png"></image>
       <text>拨打电话</text>
     </view>
