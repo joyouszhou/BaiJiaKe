@@ -83,7 +83,6 @@
   box-shadow: 0 2rpx 17rpx 0 rgba(14,32,92,0.15);
   border-radius: 12rpx;
   border-radius: 12rpx;
-  overflow: hidden;
 }
 .courseList .courseItem .image{
   width: 100%;
@@ -102,6 +101,7 @@
   box-sizing: border-box;
   font-size: 16rpx;
   position: relative;
+  min-height: 200rpx;
 }
 .courseInfo .title{
   width: 430rpx;

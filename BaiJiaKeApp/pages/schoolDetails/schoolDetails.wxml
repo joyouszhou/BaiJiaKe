@@ -6,7 +6,7 @@
   <!-- 轮播图 -->
   <view class="swiperBox">
   <swiper  indicator-active-color="white" display-multiple-items bindchange='imgChange'>
-      <swiper-item wx:for="{{shopData.imageurl}}" wx:key="index">
+      <swiper-item wx:for="{{shopData.shopinfo.imageurl}}" wx:key="index">
         <image src='{{baseUrl+item}}'></image>
       </swiper-item>
     </swiper>
@@ -19,7 +19,7 @@
   <view class="swperNum">{{imgIndex}} / {{imgLength}}</view>
   <view class="courseDetails">
     <view class="title">
-      {{shopData.name}}
+      {{shopData.shopinfo.name}}
     </view>
     <button class="share share_on" open-type="share">
       <image src="../../images/courseDetails/share_on.png"></image>
@@ -73,9 +73,9 @@
   <view class="cutOffRule"></view>
   <view class="courseDetails">
     <view class="infoTitle">体验课程</view>
-    <view class="detailsInfo" wx:if="{{courseList.length >0}}">
+    <view class="detailsInfo" wx:if="{{tiyan.length > 0}}">
       <view class="swiperText">
-        <view wx:for="{{courseList}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
+        <view wx:for="{{tiyan}}" wx:if="{{index < (tiyanShow ? 999 : 3)}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
           <image src="{{baseUrl+item.coverurl}}"></image>
           <view class="text">
             <view class="top"><text class="title">{{item.name}}</text></view>
@@ -85,19 +85,19 @@
         </view>
       </view>
     </view>
-    <view class="more" wx:if="{{courseList.length >0}}">
+    <view class="more" wx:if="{{tiyan.length >0 && !tiyanShow}}">
       <text  bindtap="moreExperience">更多体验课</text>
     </view>
-    <view class="more" wx:if="{{courseList.length == 0}}">
+    <view class="more" wx:if="{{tiyan.length == 0}}">
       <text>暂无数据</text>
     </view>
   </view>
   <view class="cutOffRule"></view>
   <view class="courseDetails margin_bottom">
     <view class="infoTitle">正式课程</view>
-    <view class="detailsInfo" wx:if="{{courseList1.length >0}}" >
+    <view class="detailsInfo" wx:if="{{zhengshi.length > 0}}" >
       <view class="swiperText">
-        <view wx:for="{{courseList1}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
+        <view wx:for="{{zhengshi}}" wx:if="{{index < (zhengshiShow ? 999 : 3)}}" data-item="{{item}}" class="swiper_item" bindtap="toCourseDetails">
           <image src="{{baseUrl+item.coverurl}}"></image>
           <view class="text">
             <view class="top"><text class="title">{{item.name}}</text></view>
@@ -107,10 +107,10 @@
         </view>
       </view>
     </view>
-    <view class="more" wx:if="{{courseList1.length >0}}">
+    <view class="more" wx:if="{{zhengshi.length >0 && !zhengshiShow}}">
       <text bindtap="moreOfficial">更多正式课</text>
     </view>
-    <view class="more" wx:if="{{courseList1.length == 0}}">
+    <view class="more" wx:if="{{zhengshi.length == 0}}">
       <text>暂无数据</text>
     </view>
   </view>

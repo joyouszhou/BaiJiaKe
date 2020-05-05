@@ -18,7 +18,11 @@ Page({
     offset: 0,
     offset1: 0,
     baseUrl: app.globalData.baseUrl,
-    statusBarHeight: 0
+    statusBarHeight: 0,
+    tiyan: [],
+    zhengshi: [],
+    tiyanShow: false,
+    zhengshhiShow: false,
   },
   houtui(){
     wx.navigateBack({
@@ -92,22 +96,31 @@ Page({
         array.push(temp[0].substring(1,temp[0].length - 1))
       }
       data.data.institutionList = array
+      console.log(data.data)
       that.setData({
         shopData:data.data,
         imgLength: data.data.imageurl.length
       })
       
-      console.log(data.data)
+      wx.request({
+        url: app.globalData.baseUrl +'/v1/shop/' + data.data.shopinfo.id,
+        success : function (res) {
+          let courses = res.data.data.courses, tiyan = [], zhengshi = [];
+          courses.map(x=>{
+            if(x.course_status === 1) {
+              tiyan.push(x)
+            } else if(x.course_status === 2) {
+              zhengshi.push(x)
+            }
+          })
+          that.setData({
+            tiyan,
+            zhengshi
+          })
+        }
+      })
     })
-    wx.request({
-      url: app.globalData.baseUrl +'/v1/shop?sortby={"weight": "desc"}',
-      success : function (res) {
-        that.setData({
-          hotList: res.data.data.shops
-        })
-        // console.log(res.data.data.shops)
-      }
-    })
+   
     wx.showShareMenu({
       withShareTicket: true
     })
@@ -290,6 +303,10 @@ Page({
   },
   // 点击更多体验课
   moreExperience() {
+    this.setData({
+      tiyanShow: true
+    })
+    return
     let that = this
     this.data.offset = this.data.offset + 1
     wx.request({
@@ -311,6 +328,10 @@ Page({
   },
   // 点击更多正式课
   moreOfficial() {
+    this.setData({
+      zhengshhiShow: true
+    })
+    return
     let that = this
     this.data.offset1 = this.data.offset1 + 1
     wx.request({

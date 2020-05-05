@@ -65,7 +65,8 @@ Page({
       { name: "20以上", isTab: false }
     ],
     marginT:"",
-    baseUrl: app.globalData.baseUrl
+    baseUrl: app.globalData.baseUrl,
+    lat: []
   },
 
   /**
@@ -92,7 +93,7 @@ Page({
     return s;
   },
   onShow: function (){
-    let that = this;
+    let that = this;    
     let data = app.globalData.courseTypeList
     console.log(data)
     for(let i=0;i<data.length;i++){
@@ -101,7 +102,6 @@ Page({
     that.data.classList = data;
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      console.log(data)
       if(data.courseName != ""){
         that.data.classList[0].isTab = false;
         for (let i = 0; i < that.data.classList.length;i++){
@@ -109,13 +109,18 @@ Page({
             that.data.classList[i].isTab = true;
           }
         }
-        
-        wx.request({
-          url: app.globalData.baseUrl +'/v1/course/search?course_type='+data.courseName,
-          success: function (res){
-            let hotList = res.data.data.course
-            wx.getLocation({
-              success: function(res) {
+        console.log(that.data.lat)
+        wx.getLocation({
+          success: function(res) {
+            console.log('resresresresresresresresresres', res)
+            wx.request({
+              url: app.globalData.baseUrl +'/v1/course/search?course_type='+data.courseName,
+              // data: {
+              //   lat: res.latitude,
+              //   lon: res.longitude
+              // },
+              success: function (data){
+                let hotList = data.data.data.course
                 for (let i = 0; i < hotList.length; i++) {
                   hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
                   hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
@@ -123,22 +128,30 @@ Page({
                 that.setData({
                   hotList
                 })
-              },
+              }
+            })
+            that.setData({
+              lat: [res.latitude, res.longitude]
             })
           }
         })
+       
         that.setData({
           className: data.courseName,
           classList: that.data.classList,
         })
       }else {
         let list = []
-        wx.request({
-          url: app.globalData.baseUrl + '/v1/course',
-          success: function (res) {
-            let hotList = res.data.data.course
-            wx.getLocation({
-              success: function(res) {
+        wx.getLocation({
+          success: function(res) {
+            wx.request({
+              url: app.globalData.baseUrl + '/v1/course',
+              // data: {
+              //   lat: res.latitude,
+              //   lon: res.longitude
+              // },
+              success: function (hl) {
+                let hotList = hl.data.data.course
                 for (let i = 0; i < hotList.length; i++) {
                   hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
                   hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
@@ -146,15 +159,11 @@ Page({
                 that.setData({
                   hotList,
                   classList: that.data.classList,
+                  lat: [res.latitude, res.longitude]
                 })
-                // that.setData({
-            //   className: data.courseName,
-
-            // })
-              },
+              }
             })
-            
-          }
+          },
         })
       }
     })
@@ -305,6 +314,10 @@ Page({
     str = str + `course_type=${this.data.className}`
     wx.request({
       url: app.globalData.baseUrl + '/v1/course/search?' + str,
+      data: {
+        lat: that.data.lat[0],
+        lon: that.data.lat[1]
+      },
       success: function (res) {
         let hotList = res.data.data.course
         wx.getLocation({

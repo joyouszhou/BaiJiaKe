@@ -42,24 +42,28 @@ Page({
   },
   getList: function (){
     let hotList = [], that = this;
-    wx.request({
-      url: app.globalData.baseUrl + '/v1/course/searchname?name=' + this.data.inputValue,
-      success: function (res) {
-        hotList = res.data.data.course
-        wx.getLocation({
-          success: function(res) {
-            for (let i = 0; i < hotList.length; i++) {
-              hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
-              
-              hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
-              console.log(hotList[i].tagList)
-            }
-            that.setData({
-              hotList
-            })
+    wx.getLocation({
+      success: function(res) {
+        wx.request({
+          url: app.globalData.baseUrl + '/v1/course/searchname?name=' + that.data.inputValue,
+          data: {
+            lat: res.latitude,
+            lon: res.longitude
           },
+          success: function (data) {
+            hotList = data.data.data.course
+              for (let i = 0; i < hotList.length; i++) {
+                hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
+                
+                hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
+                console.log(hotList[i].tagList)
+              }
+              that.setData({
+                hotList
+              })
+          }
         })
-      }
+      },
     })
   },
   //两点之间经纬度求距离方法

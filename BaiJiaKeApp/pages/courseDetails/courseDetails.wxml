@@ -16,11 +16,12 @@
   <view class="courseDetails">
     <view class="title">
       {{courseData.name}} 
-      <button class="share" open-type="share">
+      
+    </view>
+    <button class="share share_on" open-type="share">
         <image src="/images/courseDetails/share_on.png"></image>
         <!-- <text>分享</text> -->
       </button>
-    </view>
     <view class="detailsInfo">
       <view>
         <text>适用年龄：</text>

@@ -138,36 +138,39 @@ Page({
   },
   getHotList: function (name){
     let that = this;
-    let data = {
-      limit: that.data.limit ,
-      offset: that.data.offset
-    }
-    wx.request({
-      url: app.globalData.baseUrl +'/v1/course',
-      data,
-      success:function(res){
-        let data = res.data.data.course
-        wx.getLocation({
-          success: function(res) {
+    
+    wx.getLocation({
+      success: function(loc) {
+        let dataD = {
+          // lat: res.latitude,
+          // lon: res.longitude,
+          limit: that.data.limit ,
+          offset: that.data.offset
+        }
+        wx.request({
+          url: app.globalData.baseUrl +'/v1/course',
+          dataD,
+          success:function(res){
+            let data = res.data.data.course
             for (let i = 0; i < data.length; i++) {
-              data[i].jvLi = that.distance(res.latitude, res.longitude, data[i].shopinfo.latitude, data[i].shopinfo.longitude)
+              data[i].jvLi = that.distance(loc.latitude, loc.longitude, data[i].shopinfo.latitude, data[i].shopinfo.longitude)
               data[i].tagList = data[i].shopinfo.tags !== '' ? data[i].shopinfo.tags.split(',') : null
-              console.log(data[i].tagList)
             }
             that.setData({
               hotList: data
             })
             console.log(data)
+            
           },
+          fail:function(res){
+            wx.showToast({
+              title: res.msg,
+            })
+          }
         })
-        
       },
-      fail:function(res){
-        wx.showToast({
-          title: res.msg,
-        })
-      }
     })
+    
   },
   /**
    * 用户点击右上角分享

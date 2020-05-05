@@ -19,7 +19,7 @@ Page({
     })
   },
   onLoad: function () {
-    console.log(app.globalData.userInfo)
+    console.log(app.globalData.userInfo, this.data.canIUse)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -32,6 +32,7 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
+        console.log(res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -58,7 +59,22 @@ Page({
   },
   getUserInfo: function(e) {
     console.log(e)
+    let that = this
     app.globalData.userInfo = e.detail.userInfo
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // console.log(res)
+        wx.request({
+          method: "POST",
+          url: app.globalData.baseUrl + '/v1/user/auto',
+          data: {
+            name: e.detail.userInfo.nickName,
+            jscode: res.code
+          }
+        })
+      }
+    })
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
@@ -129,7 +145,6 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: (res) => {
-        console.log(res)
         if (res.data.msg == "success!!") {
 
           wx.setStorage({
@@ -162,10 +177,15 @@ Page({
             title: '提示',
             content: res.data.data,
           })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: res.data.data,
+          })
         }
       },
       fail : function(res){
-        console.log(res)
+        
       }
     })
   },

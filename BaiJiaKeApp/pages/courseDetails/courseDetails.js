@@ -77,7 +77,7 @@ Page({
       withShareTicket: true
     })
     wx.request({
-      url: app.globalData.baseUrl + '/v1/course?sortby={"weight": "desc"}',
+      url: app.globalData.baseUrl + '/v1/course',
       success: function (res) {
         that.setData({
           hotList: res.data.data.course

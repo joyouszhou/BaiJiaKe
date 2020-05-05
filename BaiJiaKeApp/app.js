@@ -180,8 +180,8 @@ App({
   globalData: {
     userInfo: null,
     token:'',
-    // baseUrl:"https://goldlinks.net.cn",
-    baseUrl:"https://baijiake.net",
+    baseUrl:"https://goldlinks.net.cn",
+    // baseUrl:"https://baijiake.net",
     shouCangList:[],
     courseTypeList:[],
     isIpx: false

@@ -33,6 +33,7 @@ Page({
             success: function (res) {
             },
             fail: function (res) {
+              
             }
           })
         },
@@ -86,7 +87,7 @@ Page({
             }else{
               wx.showModal({
                 title: '提示',
-                content: res.data.data,
+                content: '已预约',
               })
             }
             
