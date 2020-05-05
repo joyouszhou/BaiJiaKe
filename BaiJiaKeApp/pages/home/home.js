@@ -239,7 +239,7 @@ Page({
       success: function (res) {}
     })
     wx.navigateTo({
-      url: '../courseDetails/courseDetails',
+      url: '../courseDetails/courseDetails?id=' + data.id,
       events:{
         acceptDataFromOpenedPage: function (data) {
         },

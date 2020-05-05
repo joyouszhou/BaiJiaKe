@@ -39,9 +39,9 @@ App({
                   if (this.userInfoReadyCallback) {
                     this.userInfoReadyCallback(res)
                   }
-                  wx.switchTab({
-                    url: '../home/home',
-                  })
+                  // wx.switchTab({
+                  //   url: '../home/home',
+                  // })
                 },
                 fail: res => {
                   // wx.showModal({

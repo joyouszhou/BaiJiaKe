@@ -67,6 +67,20 @@
 					"pathName": "pages/mine/mine",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "店铺详情",
+					"pathName": "pages/schoolDetails/schoolDetails",
+					"query": "id=acb966f0-05af-4b7c-bff3-d96823268a21",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "pages/courseDetails/courseDetails",
+					"query": "id=025cd50a-b3d8-4403-8520-a07974488005",
+					"scene": null
 				}
 			]
 		}

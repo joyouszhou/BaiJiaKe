@@ -6,7 +6,7 @@
   <!-- 轮播图 -->
   <view class="swiperBox">
   <swiper  indicator-active-color="white" display-multiple-items bindchange='imgChange'>
-      <swiper-item wx:for="{{shopData.shopinfo.imageurl}}" wx:key="index">
+      <swiper-item wx:for="{{shopData.imageurl}}" wx:key="index">
         <image src='{{baseUrl+item}}'></image>
       </swiper-item>
     </swiper>
@@ -16,10 +16,10 @@
       </swiper-item>
     </swiper> -->
   </view>
-  <view class="swperNum">{{imgIndex}} / {{imgLength}}</view>
+  <view class="swperNum">{{imgIndex}} / {{shopData.imageurl.length}}</view>
   <view class="courseDetails">
     <view class="title">
-      {{shopData.shopinfo.name}}
+      {{shopData.name}}
     </view>
     <button class="share share_on" open-type="share">
       <image src="../../images/courseDetails/share_on.png"></image>
@@ -34,11 +34,11 @@
     <view class="detailsInfo">
       <view class="detailsInfoItem">
         <text>营业时间：</text>
-        <text>{{shopData.shopinfo.open_time}}</text>
+        <text>{{shopData.opentime}}</text>
       </view>
       <view class="detailsInfoItems" bindtap="openMap">
         <image src="../../images/home/daohang.png" class="daohang"></image>
-        <text>授课地点：{{shopData.shopinfo.addr}}</text>
+        <text>授课地点：{{shopData.addr}}</text>
         <image src="../../images/home/skip.png" class="skip"></image>
       </view>
       <!-- <view class="tag-list">
@@ -63,12 +63,13 @@
   <view class="cutOffRule"></view>
   <view class="courseDetails">
     <view class="infoTitle">特色服务</view>
-    <view class="detailsInfo">
+    <rich-text nodes="{{shopData.institution}}"></rich-text>
+    <!-- <view class="detailsInfo">
       <view class="content" wx:for="{{shopData.institutionList}}" data-item="{{item}}">
         <image src="../../images/courseDetails/dui.png"></image>
         <text>{{item}}</text>
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="cutOffRule"></view>
   <view class="courseDetails">

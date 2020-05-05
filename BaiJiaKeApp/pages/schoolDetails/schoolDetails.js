@@ -23,11 +23,19 @@ Page({
     zhengshi: [],
     tiyanShow: false,
     zhengshhiShow: false,
+    sear: false,
   },
   houtui(){
-    wx.navigateBack({
-      delta: 1
-    })
+    if(this.data.sear) {
+      wx.switchTab({
+        url: '/pages/home/home',
+      })
+    } else {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -79,69 +87,98 @@ Page({
       }
     })
   },
+  contentFo: function (con){
+    return con.replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
+  },
+  onShareAppMessage: function(res) {
+    console.log(this.data.shopData)
+    if (res.from === 'button') {
+      console.log("来自页面内转发按钮");
+    }
+    else {
+      console.log("来自右上角转发菜单")
+    }
+    return {
+      title: '百家课',
+      path: '/pages/schoolDetails/schoolDetails?id=' + this.data.shopData.id,//这里的path是当前页面的path，必须是以 / 开头的完整路径，后面拼接的参数 是分享页面需要的参数  不然分享出去的页面可能会没有内容
+      imageUrl: app.globalData.baseUrl + this.data.shopData.imageurl[0],
+      desc: this.data.shopData.addr
+    }
+  },
   onLoad: function (options) {
     this.setData({
       statusBarHeight: wx.getSystemInfoSync().statusBarHeight
     })
     let that = this;
     const eventChannel = this.getOpenerEventChannel()
-    
-    eventChannel.on('acceptDataFromOpenerPage', function (data) {
-      data.data.tagList = data.data.shopinfo.tags !== '' ? data.data.shopinfo.tags.split(',') : null
-      var str = data.data.shopinfo.institution;
-      var re = /{(.*?)}/g;
-      var array = [];
-      var temp = [];
-      while (temp = re.exec(str)) {
-        array.push(temp[0].substring(1,temp[0].length - 1))
-      }
-      data.data.institutionList = array
-      console.log(data.data)
-      that.setData({
-        shopData:data.data,
-        imgLength: data.data.imageurl.length
-      })
-      
-      wx.request({
-        url: app.globalData.baseUrl +'/v1/shop/' + data.data.shopinfo.id,
-        success : function (res) {
-          let courses = res.data.data.courses, tiyan = [], zhengshi = [];
-          courses.map(x=>{
-            if(x.course_status === 1) {
-              tiyan.push(x)
-            } else if(x.course_status === 2) {
-              zhengshi.push(x)
-            }
-          })
-          that.setData({
-            tiyan,
-            zhengshi
-          })
+    if(eventChannel.on) {
+      eventChannel.on('acceptDataFromOpenerPage', function (data) {
+        data.data.tagList = data.data.shopinfo.tags !== '' ? data.data.shopinfo.tags.split(',') : null
+        var str = data.data.shopinfo.institution;
+        var re = /{(.*?)}/g;
+        var array = [];
+        var temp = [];
+        while (temp = re.exec(str)) {
+          array.push(temp[0].substring(1,temp[0].length - 1))
         }
+        data.data.institutionList = array
+        // that.setData({
+        //   shopData:data.data,
+        //   imgLength: data.data.imageurl.length
+        // })
+        that.getDetails(data.data.shopinfo.id)
       })
-    })
+    }
+    if(options.id) {
+      that.getDetails(options.id)
+      this.setData({
+        sear: true
+      })
+    }
    
     wx.showShareMenu({
       withShareTicket: true
     })
+    // wx.request({
+    //   url: app.globalData.baseUrl +'/v1/course?limit=3&offset=0&sortby={"created_at": "desc"}&course_status=1',
+    //   success : function (res) {
+    //     that.setData({
+    //       courseList: res.data.data.course
+    //     })
+    //   }
+    // })
+    // wx.request({
+    //   url: app.globalData.baseUrl +'/v1/course?limit=3&offset=0&sortby={"created_at": "desc"}&course_status=2',
+    //   success : function (res) {
+    //     that.setData({
+    //       courseList1: res.data.data.course
+    //     })
+    //   }
+    // })
+  },
+  getDetails: function (id){
+    let that = this
     wx.request({
-      url: app.globalData.baseUrl +'/v1/course?limit=3&offset=0&sortby={"created_at": "desc"}&course_status=1',
+      url: app.globalData.baseUrl +'/v1/shop/' + id,
       success : function (res) {
-        that.setData({
-          courseList: res.data.data.course
+        let courses = res.data.data.courses, tiyan = [], zhengshi = [];
+        courses.map(x=>{
+          if(x.course_status === 1) {
+            tiyan.push(x)
+          } else if(x.course_status === 2) {
+            zhengshi.push(x)
+          }
         })
-      }
-    })
-    wx.request({
-      url: app.globalData.baseUrl +'/v1/course?limit=3&offset=0&sortby={"created_at": "desc"}&course_status=2',
-      success : function (res) {
+        res.data.data.describe = that.contentFo(res.data.data.describe)
+        res.data.data.institution = that.contentFo(res.data.data.institution)
         that.setData({
-          courseList1: res.data.data.course
+          tiyan,
+          zhengshi,
+          shopData: res.data.data
         })
       }
     })
   },
-
   openMap: function () {
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -186,12 +223,6 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   tabNav: function (e) {
     let that = this
     console.log(e.target.dataset.current, 111, this.data.currentTab)
@@ -230,7 +261,7 @@ Page({
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item
     wx.navigateTo({
-      url: '../courseDetails/courseDetails',
+      url: '../courseDetails/courseDetails?id=' + data.id,
       events: {
         acceptDataFromOpenedPage: function (data) {
         },
@@ -261,7 +292,7 @@ Page({
               'Authorization': 'bearer ' + res.data,
             },
             data: {
-              "courseID": data.id,
+              "courseID": that.data.tiyan[0].id,
             },
             success: function (res) {
               wx.showToast({

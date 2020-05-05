@@ -48,7 +48,7 @@
         <image src="../../images/home/skip.png" class="skip"></image>
       </view>
       <view class="shop-info" bindtap="toSchoolDetails">
-        <image class="shop-info-img" mode="aspectFill" src="{{baseUrl + shopData.logo}}"></image>
+        <image class="shop-info-img" mode="aspectFill" src="{{baseUrl + shopData.imageurl[0]}}"></image>
         <view class="shop-info-info">
           <view>
             <view>{{shopData.name}}</view>
