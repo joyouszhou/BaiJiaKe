@@ -261,7 +261,7 @@ Page({
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item
     wx.navigateTo({
-      url: '../courseDetails/courseDetails?id=' + data.id,
+      url: '../courseDetails/courseDetails?id=' + data.id + '&no=1',
       events: {
         acceptDataFromOpenedPage: function (data) {
         },

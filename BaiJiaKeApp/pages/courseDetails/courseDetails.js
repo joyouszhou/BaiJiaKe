@@ -106,7 +106,7 @@ Page({
     })
     if (options.id) {
       this.setData({
-        sear: true
+        sear: options.no ? false : true
       })
       wx.request({
         url: app.globalData.baseUrl + '/v1/course/' + options.id,
