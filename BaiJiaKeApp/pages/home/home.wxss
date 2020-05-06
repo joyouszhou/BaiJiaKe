@@ -194,7 +194,7 @@
   color: rgba(34,34,34,0.65);
 }
 .courseInfo .info .film {
-  width: 280rpx;
+  width: 480rpx;
   display:-webkit-box;
   -webkit-line-clamp:1;
   overflow:hidden;
