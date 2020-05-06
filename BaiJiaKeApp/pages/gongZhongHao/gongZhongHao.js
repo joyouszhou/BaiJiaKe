@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     let that = this
     wx.setNavigationBarTitle({
-      title: "公众号"
+      title: "平台说明"
     })
     wx.request({
       url: app.globalData.baseUrl + '/v1/sys',

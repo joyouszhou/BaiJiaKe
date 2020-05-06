@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     let that = this
     wx.setNavigationBarTitle({
-      title: "客服电话"
+      title: "客服服务"
     })
     wx.request({
       url: app.globalData.baseUrl + '/v1/sys',

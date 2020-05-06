@@ -141,15 +141,14 @@ Page({
     
     wx.getLocation({
       success: function(loc) {
-        let dataD = {
-          // lat: res.latitude,
-          // lon: res.longitude,
-          limit: that.data.limit ,
-          offset: that.data.offset
-        }
         wx.request({
           url: app.globalData.baseUrl +'/v1/course',
-          dataD,
+          data: {
+            lat: loc.latitude,
+            lon: loc.longitude,
+            limit: that.data.limit ,
+            offset: that.data.offset
+          },
           success:function(res){
             let data = res.data.data.course
             for (let i = 0; i < data.length; i++) {

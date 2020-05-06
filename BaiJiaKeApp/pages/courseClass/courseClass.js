@@ -115,10 +115,10 @@ Page({
             console.log('resresresresresresresresresres', res)
             wx.request({
               url: app.globalData.baseUrl +'/v1/course/search?course_type='+data.courseName,
-              // data: {
-              //   lat: res.latitude,
-              //   lon: res.longitude
-              // },
+              data: {
+                lat: res.latitude,
+                lon: res.longitude
+              },
               success: function (data){
                 let hotList = data.data.data.course
                 for (let i = 0; i < hotList.length; i++) {
@@ -146,10 +146,10 @@ Page({
           success: function(res) {
             wx.request({
               url: app.globalData.baseUrl + '/v1/course',
-              // data: {
-              //   lat: res.latitude,
-              //   lon: res.longitude
-              // },
+              data: {
+                lat: res.latitude,
+                lon: res.longitude
+              },
               success: function (hl) {
                 let hotList = hl.data.data.course
                 for (let i = 0; i < hotList.length; i++) {
