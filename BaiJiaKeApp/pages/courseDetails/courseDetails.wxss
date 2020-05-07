@@ -268,11 +268,17 @@
 .shop-info .shop-info-info{
   flex: 10;
   padding: 0 20rpx;
-  height: 96rpx;
-  line-height: 96rpx;
   display: flex;
   justify-content: space-between;
-  border-right: 2px solid rgb(226,226,226);
+  align-items: center;
+}
+.shop-info-info>view:nth-child(1) {
+  width: 280rpx;
+}
+.line{
+  min-height: 94rpx;
+  width: 2rpx;
+  background-color: rgb(226,226,226);
 }
 .jvli{
   font-size: 24rpx;

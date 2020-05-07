@@ -59,7 +59,7 @@ Page({
         method: 'POST',
         data: {
           "phone": phoneNum ,
-	        "smstype": 1 
+	        "smstype": 3
         },
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -130,10 +130,6 @@ Page({
   //点击立即用伞按钮后，获取微信用户信息存到后台
   //（问题缺陷：用户更改个人信息后，后台拿到的还是旧数据，不过用户信息最重要的还是openid和用户填写的手机号，其他都不重要）
   onGotUserInfo: function (e) {
-    wx.navigateBack({//返回
-      delta: 1
-    })
-    return
     let that = this;
     // TODO 对数据包进行签名校验
     //前台校验数据
@@ -164,7 +160,7 @@ Page({
         success: res => {
           wx.request({
             url: app.globalData.baseUrl + '/v1/user',
-            method: 'POST',
+            method: 'put',
             data: {
               "phone": userInfo.phoneNum,
               "jscode": res.code,
@@ -175,8 +171,10 @@ Page({
               "Content-Type": "application/x-www-form-urlencoded"
             },
             success: (res) => {
-              if (res.data.data.status == "ok") {
-                
+              if (res.data.msg == "success!!") {
+                wx.navigateBack({//返回
+                  delta: 1
+                })
               }
             }
           })

@@ -51,7 +51,7 @@
         <image class="shop-info-img" mode="aspectFill" src="{{baseUrl + shopData.imageurl[0]}}"></image>
         <view class="shop-info-info">
           <view>
-            <view>{{shopData.name}}</view>
+            <view class="shop-name">{{shopData.name}}</view>
             <view class="tag-box tag-list" wx:if="{{shopData.tagList}}">
               <!-- <text wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text> -->
               <view wx:for="{{shopData.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" >
@@ -65,6 +65,7 @@
             <text>{{shopData.jvLi}}km</text>
           </view>
         </view>
+        <view class="line"></view>
         <view class="phone">
           <image class="right"  src="/images/courseDetails/phone2.png" catchtap="phoneCall"></image>
         </view>
