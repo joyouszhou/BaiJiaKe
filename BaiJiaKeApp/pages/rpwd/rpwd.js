@@ -163,7 +163,6 @@ Page({
             method: 'put',
             data: {
               "phone": userInfo.phoneNum,
-              "jscode": res.code,
               "smscode": code,
               "password": userInfo.password
             },
