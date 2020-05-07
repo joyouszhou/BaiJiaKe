@@ -170,7 +170,15 @@ Page({
           }
         })
         res.data.data.describe = that.contentFo(res.data.data.describe)
-        res.data.data.institution = that.contentFo(res.data.data.institution)
+        // res.data.data.institution = that.contentFo(res.data.data.institution)
+        let str = res.data.data.institution;
+        let re = /{(.*?)}/g;
+        let array = [];
+        let temp = [];
+        while (temp = re.exec(str)) {
+          array.push(temp[0].substring(1,temp[0].length - 1))
+        }
+        res.data.data.institutionList = array
         that.setData({
           tiyan,
           zhengshi,

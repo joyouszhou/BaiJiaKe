@@ -63,13 +63,13 @@
   <view class="cutOffRule"></view>
   <view class="courseDetails">
     <view class="infoTitle">特色服务</view>
-    <rich-text nodes="{{shopData.institution}}"></rich-text>
-    <!-- <view class="detailsInfo">
-      <view class="content" wx:for="{{shopData.institutionList}}" data-item="{{item}}">
+    <view class="detailsInfo">
+      <view class="content" wx:if="{{shopData.institutionList.length > 0}}" wx:for="{{shopData.institutionList}}" data-item="{{item}}">
         <image src="../../images/courseDetails/dui.png"></image>
         <text>{{item}}</text>
       </view>
-    </view> -->
+      <rich-text wx:if="{{shopData.institutionList.length == 0}}" nodes="{{shopData.institution}}"></rich-text>
+    </view>
   </view>
   <view class="cutOffRule"></view>
   <view class="courseDetails">
