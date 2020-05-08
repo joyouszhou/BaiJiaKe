@@ -19,7 +19,12 @@ Page({
     oldIsShow:false,
     hotList:[],
     inputValue: '',
-    baseUrl: app.globalData.baseUrl
+    baseUrl: app.globalData.baseUrl,
+    limit: 10,
+    offset: 0,
+    total: 0,
+    nodata: false,
+    pageIndex: 1,
   },
 
   /**
@@ -40,26 +45,39 @@ Page({
       inputValue: event.detail.value
     })
   },
-  getList: function (){
+  getList: function (name){
     let hotList = [], that = this;
+    if(name && that.data.pageIndex-1 >= Math.ceil(that.data.total/10)){
+      console.log(111)
+      that.setData({
+        nodata: true
+      })
+      return
+    } else {
+      console.log(222)
+      that.setData({
+        pageIndex: that.data.pageIndex + 1
+      })
+    }
     wx.getLocation({
       success: function(res) {
         wx.request({
           url: app.globalData.baseUrl + '/v1/course/searchname?name=' + that.data.inputValue,
           data: {
             lat: res.latitude,
-            lon: res.longitude
+            lon: res.longitude,
+            limit: that.data.limit ,
+            offset: that.data.offset
           },
           success: function (data) {
             hotList = data.data.data.course
               for (let i = 0; i < hotList.length; i++) {
                 hotList[i].jvLi = that.distance(res.latitude, res.longitude, hotList[i].shopinfo.latitude, hotList[i].shopinfo.longitude)
-                
                 hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
-                console.log(hotList[i].tagList)
               }
               that.setData({
-                hotList
+                hotList: name === 'add' ? that.data.hotList.concat(hotList) : hotList,
+                total: data.data.data.total
               })
           }
         })
@@ -79,6 +97,22 @@ Page({
     return s;
   },
   onShow: function (){
+  },
+   /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log(Math.ceil(this.data.total/10))
+    if(this.data.pageIndex -1 < Math.ceil(this.data.total/10)){
+      this.setData({
+        offset: (this.data.pageIndex -1) * 10
+      })
+      this.getList('add')
+    } else {
+      this.setData({
+        nodata: true
+      })
+    }
   },
   toCourseDetails: function (e) {
     let data = e.currentTarget.dataset.item

@@ -10,37 +10,22 @@ Page({
   data: {
     inputValue: '', //搜索的内容
     navList: [
-      // { name: "语言培训", url: "/images/home/nav/yuyan.png",show: true },
-      // { name: "体能运动", url: "/images/home/nav/tineng.png", show: true },
-      // { name: "益智成长", url: "/images/home/nav/yizhi.png", show: true },
-      // { name: "舞蹈形体", url: "/images/home/nav/wudao.png", show: true },
-      // { name: "乐器培训", url: "/images/home/nav/yueqi.png", show: true },
-      // { name: "亲子早教", url: "/images/home/nav/xueqian.png", show: true },
-      // { name: "美术培训", url: "/images/home/nav/meishu.png", show: true },
-      // { name: "棋类培训", url: "/images/home/nav/qilei.png", show: true },
-      // { name: "书法培训", url: "/images/home/nav/shufa.png", show: true },
-      // { name: "幼儿园/托班", url: "/images/home/nav/youeryuan.png", show: false },
-      // { name: "兴趣生活", url: "/images/home/nav/xingqu.png", show: false },
-      // { name: "留学", url: "/images/home/nav/liuxue.png", show: false },
-      // { name: "美容化妆", url: "/images/home/nav/meirong.png", show: false },
-      // { name: "学科教育", url: "/images/home/nav/xueqian.png", show: false },
-      // { name: "声乐培训", url: "/images/home/nav/shengyue.png", show: false },
-      // { name: "学历提升", url: "/images/home/nav/xueli.png", show: false },
-      // { name: "才艺", url: "/images/home/nav/caiyi.png", show: false },
-      // { name: "职业技能", url: "/images/home/nav/zhiye.png", show: false },
-      // { name: "升学指导", url: "/images/home/nav/shengxue.png", show: false },
+     
     ],
     isOpenNav: false,
     isOpenNavText: "展开",
     hotList:[],
     coursetypeList:[],
-    limit: 10,
-    offset: 0,
     activeIndex: 0,
     hotcourseList: [],
     baseUrl: app.globalData.baseUrl,
     current: 0,
-    current2: 0
+    current2: 0,
+    limit: 10,
+    offset: 0,
+    total: 0,
+    nodata: false,
+    pageIndex: 1,
   },
   swiperChange: function (e){
     this.setData({
@@ -116,7 +101,7 @@ Page({
         that.setData({
           coursetypeList: data
         })
-        that.getHotList(data[0].CourseType)
+        that.getHotList()
         app.globalData.courseTypeList = data
       }
     })
@@ -138,7 +123,16 @@ Page({
   },
   getHotList: function (name){
     let that = this;
-    
+    if(name && that.data.pageIndex-1 >= Math.ceil(that.data.total/10)){
+      that.setData({
+        nodata: true
+      })
+      return
+    } else {
+      that.setData({
+        pageIndex: that.data.pageIndex + 1
+      })
+    }
     wx.getLocation({
       success: function(loc) {
         wx.request({
@@ -156,9 +150,9 @@ Page({
               data[i].tagList = data[i].shopinfo.tags !== '' ? data[i].shopinfo.tags.split(',') : null
             }
             that.setData({
-              hotList: data
+              hotList: name === 'add' ? that.data.hotList.concat(data) : data,
+              total: res.data.data.total
             })
-            console.log(data)
             
           },
           fail:function(res){
@@ -182,7 +176,17 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(this.data.pageIndex -1 < Math.ceil(this.data.total/10)){
+      this.setData({
+        offset: (this.data.pageIndex -1) * 10
+      })
+      this.getHotList('add')
+    } else {
+      this.setData({
+        nodata: true
+      })
+    }
+    
   },
 
   //两点之间经纬度求距离方法

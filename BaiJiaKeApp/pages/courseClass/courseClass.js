@@ -18,6 +18,8 @@ Page({
     classIsShow:false,
     oldIsShow:false,
     hotList:[],
+    limit: 10,
+    offset: 0,
     cityList: [
       { name: "全城", isTab: true },
       { name: "昌平区", isTab: false },
@@ -66,7 +68,10 @@ Page({
     ],
     marginT:"",
     baseUrl: app.globalData.baseUrl,
-    lat: []
+    lat: [],
+    total: 0,
+    pageIndex: 1,
+    nodata: false
   },
 
   /**
@@ -114,10 +119,12 @@ Page({
           success: function(res) {
             console.log('resresresresresresresresresres', res)
             wx.request({
-              url: app.globalData.baseUrl +'/v1/course/search?course_type='+data.courseName,
+              url: app.globalData.baseUrl +'/v1/course/search',
               data: {
                 lat: res.latitude,
-                lon: res.longitude
+                lon: res.longitude,
+                limit: that.data.limit ,
+                offset: that.data.offset
               },
               success: function (data){
                 let hotList = data.data.data.course
@@ -152,7 +159,9 @@ Page({
               url: app.globalData.baseUrl + '/v1/course',
               data: {
                 lat: res.latitude,
-                lon: res.longitude
+                lon: res.longitude,
+                limit: that.data.limit ,
+                offset: that.data.offset
               },
               success: function (hl) {
                 let hotList = hl.data.data.course
@@ -161,6 +170,7 @@ Page({
                   hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
                 }
                 that.setData({
+                  total: hl.data.data.total,
                   hotList,
                   classList: that.data.classList,
                   lat: [res.latitude, res.longitude]
@@ -306,9 +316,19 @@ Page({
     }
     this.getDataList()
   },
-  getDataList: function(){
-    console.log(this.data.cityName, this.data.className, this.data.oldName)
+  getDataList: function(name){
     let str = '', that = this;
+    if(name && that.data.pageIndex-1 >= Math.ceil(that.data.total/10)){
+      that.setData({
+        nodata: true
+      })
+      return
+    } else {
+      that.setData({
+        pageIndex: that.data.pageIndex + 1
+      })
+    }
+    console.log(this.data.cityName, this.data.className, this.data.oldName)
     if(this.data.cityName !== '全城'){
       str = str + `city=${this.data.cityName}&`
     }
@@ -320,14 +340,12 @@ Page({
       url: app.globalData.baseUrl + '/v1/course/search?' + str,
       data: {
         lat: that.data.lat[0],
-        lon: that.data.lat[1]
+        lon: that.data.lat[1],
+        limit: that.data.limit ,
+        offset: that.data.offset
       },
-      success: function (res) {
-        let hotList = res.data.data.course
-        that.setData({
-          hotList: []
-        })
-        if(!hotList) return
+      success: function (data) {
+        let hotList = data.data.data.course
         wx.getLocation({
           success: function(res) {
             for (let i = 0; i < hotList.length; i++) {
@@ -335,7 +353,8 @@ Page({
               hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
             }
             that.setData({
-              hotList,
+              total: data.data.data.total,
+              hotList: name === 'add' ? that.data.hotList.concat(hotList) : hotList,
               marginT: "",
               isCityOpen: false,
               isClassOpen: false,
@@ -371,5 +390,16 @@ Page({
       complete: function (res) { },
     })
   },
-
+  onReachBottom: function () {
+    if(this.data.pageIndex -1 < Math.ceil(this.data.total/10)){
+      this.setData({
+        offset: (this.data.pageIndex -1) * 10
+      })
+      this.getDataList('add')
+    }else{
+      this.setData({
+        nodata: true
+      })
+    }
+  },
 })
