@@ -114,12 +114,11 @@ Page({
             that.data.classList[i].isTab = true;
           }
         }
-        console.log(that.data.lat)
+        console.log(data.courseName)
         wx.getLocation({
           success: function(res) {
-            console.log('resresresresresresresresresres', res)
             wx.request({
-              url: app.globalData.baseUrl +'/v1/course/search',
+              url: app.globalData.baseUrl +'/v1/course/search?course_type='+ data.courseName,
               data: {
                 lat: res.latitude,
                 lon: res.longitude,
@@ -137,7 +136,9 @@ Page({
                   hotList[i].tagList = hotList[i].shopinfo.tags !== '' ? hotList[i].shopinfo.tags.split(',') : null
                 }
                 that.setData({
-                  hotList
+                  hotList,
+                  total: data.data.data.total,
+                  pageIndex: that.data.pageIndex + 1
                 })
               }
             })
@@ -328,7 +329,7 @@ Page({
         pageIndex: that.data.pageIndex + 1
       })
     }
-    console.log(this.data.cityName, this.data.className, this.data.oldName)
+    console.log(that.data.pageIndex)
     if(this.data.cityName !== '全城'){
       str = str + `city=${this.data.cityName}&`
     }
