@@ -100,11 +100,11 @@ Page({
   onShow: function (){
     let that = this;    
     let data = app.globalData.courseTypeList
-    console.log(data)
     for(let i=0;i<data.length;i++){
       data[i].isTab = false
     }
     that.data.classList = data;
+   
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
       if(data.courseName != ""){

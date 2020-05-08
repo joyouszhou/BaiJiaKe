@@ -78,6 +78,11 @@ Page({
   },
   onShow: function(){
     let that = this;
+    this.setData({
+      pageIndex: 1,
+      offset: 0,
+      hotList: []
+    })
     wx.request({
       url: app.globalData.baseUrl + '/v1/coursetype',
       success: function (res){
