@@ -31,39 +31,6 @@
       {{item.name}}
     </view>
   </view>
-  <!-- 课程列表 -->
-  <!-- <view class="courseList" style="{{marginT}}">
-    <view class="courseItem"
-      wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 
-      bindtap="toCourseDetails">
-      <view class="img-box">
-        <image mode="aspectFill" src="{{baseUrl+item.imageurl[0]}}"></image>
-      </view>
-      <view class="courseInfo">
-        <view class="f28">{{item.name}}</view>
-        <view class="f24">
-          <text>课程点击数 {{item.count}}</text>
-          <text>{{item.ages}}岁</text>
-        </view>
-        <view class="juli">
-          <view  style="margin: 0">
-            <view>
-              <text>{{item.teacher}}</text>
-            </view>
-            <view style="display: flex;align-items: center;margin-bottom: 0">
-              <view class="tag-box" wx:if="{{item.tagList}}" >
-                <text style="position: relative; top: 15rpx" wx:for="{{item.tagList}}" wx:for-item="tagItem" wx:for-index="tagIndex" wx:key="tagIndex" class="tag-item {{tagItem === '认证' ? 'green' :  tagItem === '保障' ? 'yello' : 'red'}}">{{tagItem}}</text>
-              </view>
-            </view>
-          </view>
-          <view class="f24" style="margin: 0">
-            <text>距离{{item.jvLi}}公里</text>
-            <image class="location" src="/images/home/daohang.png"></image>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view> -->
   <view class="courseList" style="{{marginT}}">
     <view class="courseItem"
       wx:for="{{hotList}}" wx:key="index" data-item="{{item}}" 

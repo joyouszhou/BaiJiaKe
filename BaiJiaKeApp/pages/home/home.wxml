@@ -91,15 +91,15 @@
           </view>
         </view>
         <view class="number">
-          <text>课程热度 {{item.count}}</text>
-          <text>{{item.ages}}岁 {{item.course_status == 1?"体验课":'正式课'}}</text>
+          <text>课程热度 {{item.count}} | 试听8</text>
+          <text>{{item.ages}}岁</text>
         </view>
         <view class="info">
           <view>
-            <text class="film">{{item.shopinfo.name}}</text>
+            <text>{{item.shopinfo.name}}</text>
           </view>
           <view>
-            <text class="time">距离{{item.jvLi}}KM</text>
+            <text>距离{{item.jvLi}}KM</text>
             <!-- <image src="/images/home/daohang.png"></image> -->
           </view>
         </view>

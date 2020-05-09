@@ -141,7 +141,7 @@
 }
 .courseList .courseItem .image{
   width: 100%;
-  height: 207rpx;
+  height: 264rpx;
 }
 .courseList .courseItem .image image{
   width: 100%;

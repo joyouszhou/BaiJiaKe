@@ -194,6 +194,8 @@ Page({
           isTab: true,
           marginT: "margin-top: 380rpx",
           tabName: "全城",
+          pageIndex: 1,
+          offset: 0,
         })
       }else{
         this.setData({
@@ -236,6 +238,8 @@ Page({
           isTab: true,
           marginT: marginT,
           tabName: "体能运动",
+          pageIndex: 1,
+          offset: 0,
         })
       } else {
         this.setData({
@@ -256,6 +260,8 @@ Page({
           isTab: true,
           marginT: "margin-top: 290rpx",
           tabName: "年龄",
+          pageIndex: 1,
+          offset: 0,
         })
       } else {
         this.setData({
