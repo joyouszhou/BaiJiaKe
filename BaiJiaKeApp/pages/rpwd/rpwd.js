@@ -44,7 +44,7 @@ Page({
       //提示手机号码格式不正确
       wx.showToast({
         title: '手机号格式不正确',
-        image: '/images/warn.png',
+        icon:'none'
       })
       return false;
     }
@@ -75,7 +75,7 @@ Page({
             //提示获取验证码失败
             wx.showToast({
               title: '获取验证码失败',
-              // image: '/images/warn.png',
+              icon:'none'
             })
           }
         },
@@ -136,7 +136,7 @@ Page({
     if (this.data.phoneNum === '' || this.data.code === '') {
       wx.showToast({
         title: "请填写手机号码和验证码",
-        image: '/images/warn.png',
+        icon:'none'
       })
     }
     if (this.data.password1 === this.data.password2){
@@ -182,11 +182,9 @@ Page({
     }else {
       wx.showToast({
         title: "两次密码输入不一致！",
-        image: '/images/warn.png',
+        icon:'none'
       })
     }
-    
-    
   },
 
 })

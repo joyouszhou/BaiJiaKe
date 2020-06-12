@@ -97,7 +97,7 @@ Page({
       //提示手机号码格式不正确
       wx.showToast({
         title: '手机号格式不正确',
-        image: '/images/warn.png',
+        icon:'none'
       })
       return false;
     }
@@ -180,7 +180,7 @@ Page({
         } else {
           wx.showModal({
             title: '提示',
-            content: res.data.data,
+            content: res.data.data?res.data.data:"服务器链接异常",
           })
         }
       },
